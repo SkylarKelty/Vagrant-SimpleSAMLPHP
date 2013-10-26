@@ -1,4 +1,4 @@
 Vagrant
 =======
 
-Various Vagrant Templates
+Vagrant Template for a SimpleSAMLPHP IdP and SP
