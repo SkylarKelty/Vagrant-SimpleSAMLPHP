@@ -55,6 +55,13 @@ class sspmod_json_Auth_Source_auth extends sspmod_core_Auth_UserPassBase {
 		foreach ($json as $username => $attrs) {
 			$k = $username . ':' . $attrs['password'];
 			unset($attrs['password']);
+
+			foreach ($attrs as $name => $val) {
+				if (!is_array($val)) {
+					$attrs[$name] = array($val);
+				}
+			}
+
 			$this->users[$k] = $attrs;
 		}
 
