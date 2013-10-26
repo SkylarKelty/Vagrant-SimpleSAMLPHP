@@ -7,6 +7,16 @@
  * See: https://rnd.feide.no/content/idp-remote-metadata-reference
  */
 
+$metadata['http://local.idp:8081'] = array(
+	'name' => array(
+		'en' => 'Local IdP',
+	),
+	'description'           => 'Here you can login with your own specified accounts.',
+
+    'SingleSignOnService'  => 'http://local.idp:8081/simplesaml/saml2/idp/SSOService.php',
+    'SingleLogoutService'  => 'http://local.idp:8081/simplesaml/saml2/idp/SingleLogoutService.php'
+);
+
 /*
  * Guest IdP. allows users to sign up and register. Great for testing!
  */
@@ -21,4 +31,3 @@ $metadata['https://openidp.feide.no'] = array(
 	'SingleLogoutService'  => 'https://openidp.feide.no/simplesaml/saml2/idp/SingleLogoutService.php',
 	'certFingerprint'      => 'c9ed4dfb07caf13fc21e0fec1572047eb8a7a4cb'
 );
-
