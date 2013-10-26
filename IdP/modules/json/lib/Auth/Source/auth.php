@@ -102,7 +102,7 @@ class sspmod_json_Auth_Source_auth extends sspmod_core_Auth_UserPassBase {
 		if (!array_key_exists($userpass, $this->users)) {
 			throw new SimpleSAML_Error_Error('WRONGUSERPASS');
 		}
-
+		
 		return $this->users[$userpass];
 	}
 

@@ -81,7 +81,7 @@ $config = array (
 	 * A possible way to generate a random salt is by running the following command from a unix shell:
 	 * tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
 	 */
-	'secretsalt' => 'zn71byx9kscixf77saf1llfzzqs24xf9',
+	'secretsalt' => '6t6l2ytnx9ls9jn0r7qb8pphdstc2kvc',
 	
 	/*
 	 * Some information about the technical persons running this installation.
@@ -538,7 +538,7 @@ $config = array (
 	 *
 	 * (This option replaces the old 'session.handler'-option.)
 	 */
-	'store.type' => 'phpsession',
+	'store.type' => 'memcache',
 
 
 	/*
