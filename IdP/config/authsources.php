@@ -29,6 +29,12 @@ $config = array(
 		'discoURL' => NULL,
 	),
 
+	'json' => array(
+		'json:auth',
+		'mappings' => '/vagrant/config/users.json',
+		'encryption' => 'plain'
+	),
+
 
 	/*
 	'example-sql' => array(
