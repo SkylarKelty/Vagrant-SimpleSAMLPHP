@@ -1,0 +1,4 @@
+Vagrant
+=======
+
+Various Vagrant Templates
