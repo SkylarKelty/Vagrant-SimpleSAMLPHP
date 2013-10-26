@@ -3,13 +3,18 @@
  * Demo app with SAML auth
  */
 
+require("/vagrant/SP/lib/_autoload.php");
+$as = new SimpleSAML_Auth_Simple('default-sp');
+
 if (isset($_GET['signin'])) {
-	require("/vagrant/SP/lib/_autoload.php");
-	$as = new SimpleSAML_Auth_Simple('default-sp');
 	$as->requireAuth();
 	if ($as->isAuthenticated()) {
 		$saml_attributes = $as->getAttributes();
 	}
+}
+
+if (isset($_GET['signout'])) {
+	$as->logout("http://localhost:8081/");
 }
 
 ?>
@@ -38,6 +43,7 @@ if (isset($_GET['signin'])) {
 			<?php } else {
 				$name = $saml_attributes['name'][0];
 				print "<p>Welcome {$name}!</p>";
+				print "<p><a href=\"?signout\">Sign out</a></p>";
 			} ?>
 		</div>
 	</body>
