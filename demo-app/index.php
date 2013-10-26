@@ -22,7 +22,7 @@ if (isset($_GET['signin'])) {
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>Signin Template for Bootstrap</title>
+		<title>SSO Sign In Demo</title>
 
 		<link href="styles/css/bootstrap.css" rel="stylesheet">
 		<link href="styles/css/signin.css" rel="stylesheet">
@@ -30,10 +30,15 @@ if (isset($_GET['signin'])) {
 
 	<body>
 		<div class="container">
+			<?php if (!isset($saml_attributes)) { ?>
 			<form class="form-signin" method="GET" action="?">
 				<input type="hidden" name="signin" value="" />
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 			</form>
+			<?php } else {
+				$name = $saml_attributes['name'][0];
+				print "<p>Welcome {$name}!</p>";
+			} ?>
 		</div>
 	</body>
 </html>
