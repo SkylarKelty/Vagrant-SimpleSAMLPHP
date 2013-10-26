@@ -15,17 +15,8 @@ $config = array(
 	// and Shibboleth 1.3 IdPs.
 	'default-sp' => array(
 		'saml:SP',
-
-		// The entity ID of this SP.
-		// Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
-		'entityID' => NULL,
-
-		// The entity ID of the IdP this should SP should contact.
-		// Can be NULL/unset, in which case the user will be shown a list of available IdPs.
-		'idp' => NULL,
-
-		// The URL to the discovery service.
-		// Can be NULL/unset, in which case a builtin discovery service will be used.
+		'entityID' => 'http://local.sp:8081/simplesaml/module.php/saml/sp/metadata.php/default-sp',
+		'idp' => 'http://local.idp:8081',
 		'discoURL' => NULL,
 	),
 

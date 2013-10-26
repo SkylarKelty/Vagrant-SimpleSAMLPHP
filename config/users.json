@@ -1,6 +1,6 @@
 {
 	"username": {
-		"password": "testpassword",
+		"password": "password",
 		"uid": "username",
 		"name": "Fake User",
 		"mail": "i@am.fake",
