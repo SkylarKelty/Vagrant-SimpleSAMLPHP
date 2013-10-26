@@ -32,7 +32,7 @@ $config = array (
 	 *
 	 * SimpleSAMLphp will attempt to create this directory if it doesn't exist.
 	 */
-	'tempdir'               => '/tmp/simplesaml',
+	'tempdir'               => '/tmp/simplesaml-idp',
 	
 
 	/*
@@ -69,7 +69,7 @@ $config = array (
 	 * metadata listing and diagnostics pages.
 	 * You can also put a hash here; run "bin/pwgen.php" to generate one.
 	 */
-	'auth.adminpassword'		=> '123',
+	'auth.adminpassword'		=> 'password',
 	'admin.protectindexpage'	=> false,
 	'admin.protectmetadata'		=> false,
 
@@ -81,7 +81,7 @@ $config = array (
 	 * A possible way to generate a random salt is by running the following command from a unix shell:
 	 * tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
 	 */
-	'secretsalt' => 'defaultsecretsalt',
+	'secretsalt' => '6t6l2ytnx9ls9jn0r7qb8pphdstc2kvc',
 	
 	/*
 	 * Some information about the technical persons running this installation.
@@ -89,7 +89,7 @@ $config = array (
 	 * also as the technical contact in generated metadata.
 	 */
 	'technicalcontact_name'     => 'Administrator',
-	'technicalcontact_email'    => 'na@example.org',
+	'technicalcontact_email'    => 'you@example.org',
 
 	/*
 	 * The timezone of the server. This option should be set to the timezone you want
@@ -135,11 +135,11 @@ $config = array (
 	 * The process name that should be used when logging to syslog.
 	 * The value is also written out by the other logging handlers.
 	 */
-	'logging.processname' => 'simplesamlphp',
+	'logging.processname' => 'simplesamlphp-idp',
 
 	/* Logging: file - Logfilename in the loggingdir from above.
 	 */
-	'logging.logfile'		=> 'simplesamlphp.log',
+	'logging.logfile'		=> 'simplesamlphp-idp.log',
 
 	/* (New) statistics output configuration.
 	 *
@@ -171,7 +171,7 @@ $config = array (
 	 * one of the functionalities below, but in some cases you could run multiple functionalities.
 	 * In example when you are setting up a federation bridge.
 	 */
-	'enable.saml20-idp'		=> false,
+	'enable.saml20-idp'		=> true,
 	'enable.shib13-idp'		=> false,
 	'enable.adfs-idp'		=> false,
 	'enable.wsfed-sp'		=> false,
