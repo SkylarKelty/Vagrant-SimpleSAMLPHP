@@ -13,8 +13,9 @@ $metadata['http://local.idp:8081'] = array(
 	),
 	'description'           => 'Here you can login with your own specified accounts.',
 
-    'SingleSignOnService'  => 'http://local.idp:8081/simplesaml/saml2/idp/SSOService.php',
-    'SingleLogoutService'  => 'http://local.idp:8081/simplesaml/saml2/idp/SingleLogoutService.php'
+   'SingleSignOnService'  => 'http://local.idp:8081/simplesaml/saml2/idp/SSOService.php',
+   'SingleLogoutService'  => 'http://local.idp:8081/simplesaml/saml2/idp/SingleLogoutService.php',
+	'certFingerprint'      => 'afe71c28ef740bc87425be13a2263d37971da1f9'
 );
 
 /*
