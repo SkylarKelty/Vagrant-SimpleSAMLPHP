@@ -2,7 +2,7 @@
 
 # Install apache and PHP.
 apt-get update
-apt-get install curl apache2 php5 php5-curl php5-mcrypt php5-memcache memcached -y
+apt-get install curl git apache2 php5 php5-curl php5-mcrypt php5-memcache memcached -y
 
 # Install Composer.
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
