@@ -5,7 +5,7 @@
  * See: http://simplesamlphp.org/docs/trunk/simplesamlphp-reference-sp-remote
  */
 
-$metadata['http://local.app:8080/simplesaml/module.php/saml/sp/metadata.php/default-sp'] = array(
+$metadata['demo-app'] = array(
 	'AssertionConsumerService' => 'http://local.app:8080/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp',
 	'SingleLogoutService' => 'http://local.app:8080/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp',
 );
