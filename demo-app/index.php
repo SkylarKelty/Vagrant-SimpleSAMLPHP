@@ -4,6 +4,7 @@
  */
 
 require("/vagrant/SP/lib/_autoload.php");
+
 $as = new SimpleSAML_Auth_Simple('default-sp');
 
 if (isset($_GET['signin'])) {
@@ -16,7 +17,6 @@ if (isset($_GET['signin'])) {
 if (isset($_GET['signout'])) {
 	$as->logout("http://localhost:8081/");
 }
-
 ?>
 
 <!DOCTYPE html>
