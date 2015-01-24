@@ -15,7 +15,7 @@ if (isset($_GET['signin'])) {
 }
 
 if (isset($_GET['signout'])) {
-	$as->logout("http://localhost:8081/");
+	$as->logout("http://localhost:8080/");
 }
 ?>
 
@@ -29,7 +29,7 @@ if (isset($_GET['signout'])) {
 
 		<title>SSO Sign In Demo</title>
 
-		<link href="styles/css/bootstrap.css" rel="stylesheet">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 		<link href="styles/css/signin.css" rel="stylesheet">
 	</head>
 
