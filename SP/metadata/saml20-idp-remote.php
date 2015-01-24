@@ -13,22 +13,7 @@ $metadata['http://local.idp:8080'] = array(
 	),
 	'description'           => 'Here you can login with your own specified accounts.',
 
-   'SingleSignOnService'  => 'http://local.idp:8080/simplesaml/saml2/idp/SSOService.php',
-   'SingleLogoutService'  => 'http://local.idp:8080/simplesaml/saml2/idp/SingleLogoutService.php',
+	'SingleSignOnService'  => 'http://local.idp:8080/simplesaml/saml2/idp/SSOService.php',
+	'SingleLogoutService'  => 'http://local.idp:8081/simplesaml/saml2/idp/SingleLogoutService.php',
 	'certFingerprint'      => 'afe71c28ef740bc87425be13a2263d37971da1f9'
-);
-
-/*
- * Guest IdP. allows users to sign up and register. Great for testing!
- */
-$metadata['https://openidp.feide.no'] = array(
-	'name' => array(
-		'en' => 'Feide OpenIdP - guest users',
-		'no' => 'Feide Gjestebrukere',
-	),
-	'description'          => 'Here you can login with your account on Feide RnD OpenID. If you do not already have an account on this identity provider, you can create a new one by following the create new account link and follow the instructions.',
-
-	'SingleSignOnService'  => 'https://openidp.feide.no/simplesaml/saml2/idp/SSOService.php',
-	'SingleLogoutService'  => 'https://openidp.feide.no/simplesaml/saml2/idp/SingleLogoutService.php',
-	'certFingerprint'      => 'c9ed4dfb07caf13fc21e0fec1572047eb8a7a4cb'
 );
