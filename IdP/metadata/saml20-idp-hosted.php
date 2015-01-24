@@ -5,7 +5,7 @@
  * See: https://rnd.feide.no/content/idp-hosted-metadata-reference
  */
 
-$metadata['http://local.idp:8081'] = array(
+$metadata['http://local.idp:8080'] = array(
 	/*
 	 * The hostname of the server (VHOST) that will use this SAML entity.
 	 *
