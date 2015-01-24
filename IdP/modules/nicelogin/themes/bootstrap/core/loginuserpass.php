@@ -1,7 +1,4 @@
 <?php
-
-
-
 /**
  * Support the htmlinject hook, which allows modules to change header, pre and post body on all pages.
  */
@@ -10,7 +7,6 @@ $this->data['htmlinject'] = array(
   'htmlContentPost' => array(),
   'htmlContentHead' => array(),
 );
-
 
 $jquery = array();
 if (array_key_exists('jquery', $this->data)) $jquery = $this->data['jquery'];
@@ -30,7 +26,6 @@ if (array_key_exists('pageid', $this->data)) {
 header('X-Frame-Options: SAMEORIGIN');
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,7 +36,7 @@ header('X-Frame-Options: SAMEORIGIN');
 
     <title><?php echo array_key_exists('header', $this->data) ? $this->data['header'] : 'simpleSAMLphp'; ?></title>
 
-    <link href="/<?php echo $this->data['baseurlpath']; ?>resources/nicelogin/css/bootstrap.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="/<?php echo $this->data['baseurlpath']; ?>resources/nicelogin/css/signin.css" rel="stylesheet">
 
     <script type="text/javascript" src="/<?php echo $this->data['baseurlpath']; ?>resources/script.js"></script>
@@ -109,7 +104,7 @@ if(!empty($this->data['htmlinject']['htmlContentPost'])) {
 ?>
 		<div id="footer">
 			<hr />
-			Copyright &copy; 2013 <a href="https://github.com/SkylarKelty/">Skylar Kelty</a>
+			Copyright &copy; 2015 <a href="https://github.com/SkylarKelty/">Skylar Kelty</a>
 		</div>
     </div>
   </body>
