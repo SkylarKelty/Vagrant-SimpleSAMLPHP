@@ -15,7 +15,7 @@ $config = array(
 	// and Shibboleth 1.3 IdPs.
 	'default-sp' => array(
 		'saml:SP',
-		'entityID' => 'http://localhost:8080/simplesaml/module.php/saml/sp/metadata.php/default-sp',
+		'entityID' => 'http://local.app:8080/simplesaml/module.php/saml/sp/metadata.php/default-sp',
 		'idp' => 'http://local.idp:8080',
 		'discoURL' => NULL,
 	),
