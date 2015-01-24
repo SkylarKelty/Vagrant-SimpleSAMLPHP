@@ -30,20 +30,17 @@ if (isset($_GET['signout'])) {
 		<title>SSO Sign In Demo</title>
 
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/css/signin.css" rel="stylesheet">
+		<link href="styles/css/page.css" rel="stylesheet">
 	</head>
 
 	<body>
-		<div class="container">
-			<?php if (!isset($saml_attributes)) { ?>
-			<form class="form-signin" method="GET" action="?">
-				<input type="hidden" name="signin" value="" />
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-			</form>
-			<?php } else {
+		<div id="page" class="container">
+			<?php if (!isset($saml_attributes)) { 
+				print "<p><a href=\"?signin\" class=\"btn btn-lg btn-primary\">Sign in</a></p>";
+			} else {
 				$name = $saml_attributes['name'][0];
-				print "<p>Welcome {$name}!</p>";
-				print "<p><a href=\"?signout\">Sign out</a></p>";
+				print "<h3>Welcome {$name}!</h3>";
+				print "<p><a href=\"?signout\" class=\"btn btn-lg btn-primary\">Sign out</a></p>";
 			} ?>
 		</div>
 	</body>
