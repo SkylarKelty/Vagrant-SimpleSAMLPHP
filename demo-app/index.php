@@ -15,7 +15,7 @@ if (isset($_GET['signin'])) {
 }
 
 if (isset($_GET['signout'])) {
-	$as->logout("http://localhost:8080/");
+	$as->logout("http://local.app:8080/");
 }
 ?>
 
