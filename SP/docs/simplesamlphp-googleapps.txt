@@ -7,7 +7,6 @@ Setting up a simpleSAMLphp SAML 2.0 IdP to use with Google Apps for Education
 	http://daringfireball.net/projects/markdown/syntax
 -->
 
-  * Version: `$Id: simplesamlphp-googleapps.txt 3208 2012-12-03 12:27:53Z olavmrk $`
 
 
 <!-- {{TOC}} -->
@@ -19,7 +18,7 @@ This document is part of the simpleSAMLphp documentation suite.
 
  * [List of all simpleSAMLphp documentation](http://simplesamlphp.org/docs)
  * [Latest news about simpleSAMLphp](http://rnd.feide.no/taxonomy/term/4). (Also conatins an RSS feed)
- * [simpleSAMLphp homepage](http://rnd.feide.no/simplesamlphp)
+ * [simpleSAMLphp homepage](https://simplesamlphp.org)
 
 
 ## Introduction
@@ -211,7 +210,7 @@ You must also configure the IdP initiated Single LogOut endpoint of your server.
 
 again, using the host name of your IdP server.
 
-The Sign-out page or change password url can be static pages on your server.
+The Sign-out page or change password URL can be static pages on your server.
 
 The network mask determines which IP addresses will be asked for SSO login. IP addresses not matching this mask will be presented with the normal Google Apps login page. I think you can leave this field empty to enable authentication for all URLs.
 
@@ -242,7 +241,7 @@ Support
 
 If you need help to make this work, or want to discuss simpleSAMLphp with other users of the software, you are fortunate: Around simpleSAMLphp there is a great Open source community, and you are welcome to join! The forums are open for you to ask questions, contribute answers other further questions, request improvements or contribute with code or plugins of your own.
 
--  [simpleSAMLphp homepage (at Feide RnD)](http://rnd.feide.no/simplesamlphp)
+-  [simpleSAMLphp homepage](https://simplesamlphp.org)
 -  [List of all available simpleSAMLphp documentation](http://simplesamlphp.org/docs/)
 -  [Join the simpleSAMLphp user's mailing list](http://rnd.feide.no/content/simplesamlphp-users-mailinglist)
 -  [Visit and contribute to the simpleSAMLphp wiki](https://ow.feide.no/simplesamlphp:start)

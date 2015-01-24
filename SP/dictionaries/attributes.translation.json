@@ -10,7 +10,7 @@
 		"lb": "Zesummenschloss",
 		"sl": "Vloga uporabnika",
 		"da": "Brugerens tilknytning til hjemmeorganisationen",
-		"se": "Du doaibma organisa&#353;uvnnas",
+		"se": "Du doaibma organisa\u0161uvnnas",
 		"hr": "Povezanost s ustanovom",
 		"hu": "Viszony",
 		"fi": "Suhde organisaatioon",
@@ -30,7 +30,9 @@
 		"sr": "Povezanost sa institucijom",
 		"ar": "\u062c\u0647\u0629 \u0627\u0644\u0639\u0645\u0644",
 		"id": "Afiliasi",
-		"lv": "Pieder\u012bba"
+		"lv": "Pieder\u012bba",
+		"ro": "Afiliere",
+		"eu": "Afiliazioa"
 	},
 	"attribute_title": {
 		"no": "Tittel",
@@ -50,6 +52,7 @@
 		"pt": "T\u00edtulo",
 		"pl": "Tytu\u0142 (Title)",
 		"cs": "Nadpis",
+		"eu": "Tratamendua",
 		"tr": "Ba\u015fl\u0131k",
 		"it": "Titolo",
 		"lt": "Pavadinimas",
@@ -62,7 +65,8 @@
 		"sr": "Zvanje",
 		"ar": "\u0627\u0644\u0644\u0642\u0628",
 		"id": "Gelar",
-		"lv": "Amats"
+		"lv": "Amats",
+		"ro": "Titlu\/titulatur\u0103"
 	},
 	"attribute_uid": {
 		"no": "Bruker-ID",
@@ -83,6 +87,7 @@
 		"pt": "Identifica\u00e7\u00e3o de utilizador",
 		"pl": "ID u\u017cytkownika (User ID)",
 		"cs": "Identifik\u00e1tor (UID)",
+		"eu": "Erabiltzaile ID",
 		"tr": "Kullan\u0131c\u0131 ID",
 		"it": "Identificativo utente",
 		"lt": "Naudotojo ID",
@@ -95,7 +100,8 @@
 		"sr": "Korisni\u010dko ime",
 		"ar": "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u062a\u0639\u0631\u064a\u0641\u064a \u0644\u0644\u0645\u0633\u062a\u062e\u062f\u0645",
 		"id": "User ID",
-		"lv": "Lietot\u0101ja ID"
+		"lv": "Lietot\u0101ja ID",
+		"ro": "ID utilizator"
 	},
 	"attribute_sn": {
 		"no": "Etternavn",
@@ -116,6 +122,7 @@
 		"pt": "Nome de fam\u00edlia",
 		"pl": "Nazwisko (Surname)",
 		"cs": "P\u0159\u00edjmen\u00ed",
+		"eu": "Abizenak",
 		"tr": "Soyad\u0131",
 		"it": "Cognome",
 		"lt": "Pavard\u0117",
@@ -128,7 +135,8 @@
 		"sr": "Prezime",
 		"ar": "\u0627\u0633\u0645 \u0627\u0644\u0639\u0627\u0626\u0644\u0647",
 		"id": "Nama Keluaga",
-		"lv": "Uzv\u0101rds"
+		"lv": "Uzv\u0101rds",
+		"ro": "Nume de familie"
 	},
 	"attribute_givenname": {
 		"no": "Fornavn",
@@ -161,7 +169,9 @@
 		"sr": "Ime",
 		"ar": "\u0627\u0644\u0627\u0633\u0645",
 		"id": "Nama",
-		"lv": "V\u0101rds"
+		"lv": "V\u0101rds",
+		"ro": "Prenume",
+		"eu": "Izena"
 	},
 	"attribute_cn": {
 		"no": "Fullt navn",
@@ -194,7 +204,9 @@
 		"sr": "Ime i Prezime",
 		"ar": "\u0623\u0633\u0645\u0627\u0621 \u0627\u062e\u0631\u064a",
 		"id": "Common Name",
-		"lv": "V\u0101rds"
+		"lv": "V\u0101rds",
+		"ro": "Nume comun",
+		"eu": "Izen arrunta (CN)"
 	},
 	"attribute_mail": {
 		"no": "E-post",
@@ -207,7 +219,7 @@
 		"lb": "E-mail",
 		"sl": "Elektronski naslov",
 		"da": "Emailadresse",
-		"se": "Elektrovnnala&#353; poasta&#269;ijuhus",
+		"se": "Elektrovnnala\u0161 poasta\u010dijuhus",
 		"hr": "Elektroni\u010dka adresa",
 		"hu": "E-mail",
 		"fi": "S\u00e4hk\u00f6posti",
@@ -215,6 +227,7 @@
 		"pt": "E-mail",
 		"pl": "E-mail",
 		"cs": "Email",
+		"eu": "Posta",
 		"tr": "Posta",
 		"it": "Mail",
 		"lt": "El.pa\u0161tas",
@@ -227,7 +240,8 @@
 		"sr": "Elektronska adresa",
 		"ar": "\u0627\u0644\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0628\u0631\u064a\u062f\u064a",
 		"id": "Mail",
-		"lv": "Pasts"
+		"lv": "Pasts",
+		"ro": "Mail"
 	},
 	"attribute_mobile": {
 		"no": "Mobiltelefon",
@@ -240,7 +254,7 @@
 		"lb": "GSM Nummer",
 		"sl": "Mobilni telefon",
 		"da": "Telefonnummer (mobil)",
-		"se": "M&aacute;tketelefovdna",
+		"se": "M\u00e1tketelefovdna",
 		"hr": "Broj mobilnog telefona",
 		"hu": "Mobil",
 		"fi": "K\u00e4nnykk\u00e4",
@@ -248,6 +262,7 @@
 		"pt": "Telem\u00f3vel",
 		"pl": "Telefon kom\u00f3rkowy (Mobile)",
 		"cs": "Mobil",
+		"eu": "Mugikorra",
 		"tr": "Cep telefonu numaras\u0131",
 		"it": "Cellulare",
 		"lt": "Mobiliojo numeris",
@@ -260,7 +275,8 @@
 		"sr": "Broj mobilnog telefona",
 		"ar": "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062a\u0641 \u0627\u0644\u0633\u064a\u0627\u0631",
 		"id": "Handphone",
-		"lv": "Mobilais telefons"
+		"lv": "Mobilais telefons",
+		"ro": "Mobil"
 	},
 	"attribute_preferredlanguage": {
 		"no": "Foretrukket spr\u00e5k",
@@ -273,7 +289,7 @@
 		"lb": "Lieblingssprooch",
 		"sl": "\u017delen jezik",
 		"da": "Foretrukket sprog (evt. flere)",
-		"se": "Vuostta&#353;v&aacute;lljejuvvon giella dehe giellah&aacute;pmi",
+		"se": "Vuostta\u0161v\u00e1lljejuvvon giella dehe giellah\u00e1pmi",
 		"hr": "Primarni jezik",
 		"hu": "Els\u0151dleges nyelv",
 		"fi": "Ensisijainen kieli",
@@ -293,7 +309,9 @@
 		"sr": "Preferirani jezik",
 		"ar": "\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0645\u0641\u0636\u0644\u0629",
 		"id": "Pilihan Bahasa",
-		"lv": "V\u0113lam\u0101 valoda"
+		"lv": "V\u0113lam\u0101 valoda",
+		"ro": "Limba preferat\u0103",
+		"eu": "Hizkuntza lehenetsia"
 	},
 	"attribute_noredupersonnin": {
 		"no": "F\u00f8dselsnummer",
@@ -326,7 +344,9 @@
 		"sr": "Jedinstveni brojni identifikator osobe",
 		"ar": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u062a\u0639\u0631\u064a\u0641\u064a \u0627\u0644\u0645\u0639\u064a\u0646 \u0645\u0646 \u0642\u0628\u0644 \u0627\u0644\u0633\u0644\u0637\u0627\u062a \u0627\u0644\u0639\u0627\u0645\u0629 ",
 		"id": "Identity number assigned by public authorities",
-		"lv": "Publisko autorit\u0101\u0161u pie\u0161\u0137irtais identit\u0101tes numurs"
+		"lv": "Publisko autorit\u0101\u0161u pie\u0161\u0137irtais identit\u0101tes numurs",
+		"ro": "Num\u0103r de identitate atribuit de autorit\u0103\u021bi publice",
+		"eu": "Gizarte-segurantzako zenbakia"
 	},
 	"attribute_schachomeorganization": {
 		"no": "Unik ID for organisasjon",
@@ -358,7 +378,9 @@
 		"ar": "\u0627\u0633\u0645 \u0627\u0644\u0646\u0637\u0627\u0642 \u0627\u0644\u0645\u062e\u0635\u0635 \u0644\u0644\u0645\u0646\u0638\u0645\u0629\u0627\u0644\u0627\u0645\\\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0627\u0645 ",
 		"id": "Home organization domain name",
 		"lv": "Organiz\u0101cijas domeins",
-		"sr": "Domen mati\u010dne institucije"
+		"sr": "Domen mati\u010dne institucije",
+		"ro": "Njumele de domeniu pentru institu\u021bia de origine",
+		"eu": "Jatorrizko erakundearen domeinu izena"
 	},
 	"attribute_organisationname": {
 		"no": "Navn p\u00e5 organisasjon",
@@ -371,7 +393,7 @@
 		"lb": "Organisatiounsnumm",
 		"sl": "Ime organizacije",
 		"da": "Hjemmeorganisationens kaldenavn",
-		"se": "Organisa&#353;uvdna",
+		"se": "Organisa\u0161uvdna",
 		"hr": "Naziv ustanove",
 		"hu": "Szervezet neve",
 		"fi": "Organisaation nimi",
@@ -379,6 +401,7 @@
 		"pt": "Nome da Organiza\u00e7\u00e3o",
 		"pl": "Nazwa organizacji (Organization name)",
 		"cs": "Jm\u00e9no organizace",
+		"eu": "Erakundearen izena",
 		"tr": "Kurulu\u015f ad\u0131",
 		"it": "Nome dell'organizzazione",
 		"lt": "Organizacijos pavadinimas",
@@ -391,7 +414,8 @@
 		"sr": "Naziv mati\u010dne institucije",
 		"ar": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0646\u0638\u0645\u0629\u0627\u0644\u0627\u0645\\\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0627\u0645",
 		"id": "Organization name",
-		"lv": "Organiz\u0101cijas nosaukums"
+		"lv": "Organiz\u0101cijas nosaukums",
+		"ro": "Denumirea institu\u021biei"
 	},
 	"attribute_edupersonentitlement": {
 		"no": "Rettighet",
@@ -404,7 +428,7 @@
 		"lb": "Berechtegung",
 		"sl": "Upravi\u010denost do storitve",
 		"da": "Specifik rolle i forhold til tjenesten",
-		"se": "URI mii &#269;ilge dihto vuoigatvuo&#273;a dihto ressurssaide",
+		"se": "URI mii \u010dilge dihto vuoigatvuo\u0111a dihto ressurssaide",
 		"hr": "Pripadnost grupi",
 		"hu": "Ezekre a szolg\u00e1ltat\u00e1sokra jogosult",
 		"fi": "Organisaationoikeudet",
@@ -424,7 +448,9 @@
 		"sr": "Prava i privilegije korisnika na sistemu",
 		"ar": "\u0627\u0633\u062a\u062d\u0642\u0627\u0642\u0627\u062a \u0627\u0644\u062e\u062f\u0645\u0629",
 		"lv": "Pilnvaras attiec\u012bb\u0101 uz servisu",
-		"id": "Hak mengenai layanan ini"
+		"id": "Hak mengenai layanan ini",
+		"ro": "Drepturi relativ la acest serviciu",
+		"eu": "Zerbitzuari dagokion eskubidea"
 	},
 	"attribute_edupersonscopedaffiliation": {
 		"no": "Gruppetilh\u00f8righet",
@@ -437,7 +463,7 @@
 		"lb": "Gruppen Zougeh\u00e9iregket",
 		"sl": "Vloga v organizaciji",
 		"da": "Gruppemedlemskab",
-		"se": "Rolla diehto organisa&#353;uvnnas, dehe dihto domenas.",
+		"se": "Rolla diehto organisa\u0161uvnnas, dehe dihto domenas.",
 		"hr": "Povezanost s mati\u010dnom ustanovom",
 		"hu": "Saj\u00e1t int\u00e9zm\u00e9nyhez val\u00f3 viszony",
 		"fi": "Henkil\u00f6n rooli kotiorganisaatiossa",
@@ -457,7 +483,9 @@
 		"sr": "Povezanost sa institucijom sa domenom",
 		"ar": "\u0627\u0644\u0648\u0636\u0639 \u0623\u0648 \u0627\u0644\u0648\u0638\u064a\u0641\u0629 \u0628\u0627\u0644\u0645\u0646\u0638\u0645\u0629\u0627\u0644\u0627\u0645\\\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0627\u0645",
 		"lv": "Amats organiz\u0101cij\u0101",
-		"id": "Afiliasi di organisasi asal"
+		"id": "Afiliasi di organisasi asal",
+		"ro": "Afiliere \u00een cadrul institu\u021biei de origine",
+		"eu": "Afiliazioa jatorrizko erakundean"
 	},
 	"attribute_edupersontargetedid": {
 		"no": "Persistent anonym ID",
@@ -489,7 +517,9 @@
 		"ar": "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0645\u0633\u062a\u0639\u0627\u0631 ",
 		"pl": "Trwa\u0142y anonimowy identyfikator",
 		"lv": "Past\u0101v\u012bgs pseidon\u012bma ID",
-		"id": "Persistent pseudonymous ID"
+		"id": "Persistent pseudonymous ID",
+		"ro": "ID pseudonim persistent",
+		"eu": "Goitizen ID etengabea"
 	},
 	"attribute_edupersonprincipalname": {
 		"no": "Personlig ID hos organisasjonen",
@@ -522,7 +552,9 @@
 		"ar": "\u0623\u0644\u0627\u0633\u0645 \u0628\u0627\u0644\u0645\u0646\u0638\u0645\u0629 \u0627\u0644\u0627\u0645\\\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0627\u0645 ",
 		"pl": "G\u0142\u00f3wna nazwa u\u017cytkownika w instytucji macierzystej",
 		"lv": "Priek\u0161nieka v\u0101rds",
-		"id": "Nama kepala pada organisasi asal"
+		"id": "Nama kepala pada organisasi asal",
+		"ro": "Numele de identificare a persoanei la institu\u021bia de origine (de forma nume_utilizator@domeniu.ro)",
+		"eu": "Jatorrizko erakundean pertsonak duen izen nagusia"
 	},
 	"attribute_o": {
 		"no": "Navn p\u00e5 organisasjon",
@@ -542,6 +574,7 @@
 		"pt": "Nome da organiza\u00e7\u00e3o",
 		"pl": "Nazwa organizacji (Organization name)",
 		"cs": "Jm\u00e9no organizace",
+		"eu": "Erakundearen izena",
 		"tr": "Organizasyon ad\u0131",
 		"it": "Nome dell'organizzazione",
 		"lt": "Organizacijos pavadinimas",
@@ -554,7 +587,8 @@
 		"sr": "Naziv mati\u010dne institucije",
 		"ar": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0646\u0638\u0645\u0629",
 		"lv": "Organiz\u0101cijas nosaukums",
-		"id": "Nama organisasi"
+		"id": "Nama organisasi",
+		"ro": "Denumirea institu\u021biei"
 	},
 	"attribute_dc": {
 		"no": "Navneledd (DC)",
@@ -586,7 +620,9 @@
 		"sr": "Domenska komponenta (DC)",
 		"ar": "\u0645\u0643\u0648\u0646\u0627\u062a \u0627\u0644\u0646\u0637\u0627\u0642",
 		"lv": "Dom\u0113ns (DC)",
-		"id": "Domain component(DC)"
+		"id": "Domain component(DC)",
+		"ro": "Componenta de domeniu (DC)",
+		"eu": "Domeinuaren osagaia (DC)"
 	},
 	"attribute_displayname": {
 		"no": "Navn som normalt vises",
@@ -618,7 +654,9 @@
 		"ar": "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645 ",
 		"lv": "Par\u0101d\u0101mais v\u0101rds",
 		"id": "Nama yang ditampilkan",
-		"sr": "Ime za prikaz"
+		"sr": "Ime za prikaz",
+		"ro": "Nume afi\u0219at",
+		"eu": "Bistaratzeko izena"
 	},
 	"attribute_facsimiletelephonenumber": {
 		"no": "Faksnummer",
@@ -637,6 +675,7 @@
 		"pt": "N\u00famero de Fax",
 		"pl": "Numer Faksu (Fax number)",
 		"cs": "Fax",
+		"eu": "Fax-zenbakia",
 		"tr": "Faks numaras\u0131",
 		"fr": "Num\u00e9ro de fax",
 		"it": "Numero di fax",
@@ -650,7 +689,8 @@
 		"sr": "Fax broj",
 		"ar": "\u0631\u0642\u0645 \u0627\u0644\u0641\u0627\u0643\u0633",
 		"lv": "Fakss",
-		"id": "No Fax"
+		"id": "No Fax",
+		"ro": "Num\u0103r de fax"
 	},
 	"attribute_homephone": {
 		"no": "Hjemmetelefon",
@@ -669,6 +709,7 @@
 		"pt": "Telefone de resid\u00eancia",
 		"pl": "Telefon domowy (Home telephone)",
 		"cs": "Telefon dom\u016f",
+		"eu": "Etxeko telefonoa",
 		"tr": "Ev telefonu",
 		"fr": "T\u00e9l\u00e9phone personnel",
 		"it": "Telefono",
@@ -682,7 +723,8 @@
 		"sr": "Ku\u0107ni telefonski broj",
 		"ar": "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062a\u0641 \u0627\u0644\u0645\u0646\u0632\u0644\u064a",
 		"lv": "Telefons",
-		"id": "Telepon rumah"
+		"id": "Telepon rumah",
+		"ro": "Telefon acas\u0103"
 	},
 	"attribute_homepostaladdress": {
 		"no": "Postadresse hjemme",
@@ -714,7 +756,9 @@
 		"sr": "Ku\u0107na po\u0161tanska adresa",
 		"ar": "\u0627\u0644\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0628\u0631\u064a\u062f\u064a",
 		"lv": "Pasta adrese",
-		"id": "Alamat pos rumah"
+		"id": "Alamat pos rumah",
+		"ro": "Adresa po\u0219tal\u0103 de acas\u0103",
+		"eu": "Etxeko helbidea"
 	},
 	"attribute_jpegphoto": {
 		"no": "JPEG-foto",
@@ -733,6 +777,7 @@
 		"pt": "Foto JPEG",
 		"pl": "Fotografia JPEG",
 		"cs": "Foto JPEG",
+		"eu": "JPEG argazkia",
 		"tr": "JPEG foto\u011fraf",
 		"fr": "Photo JPEG",
 		"it": "Foto JPEG",
@@ -746,7 +791,8 @@
 		"sr": "Slika osobe",
 		"ar": "\u0635\u0648\u0631\u0629 (JPEG)",
 		"lv": "JPEG fotogr\u0101fija",
-		"id": "Foto JPEG"
+		"id": "Foto JPEG",
+		"ro": "Fotografie JPEG"
 	},
 	"attribute_l": {
 		"no": "Sted",
@@ -778,7 +824,9 @@
 		"sr": "Lokacija(Mesto)",
 		"ar": "\u0627\u0644\u0645\u062d\u0644\u064a\u0629",
 		"lv": "Atra\u0161an\u0101s vieta",
-		"id": "Lokalitas"
+		"id": "Lokalitas",
+		"ro": "Localitate",
+		"eu": "Herria"
 	},
 	"attribute_labeleduri": {
 		"no": "URI med valgfri tilleggskommentar",
@@ -810,7 +858,9 @@
 		"sr": "URI adresa",
 		"ar": "URI \u0623\u0633\u0645 ",
 		"lv": "URI nosaukums",
-		"id": "Berlabel URL"
+		"id": "Berlabel URL",
+		"ro": "URI etichetat",
+		"eu": "URI etiketatua"
 	},
 	"attribute_ou": {
 		"no": "Organisasjonsenhet",
@@ -842,7 +892,9 @@
 		"sr": "Organizaciona jedinica",
 		"ar": "\u0627\u0644\u0648\u062d\u062f\u0629",
 		"lv": "Organiz\u0101cijas vien\u012bba",
-		"id": "Organizational unit"
+		"id": "Organizational unit",
+		"ro": "Unitate organiza\u021bional\u0103",
+		"eu": "Antolamendu-unitatea"
 	},
 	"attribute_postaladdress": {
 		"no": "Postadresse",
@@ -861,6 +913,7 @@
 		"pt": "Morada",
 		"pl": "Adres pocztowy (Postal address)",
 		"cs": "Po\u0161tovn\u00ed adresa",
+		"eu": "Posta-helbidea",
 		"tr": "Posta adresi",
 		"fr": "Adresse postale",
 		"it": "Indirizzo postale",
@@ -874,7 +927,8 @@
 		"sr": "Po\u0161tanska adresa",
 		"ar": "\u0627\u0644\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0628\u0631\u064a\u062f\u064a \u0644\u0644\u0645\u0646\u0638\u0645\u0629",
 		"lv": "Pasta adrese",
-		"id": "Alamat pos"
+		"id": "Alamat pos",
+		"ro": "Adresa po\u0219tal\u0103"
 	},
 	"attribute_postalcode": {
 		"no": "Postnummer",
@@ -893,6 +947,7 @@
 		"pt": "C\u00f3digo Postal",
 		"pl": "Kod pocztowy",
 		"cs": "Po\u0161tovn\u00ed k\u00f3d PS\u010c",
+		"eu": "Posta-kodea",
 		"tr": "Posta kodu",
 		"fr": "Code postal",
 		"it": "CAP",
@@ -906,7 +961,8 @@
 		"sr": "Po\u0161tanski broj",
 		"ar": "\u0627\u0644\u0631\u0645\u0632 \u0627\u0644\u0628\u0631\u064a\u062f\u064a",
 		"lv": "Pasta kods",
-		"id": "Kode pos"
+		"id": "Kode pos",
+		"ro": "Cod po\u0219tal"
 	},
 	"attribute_postofficebox": {
 		"no": "Postboks",
@@ -925,6 +981,7 @@
 		"pt": "Apartado",
 		"pl": "Skrzynka pocztowa (Post office box)",
 		"cs": "Postbox",
+		"eu": "Posta-bulegoko ontzia",
 		"tr": "Posta kutusu",
 		"fr": "Boite postale",
 		"it": "Casella postale",
@@ -938,7 +995,8 @@
 		"sr": "Broj po\u0161tanskog sandu\u010deta",
 		"ar": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642 \u0627\u0644\u0628\u0631\u064a\u062f\u064a",
 		"lv": "Pasta kaste",
-		"id": "PO Box"
+		"id": "PO Box",
+		"ro": "Cutie po\u0219tal\u0103"
 	},
 	"attribute_street": {
 		"no": "Gate",
@@ -957,6 +1015,7 @@
 		"pt": "Rua",
 		"pl": "Ulica (Street)",
 		"cs": "Ulice",
+		"eu": "Kalea",
 		"tr": "Sokak",
 		"fr": "Rue",
 		"it": "Via",
@@ -970,7 +1029,8 @@
 		"sr": "Ulica i broj",
 		"ar": "\u0627\u0644\u0634\u0627\u0631\u0639",
 		"lv": "Iela",
-		"id": "Jalan"
+		"id": "Jalan",
+		"ro": "Strada"
 	},
 	"attribute_telephonenumber": {
 		"no": "Telefon",
@@ -989,6 +1049,7 @@
 		"pt": "Telefone",
 		"pl": "Numer telefonu (Telephone number)",
 		"cs": "Telefon",
+		"eu": "Telefono zenbakia",
 		"tr": "Telefon numaras\u0131",
 		"fr": "Num\u00e9ro de t\u00e9l\u00e9phone",
 		"it": "Numero di telefono",
@@ -1002,7 +1063,8 @@
 		"sr": "Telefonski broj",
 		"ar": "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062a\u0641",
 		"lv": "Telefons",
-		"id": "No Telepon"
+		"id": "No Telepon",
+		"ro": "Num\u0103r de telefon"
 	},
 	"attribute_eduorghomepageuri": {
 		"no": "Organisasjonens hjemmeside",
@@ -1034,7 +1096,9 @@
 		"sr": "URL adresa institucije",
 		"ar": " \u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0635\u0641\u062d\u0629 \u0627\u0644\u0627\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629 \u0644\u0644\u0645\u0646\u0638\u0645\u0629",
 		"lv": "Organiz\u0101cijas m\u0101jas lapa",
-		"id": "Homepage organisasi"
+		"id": "Homepage organisasi",
+		"ro": "Pagina web a institutu\u021biei",
+		"eu": "Erakundearen hasiera-orria"
 	},
 	"attribute_eduorglegalname": {
 		"no": "Foretaksnavn",
@@ -1066,7 +1130,9 @@
 		"sr": "Zvani\u010dni naziv institucije",
 		"ar": "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a \u0644\u0644\u0645\u0646\u0638\u0645\u0629",
 		"lv": "Organiz\u0101cijas juridiskais nosaukums",
-		"id": "Nama legal Organisasi"
+		"id": "Nama legal Organisasi",
+		"ro": "Denumirea legal\u0103 a institu\u021biei",
+		"eu": "Erakundearen izen legala"
 	},
 	"attribute_edupersonnickname": {
 		"no": "Kallenavn",
@@ -1085,6 +1151,7 @@
 		"pt": "Alcunha",
 		"pl": "Ksywka (Nickname)",
 		"cs": "P\u0159ezd\u00edvka",
+		"eu": "Ezizena",
 		"tr": "Takma ad",
 		"fr": "Pseudonyme",
 		"it": "Soprannome (nick)",
@@ -1098,7 +1165,8 @@
 		"sr": "Nadimak",
 		"ar": "\u0627\u0644\u0643\u0646\u064a\u0629",
 		"lv": "Niks",
-		"id": "Nama panggilan"
+		"id": "Nama panggilan",
+		"ro": "Porecl\u0103"
 	},
 	"attribute_edupersonorgdn": {
 		"no": "Entydig navn (DN) for brukerens vertsorganisasjon",
@@ -1130,7 +1198,9 @@
 		"ar": "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0645\u0645\u064a\u0632 \u0644\u0644\u0645\u0646\u0638\u0645\u0629 \u0631\u0628 \u0627\u0644\u0639\u0645\u0644",
 		"et": "Koduorganisatsiooni unikaalne nimi (DN)",
 		"lv": "Organiz\u0101cijas v\u0101rds (DN)",
-		"id": "Distinguished name (DN) of person's home organization"
+		"id": "Distinguished name (DN) of person's home organization",
+		"ro": "Nume distincitv (DN) al institu\u021bie de origine a persoanei",
+		"eu": "Pertsonaren jatorrizko erakundearen izen osatua (DN)"
 	},
 	"attribute_edupersonorgunitdn": {
 		"no": "Entydig navn (DN) for brukerens organisasjonsenhet",
@@ -1162,7 +1232,9 @@
 		"ar": "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0645\u0645\u064a\u0632 \u0644\u0644\u0648\u062d\u062f\u0629 \u0628\u0627\u0644\u0645\u0646\u0638\u0645\u0629 \u0631\u0628 \u0627\u0644\u0639\u0645\u0644",
 		"et": "Koduorganisatsiooni all\u00fcksuse unikaalne nimi (DN)",
 		"lv": "Organiz\u0101cijas vien\u012bbas v\u0101rds (DN)",
-		"id": "Distinguished name (DN) of the person's home organizational unit"
+		"id": "Distinguished name (DN) of the person's home organizational unit",
+		"ro": "Nume distincitv (DN) al unit\u0103\u021bii organiza\u021bionale de origine a persoanei",
+		"eu": "Pertsonaren jatorrizko erakundeko antolamendu-unitatearen izen osatua (DN)"
 	},
 	"attribute_edupersonprimaryaffiliation": {
 		"no": "Prim\u00e6r tilknytning til organisasjon",
@@ -1194,7 +1266,9 @@
 		"sr": "Primarna povezanost sa institucijom",
 		"ar": "\u0627\u0644\u0648\u0638\u064a\u0641\u0629 \u0627\u0644\u0627\u0633\u0627\u0633\u064a\u0629",
 		"lv": "Pamatdarba amats",
-		"id": "Afiliasi utama"
+		"id": "Afiliasi utama",
+		"ro": "Afiliere primar\u0103",
+		"eu": "Lehen afiliazioa"
 	},
 	"attribute_noreduorgnin": {
 		"no": "Organisasjonsnummer",
@@ -1226,7 +1300,9 @@
 		"ar": "\u0627\u0644\u0631\u0642\u0645 \u0628\u0627\u0644\u0645\u0646\u0638\u0645\u0629",
 		"lv": "Organiz\u0101cijas re\u0123istr\u0101cijas numurs",
 		"id": "Nomor Organisasi",
-		"et": "Registrikood"
+		"et": "Registrikood",
+		"ro": "Num\u0103r organiza\u021bional",
+		"eu": "Erakundearen zenbakia"
 	},
 	"attribute_noredupersonbirthdate": {
 		"no": "F\u00f8dselsdato",
@@ -1245,6 +1321,7 @@
 		"pt": "Data de nascimento",
 		"pl": "Data urodzenia (Date of birth)",
 		"cs": "Datum narozeni",
+		"eu": "Jaioteguna",
 		"tr": "Do\u011fum tarihi",
 		"fr": "Date de naissance",
 		"it": "Data di nascita",
@@ -1258,7 +1335,8 @@
 		"sr": "Datum ro\u0111enja",
 		"ar": "\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0645\u064a\u0644\u0627\u062f",
 		"lv": "Dzim\u0161anas datums",
-		"id": "Tanggal lahir"
+		"id": "Tanggal lahir",
+		"ro": "Data na\u0219terii"
 	},
 	"attribute_noredupersonlin": {
 		"no": "Lokalt ID-nummer",
@@ -1290,7 +1368,9 @@
 		"sr": "Lokalni brojni identifikator osobe",
 		"ar": "\u0631\u0642\u0645 \u0627\u0644\u0647\u0648\u064a\u0629 \u0627\u0644\u0645\u062d\u0644\u064a",
 		"lv": "Personas kods",
-		"id": "Nomor identitas lokal"
+		"id": "Nomor identitas lokal",
+		"ro": "Num\u0103r de identificare local",
+		"eu": "Tokiko zenbaki identifikatzailea"
 	},
 	"attribute_manager": {
 		"no": "Overordnet",
@@ -1322,7 +1402,9 @@
 		"sr": "Rukovodilac",
 		"ar": "\u0627\u0644\u0645\u062f\u064a\u0631",
 		"lv": "Priek\u0161nieks",
-		"id": "Manager"
+		"id": "Manager",
+		"ro": "Director\/Manager",
+		"eu": "Kudeatzailea"
 	},
 	"attribute_userpassword": {
 		"no": "Hash av brukerens passord",
@@ -1353,7 +1435,9 @@
 		"sr": "He\u0161 vrednost korisnikove lozinke",
 		"ar": "\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631",
 		"lv": "Paroles jauc\u0113jsumma (hash)",
-		"id": "Hash password user"
+		"id": "Hash password user",
+		"ro": "Parola utilizatorului \u00een format <i>hash<\/i>",
+		"eu": "Erabiltzailearen pasahitzaren hash-a"
 	},
 	"attribute_edupersonprimaryorgunitdn": {
 		"no": "Entydig navn for organisasjonsenheten som brukeren prim\u00e6rt er tilknyttet",
@@ -1382,7 +1466,9 @@
 		"pl": "Nazwa osoby w jednostce organizacyjnej",
 		"et": "Peamise all\u00fcksuse unikaalne nimi (DN)",
 		"lv": "Personas pamata organiz\u0101cijas vien\u012bbas v\u0101rds (DN)",
-		"id": "Distinguished name (DN) of person's primary Organizational Unit"
+		"id": "Distinguished name (DN) of person's primary Organizational Unit",
+		"ro": "Nume distincitv (DN) al unit\u0103\u021bii organiza\u021bionale primare a persoanei",
+		"eu": "Pertsonaren antolamendu-unitatearen izen osatua (DN)"
 	},
 	"attribute_schacuserprivateattribute": {
 		"no": "Private informasjonselement",
@@ -1411,7 +1497,9 @@
 		"sr": "Privatni atribut",
 		"ar": "\u0648\u062d\u062f\u0627\u062a \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u062e\u0627\u0635\u0629",
 		"lv": "Priv\u0101t\u0101s inform\u0101cijas elementi",
-		"id": "Elemen-elemen informasi personal"
+		"id": "Elemen-elemen informasi personal",
+		"ro": "Informa\u021bii private",
+		"eu": "Informazio pribatuaren elementuak"
 	},
 	"attribute_noredupersonlegalname": {
 		"no": "Folkeregistrert navn",
@@ -1438,7 +1526,9 @@
 		"lv": "Juridiskais nosaukums",
 		"id": "Nama legal",
 		"sr": "Pravno ime",
-		"cs": "Pr\u00e1vn\u00ed jm\u00e9no"
+		"cs": "Pr\u00e1vn\u00ed jm\u00e9no",
+		"ro": "Nume legal",
+		"eu": "Izen legala"
 	},
 	"attribute_edupersonassurance": {
 		"no": "Tillitsniv\u00e5 for autentisering",
@@ -1463,6 +1553,8 @@
 		"ar": "\u0647\u0648\u064a\u0629 \u0627\u0644\u0636\u0645\u0627\u0646",
 		"lv": "Apraksts, k\u0101 at\u0161\u0137irt cilv\u0113ku no robota",
 		"id": "Profil penjamin identitas",
-		"cs": "Poskytovatel identifika\u010dn\u00edho profilu"
+		"cs": "Poskytovatel identifika\u010dn\u00edho profilu",
+		"ro": "Profilul de asigurare a identit\u0103\u021bii",
+		"eu": "Bermearen profilaren identifikatzailea"
 	}
 }

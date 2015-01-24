@@ -5,7 +5,6 @@
  *
  * @author Andreas Åkre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: Utilities.php 3233 2013-04-08 08:44:05Z olavmrk $
  */
 class SimpleSAML_Utilities {
 
@@ -59,7 +58,11 @@ class SimpleSAML_Utilities {
 
 		if(strstr($currenthost, ":")) {
 				$currenthostdecomposed = explode(":", $currenthost);
-				$currenthost = $currenthostdecomposed[0];
+				$port = array_pop($currenthostdecomposed);
+				if (!is_numeric($port)) {
+					array_push($currenthostdecomposed, $port);
+                }
+                $currenthost = implode($currenthostdecomposed, ":");
 		}
 		return $currenthost;
 
@@ -193,7 +196,7 @@ class SimpleSAML_Utilities {
 
 		$requestURI = $_SERVER['REQUEST_URI'];
 		if ($requestURI[0] !== '/') {
-			/* We probably have an url on the form: http://server/. */
+			/* We probably have a URL of the form: http://server/. */
 			if (preg_match('#^https?://[^/]*(/.*)#i', $requestURI, $matches)) {
 				$requestURI = $matches[1];
 			}
@@ -219,7 +222,7 @@ class SimpleSAML_Utilities {
 		$baseURL = $globalConfig->getString('baseurlpath', 'simplesaml/');
 		
 		if (preg_match('#^https?://.*/$#D', $baseURL, $matches)) {
-			/* full url in baseurlpath, override local server values */
+			/* full URL in baseurlpath, override local server values */
 			return $baseURL;
 		} elseif (
 			(preg_match('#^/?([^/]?.*/)$#D', $baseURL, $matches)) ||
@@ -294,18 +297,82 @@ class SimpleSAML_Utilities {
 	}
 
 
+	/**
+	 * Check if a URL is valid and is in our list of allowed URLs.
+	 *
+	 * @param string $url The URL to check.
+	 * @param array $trustedSites An optional white list of domains. If none specified, the 'trusted.url.domains'
+	 * configuration directive will be used.
+	 * @return string The normalized URL itself if it is allowed. An empty string if the $url parameter is empty as
+	 * defined by the empty() function.
+	 * @throws SimpleSAML_Error_Exception if the URL is malformed or is not allowed by configuration.
+	 */
+	public static function checkURLAllowed($url, array $trustedSites = NULL) {
+		if (empty($url)) {
+			return '';
+		}
+		$url = self::normalizeURL($url);
+
+		// get the white list of domains
+		if ($trustedSites === NULL) {
+			$trustedSites = SimpleSAML_Configuration::getInstance()->getArray('trusted.url.domains', NULL);
+			if ($trustedSites === NULL) {
+				$trustedSites = SimpleSAML_Configuration::getInstance()->getArray('redirect.trustedsites', NULL);
+			}
+		}
+
+		// validates the URL's host is among those allowed
+		if ($trustedSites !== NULL) {
+			assert(is_array($trustedSites));
+			preg_match('@^https?://([^/]+)@i', $url, $matches);
+			$hostname = $matches[1];
+
+			// add self host to the white list
+			$self_host = self::getSelfHost();
+			$trustedSites[] = $self_host;
+
+			/* Throw exception due to redirection to untrusted site */
+			if (!in_array($hostname, $trustedSites)) {
+				throw new SimpleSAML_Error_Exception('URL not allowed: '.$url);
+			}
+		}
+		return $url;
+	}
+
+
+	/**
+	 * Get the ID and (optionally) a URL embedded in a StateID,
+	 * in the form 'id:url'.
+	 *
+	 * @param string $stateId The state ID to use.
+	 * @return array A hashed array with the ID and the URL (if any),
+	 * in the 'id' and 'url' keys, respectively. If there's no URL
+	 * in the input parameter, NULL will be returned as the value for
+	 * the 'url' key.
+	 */
+	public static function parseStateID($stateId) {
+		$tmp = explode(':', $stateId, 2);
+		$id = $tmp[0];
+		$url = NULL;
+		if (count($tmp) === 2) {
+			$url = $tmp[1];
+		}
+		return array('id' => $id, 'url' => $url);
+	}
+
+
 	public static function checkDateConditions($start=NULL, $end=NULL) {
 		$currentTime = time();
 	
-		if (! empty($start)) {
-			$startTime = self::parseSAML2Time($start);
+		if (!empty($start)) {
+			$startTime = SAML2_Utils::xsDateTimeToTimestamp($start);
 			/* Allow for a 10 minute difference in Time */
 			if (($startTime < 0) || (($startTime - 600) > $currentTime)) {
 				return FALSE;
 			}
 		}
-		if (! empty($end)) {
-			$endTime = self::parseSAML2Time($end);
+		if (!empty($end)) {
+			$endTime = SAML2_Utils::xsDateTimeToTimestamp($end);
 			if (($endTime < 0) || ($endTime <= $currentTime)) {
 				return FALSE;
 			}
@@ -330,55 +397,6 @@ class SimpleSAML_Utilities {
 			$instant = time();
 		}
 		return gmdate('Y-m-d\TH:i:s\Z', $instant);
-	}
-
-
-	/* This function converts a SAML2 timestamp on the form
-	 * yyyy-mm-ddThh:mm:ss(\.s+)?Z to a UNIX timestamp. The sub-second
-	 * part is ignored.
-	 *
-	 * Andreas comments:
-	 *  I got this timestamp from Shibboleth 1.3 IdP: 2008-01-17T11:28:03.577Z
-	 *  Therefore I added to possibliity to have microseconds to the format.
-	 * Added: (\.\\d{1,3})? to the regex.
-	 *
-	 *
-	 * Parameters:
-	 *  $time     The time we should convert.
-	 *
-	 * Returns:
-	 *  $time converted to a unix timestamp.
-	 */
-	public static function parseSAML2Time($time) {
-		$matches = array();
-
-
-		/* We use a very strict regex to parse the timestamp. */
-		if(preg_match('/^(\\d\\d\\d\\d)-(\\d\\d)-(\\d\\d)' .
-		              'T(\\d\\d):(\\d\\d):(\\d\\d)(?:\\.\\d+)?Z$/D',
-		              $time, $matches) == 0) {
-			throw new Exception(
-				'Invalid SAML2 timestamp passed to' .
-				' parseSAML2Time: ' . $time);
-		}
-
-		/* Extract the different components of the time from the
-		 * matches in the regex. intval will ignore leading zeroes
-		 * in the string.
-		 */
-		$year = intval($matches[1]);
-		$month = intval($matches[2]);
-		$day = intval($matches[3]);
-		$hour = intval($matches[4]);
-		$minute = intval($matches[5]);
-		$second = intval($matches[6]);
-
-		/* We use gmmktime because the timestamp will always be given
-		 * in UTC.
-		 */
-		$ts = gmmktime($hour, $minute, $second, $month, $day, $year);
-
-		return $ts;
 	}
 
 
@@ -538,112 +556,24 @@ class SimpleSAML_Utilities {
 		return true;
 	}
 
-
-	/* This function redirects the user to the specified address.
-	 * An optional set of query parameters can be appended by passing
-	 * them in an array.
-	 *
-	 * This function will use the HTTP 303 See Other redirect if the
-	 * current request is a POST request and the HTTP version is HTTP/1.1.
-	 * Otherwise a HTTP 302 Found redirect will be used.
-	 *
-	 * The fuction will also generate a simple web page with a clickable
-	 * link to the target page.
-	 *
-	 * Parameters:
-	 *  $url         URL we should redirect to. This URL may include
-	 *               query parameters. If this URL is a relative URL
-	 *               (starting with '/'), then it will be turned into an
-	 *               absolute URL by prefixing it with the absolute URL
-	 *               to the root of the website.
-	 *  $parameters  Array with extra query string parameters which should
-	 *               be appended to the URL. The name of the parameter is
-	 *               the array index. The value of the parameter is the
-	 *               value stored in the index. Both the name and the value
-	 *               will be urlencoded. If the value is NULL, then the
-	 *               parameter will be encoded as just the name, without a
-	 *               value.
-	 *  $allowed_redirect_hosts
-	 *               Array whitelist of hosts that redirects are allowed for.
-	 *               If NULL value, redirect will be allowed to any host.
-	 *               Otherwise, $url host must be present in Array for redirect.
-	 *               If the host is not present, an exception will be thrown.
-	 *
-	 * Returns:
-	 *  This function never returns.
+	/*
+	 * This is a temporary function, holding the redirect() functionality,
+	 * meanwhile we are deprecating the it.
 	 */
-	public static function redirect($url, $parameters = array(), $allowed_redirect_hosts = NULL) {
-		assert(is_string($url));
-		assert(strlen($url) > 0);
-		assert(is_array($parameters));
-		if($allowed_redirect_hosts != NULL) assert(is_array($allowed_redirect_hosts));
+	private static function _doRedirect($url, $parameters = array()) {
+		assert('is_string($url)');
+		assert('!empty($url)');
+		assert('is_array($parameters)');
 
-		/* Check for relative URL. */
-		if(substr($url, 0, 1) === '/') {
-			/* Prefix the URL with the url to the root of the
-			 * website.
-			 */
-			$url = self::selfURLhost() . $url;
+		if (!empty($parameters)) {
+			$url = self::addURLparameter($url, $parameters);
 		}
-
-		/* Verify that the URL is to a http or https site. */
-		if (!preg_match('@^https?://@i', $url)) {
-			throw new SimpleSAML_Error_Exception('Redirect to invalid URL: ' . $url);
-		}
-
-		/* Validates that URL host is among those allowed. */
-		if ($allowed_redirect_hosts != NULL) {
-			preg_match('@^https?://([^/]+)@i', $url, $matches);
-			$hostname = $matches[1];
-
-			/* Throw exception for redirect to untrusted site */
-			if(!in_array($hostname, $allowed_redirect_hosts)) {
-				throw new SimpleSAML_Error_Exception('Redirect not to allowed redirect host: ' . $url);
-			}
-		}
-
-		/* Determine which prefix we should put before the first
-		 * parameter.
-		 */
-		if(strpos($url, '?') === FALSE) {
-			$paramPrefix = '?';
-		} else {
-			$paramPrefix = '&';
-		}
-
-		/* Iterate over the parameters and append them to the query
-		 * string.
-		 */
-		foreach($parameters as $name => $value) {
-
-			/* Encode the parameter. */
-			if($value === NULL) {
-				$param = urlencode($name);
-			} elseif (is_array($value)) {
-				$param = "";
-				foreach ($value as $val) {
-					$param .= urlencode($name) . "[]=" . urlencode($val) . '&';				
-				}
-			} else {
-				$param = urlencode($name) . '=' .
-					urlencode($value);
-			}
-
-			/* Append the parameter to the query string. */
-			$url .= $paramPrefix . $param;
-
-			/* Every following parameter is guaranteed to follow
-			 * another parameter. Therefore we use the '&' prefix.
-			 */
-			$paramPrefix = '&';
-		}
-
 
 		/* Set the HTTP result code. This is either 303 See Other or
 		 * 302 Found. HTTP 303 See Other is sent if the HTTP version
 		 * is HTTP/1.1 and the request type was a POST request.
 		 */
-		if($_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1' &&
+		if ($_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1' &&
 			$_SERVER['REQUEST_METHOD'] === 'POST') {
 			$code = 303;
 		} else {
@@ -651,7 +581,7 @@ class SimpleSAML_Utilities {
 		}
 
 		if (strlen($url) > 2048) {
-			SimpleSAML_Logger::warning('Redirecting to URL longer than 2048 bytes.');
+			SimpleSAML_Logger::warning('Redirecting to a URL longer than 2048 bytes.');
 		}
 
 		/* Set the location header. */
@@ -674,7 +604,8 @@ class SimpleSAML_Utilities {
 		echo '<h1>Redirect</h1>';
 		echo '<p>';
 		echo 'You were redirected to: ';
-		echo '<a id="redirlink" href="' . htmlspecialchars($url) . '">' . htmlspecialchars($url) . '</a>';
+		echo '<a id="redirlink" href="' .
+			htmlspecialchars($url) . '">' . htmlspecialchars($url) . '</a>';
 		echo '<script type="text/javascript">document.getElementById("redirlink").focus();</script>';
 		echo '</p>';
 		echo '</body>';
@@ -682,27 +613,90 @@ class SimpleSAML_Utilities {
 
 		/* End script execution. */
 		exit;
+	} 
+
+
+	/**
+	 * This function redirects the user to the specified address.
+	 *
+	 * This function will use the "HTTP 303 See Other" redirection if the current request used the POST method and the
+	 * HTTP version is 1.1. Otherwise, a "HTTP 302 Found" redirection will be used.
+	 *
+	 * The function will also generate a simple web page with a clickable link to the target page.
+	 *
+	 * @param string $url The URL we should redirect to. This URL may include query parameters. If this URL is a
+	 * relative URL (starting with '/'), then it will be turned into an absolute URL by prefixing it with the absolute
+	 * URL to the root of the website.
+	 * @param string[] $parameters An array with extra query string parameters which should be appended to the URL. The
+	 * name of the parameter is the array index. The value of the parameter is the value stored in the index. Both the
+	 * name and the value will be urlencoded. If the value is NULL, then the parameter will be encoded as just the
+	 * name, without a value.
+	 * @param string[] $allowed_redirect_hosts An array with a whitelist of hosts for which redirects are allowed. If
+	 * NULL, redirections will be allowed to any host. Otherwise, the host of the $url provided must be present in this
+	 * parameter. If the host is not whitelisted, an exception will be thrown.
+	 *
+	 * @return void This function never returns.
+	 * @deprecated 1.12.0 This function will be removed from the API. Instead, use the redirectTrustedURL or
+	 * redirectUntrustedURL functions accordingly.
+	 */
+	public static function redirect($url, $parameters = array(), $allowed_redirect_hosts = NULL) {
+		assert('is_string($url)');
+		assert('strlen($url) > 0');
+		assert('is_array($parameters)');
+
+		if ($allowed_redirect_hosts !== NULL) {
+			$url = self::checkURLAllowed($url, $allowed_redirect_hosts);
+		} else {
+			$url = self::normalizeURL($url);
+		}
+		self::_doRedirect($url, $parameters);
 	}
 
-	/*
-	 * This function validates untrusted url has hostname against
-	 *  config option 'redirect.trustedsites'.
+	/**
+	 * This function redirects to the specified URL without performing any security checks. Please, do NOT use this
+	 * function with user supplied URLs.
 	 *
-	 * If option not set or hostname present among trusted sites,
-	 * peforms redirect via function redirect above.
+	 * This function will use the "HTTP 303 See Other" redirection if the current request used the POST method and the
+	 * HTTP version is 1.1. Otherwise, a "HTTP 302 Found" redirection will be used.
 	 *
-	 * If site is not trusted, an exception will be thrown.
+	 * The function will also generate a simple web page with a clickable  link to the target URL.
 	 *
-	 * See function redirect for details on url, parameters and return.
+	 * @param string $url The URL we should redirect to. This URL may include query parameters. If this URL is a
+	 * relative URL (starting with '/'), then it will be turned into an absolute URL by prefixing it with the absolute
+	 * URL to the root of the website.
+	 * @param string[] $parameters An array with extra query string parameters which should be appended to the URL. The
+	 * name of the parameter is the array index. The value of the parameter is the value stored in the index. Both the
+	 * name and the value will be urlencoded. If the value is NULL, then the parameter will be encoded as just the
+	 * name, without a value.
+	 *
+	 * @return void This function never returns.
+	 */
+	public static function redirectTrustedURL($url, $parameters = array()) {
+		assert('is_string($url)');
+		assert('is_array($parameters)');
+
+		$url = self::normalizeURL($url);
+		self::_doRedirect($url, $parameters);
+	}
+
+	/**
+	 * This function redirects to the specified URL after performing the appropriate security checks on it.
+	 * Particularly, it will make sure that the provided URL is allowed by the 'redirect.trustedsites' directive in the
+	 * configuration.
+	 *
+	 * If the aforementioned option is not set or the URL does correspond to a trusted site, it performs a redirection
+	 * to it. If the site is not trusted, an exception will be thrown.
+	 *
+	 * See the redirectTrustedURL function for more details.
+	 * 
+	 * @return void This function never returns.
 	 */
 	public static function redirectUntrustedURL($url, $parameters = array()) {
-		$redirectTrustedSites = SimpleSAML_Configuration::getInstance()->getArray('redirect.trustedsites', NULL);
-		try {
-			self::redirect($url, $parameters, $redirectTrustedSites);
-		}
-		catch (SimpleSAML_Error_Exception $e) {
-			throw new SimpleSAML_Error_Exception('Site not in redirect.trusted sites: ' . $url);
-		}
+		assert('is_string($url)');
+		assert('is_array($parameters)');
+
+		$url = self::checkURLAllowed($url);
+		self::_doRedirect($url, $parameters);
 	}
 
 	/**
@@ -936,6 +930,7 @@ class SimpleSAML_Utilities {
 	 * @param $schema  The schema which should be used.
 	 * @return Returns a string with the errors if validation fails. An empty string is
 	 *         returned if validation passes.
+	 * @deprecated
 	 */
 	public static function validateXML($xml, $schema) {
 		assert('is_string($xml) || $xml instanceof DOMDocument');
@@ -981,6 +976,7 @@ class SimpleSAML_Utilities {
 	 *
 	 * @param $message  The message which should be validated, as a string.
 	 * @param $type     The type of document - can be either 'saml20', 'saml11' or 'saml-meta'.
+	 * @deprecated
 	 */
 	public static function validateXMLDocument($message, $type) {
 		assert('is_string($message)');
@@ -1025,62 +1021,19 @@ class SimpleSAML_Utilities {
 	}
 
 
-	public static function generateRandomBytesMTrand($length) {
-	
-		/* Use mt_rand to generate $length random bytes. */
-		$data = '';
-		for($i = 0; $i < $length; $i++) {
-			$data .= chr(mt_rand(0, 255));
-		}
-
-		return $data;
-	}
-
-
 	/**
 	 * This function generates a binary string containing random bytes.
 	 *
-	 * It will use /dev/urandom if available, and fall back to the builtin mt_rand()-function if not.
+	 * It is implemented as a wrapper of the openssl_random_pseudo_bytes function,
+	 * available since PHP 5.3.0.
 	 *
-	 * @param $length  The number of random bytes to return.
-	 * @return A string of lenght $length with random bytes.
+	 * @param int $length The number of random bytes to return.
+	 * @return string A string of $length random bytes.
 	 */
-	public static function generateRandomBytes($length, $fallback = TRUE) {
-		static $fp = NULL;
+	public static function generateRandomBytes($length) {
 		assert('is_int($length)');
 
-		if (function_exists('openssl_random_pseudo_bytes')) {
-			return openssl_random_pseudo_bytes($length);
-		}
-
-		if($fp === NULL) {
-			if (@file_exists('/dev/urandom')) {
-				$fp = @fopen('/dev/urandom', 'rb');
-			} else {
-				$fp = FALSE;
-			}
-		}
-
-		if($fp !== FALSE) {
-			/* Read random bytes from /dev/urandom. */
-			$data = fread($fp, $length);
-			if($data === FALSE) {
-				throw new Exception('Error reading random data.');
-			}
-			if(strlen($data) != $length) {
-				SimpleSAML_Logger::warning('Did not get requested number of bytes from random source. Requested (' . $length . ') got (' . strlen($data) . ')');
-				if ($fallback) {
-					$data = self::generateRandomBytesMTrand($length);
-				} else {
-					throw new Exception('Did not get requested number of bytes from random source. Requested (' . $length . ') got (' . strlen($data) . ')');
-				}
-			}
-		} else {
-			/* Use mt_rand to generate $length random bytes. */
-			$data = self::generateRandomBytesMTrand($length);
-		}
-
-		return $data;
+        return openssl_random_pseudo_bytes($length);
 	}
 
 
@@ -1165,11 +1118,10 @@ class SimpleSAML_Utilities {
 	 */
 	public static function resolveURL($url, $base = NULL) {
 		if($base === NULL) {
-			$base = SimpleSAML_Utilities::getBaseURL();
+			$base = self::getBaseURL();
 		}
 
-
-		if(!preg_match('$^((((\w+:)//[^/]+)(/[^?#]*))(?:\?[^#]*)?)(?:#.*)?$', $base, $baseParsed)) {
+		if(!preg_match('/^((((\w+:)\/\/[^\/]+)(\/[^?#]*))(?:\?[^#]*)?)(?:#.*)?/', $base, $baseParsed)) {
 			throw new Exception('Unable to parse base url: ' . $base);
 		}
 
@@ -1230,7 +1182,7 @@ class SimpleSAML_Utilities {
 
 
 	/**
-	 * Normalizes an URL to an absolute URL and validate it.
+	 * Normalizes a URL to an absolute URL and validate it.
 	 *
 	 * In addition to resolving the URL, this function makes sure that it is
 	 * a link to a http or https site.
@@ -1645,7 +1597,7 @@ class SimpleSAML_Utilities {
 	 */
 	public static function isAdmin() {
 
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 
 		return $session->isValid('admin') || $session->isValid('login-admin');
 	}
@@ -1655,7 +1607,7 @@ class SimpleSAML_Utilities {
 	 * Retrieve a admin login URL.
 	 *
 	 * @param string|NULL $returnTo  The URL the user should arrive on after admin authentication.
-	 * @return string  An URL which can be used for admin authentication.
+	 * @return string  A URL which can be used for admin authentication.
 	 */
 	public static function getAdminLoginURL($returnTo = NULL) {
 		assert('is_string($returnTo) || is_null($returnTo)');
@@ -1680,20 +1632,13 @@ class SimpleSAML_Utilities {
 			return;
 		}
 
-		$returnTo = SimpleSAML_Utilities::selfURL();
-
 		/* Not authenticated as admin user. Start authentication. */
 
 		if (SimpleSAML_Auth_Source::getById('admin') !== NULL) {
 			$as = new SimpleSAML_Auth_Simple('admin');
 			$as->login();
 		} else {
-			/* For backwards-compatibility. */
-
-			$config = SimpleSAML_Configuration::getInstance();
-			SimpleSAML_Utilities::redirect('/' . $config->getBaseURL() . 'auth/login-admin.php',
-				array('RelayState' => $returnTo)
-						       );
+			throw new Exception('Cannot find "admin" auth source, and admin privileges are required.');
 		}
 	}
 
@@ -1731,7 +1676,7 @@ class SimpleSAML_Utilities {
 	 *
 	 * @param string $destination  The destination URL.
 	 * @param array $post  The name-value pairs which will be posted to the destination.
-	 * @return string  An URL which can be accessed to post the data.
+	 * @return string  A URL which can be accessed to post the data.
 	 */
 	public static function createPostRedirectLink($destination, $post) {
 		assert('is_string($destination)');
@@ -1749,7 +1694,7 @@ class SimpleSAML_Utilities {
 				'url' => $destination,
 			);
 
-			$session = SimpleSAML_Session::getInstance();
+			$session = SimpleSAML_Session::getSessionFromRequest();
 			$session->setData('core_postdatalink', $postId, $postData);
 
 			$url = SimpleSAML_Module::getModuleURL('core/postredirect.php', array('RedirId' => $postId));
@@ -1764,7 +1709,7 @@ class SimpleSAML_Utilities {
 	 *
 	 * @param string $destination  The destination URL.
 	 * @param array $post  The name-value pairs which will be posted to the destination.
-	 * @return string  An URL which can be accessed to post the data.
+	 * @return string  A URL which can be accessed to post the data.
 	 */
 	public static function createHttpPostRedirectLink($destination, $post) {
 		assert('is_string($destination)');
@@ -1776,7 +1721,7 @@ class SimpleSAML_Utilities {
 			'url' => $destination,
 		);
 
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		$session->setData('core_postdatalink', $postId, $postData);
 
 		$redirInfo = base64_encode(self::aesEncrypt($session->getSessionId() . ':' . $postId));
@@ -1795,6 +1740,7 @@ class SimpleSAML_Utilities {
 	 * @param string $certificate  The certificate, in PEM format.
 	 * @param string $caFile  File with trusted certificates, in PEM-format.
 	 * @return boolean|string TRUE on success, or a string with error messages if it failed.
+	 * @deprecated
 	 */
 	private static function validateCABuiltIn($certificate, $caFile) {
 		assert('is_string($certificate)');
@@ -1829,6 +1775,7 @@ class SimpleSAML_Utilities {
 	 * @param string $certificate  The certificate, in PEM format.
 	 * @param string $caFile  File with trusted certificates, in PEM-format.
 	 * @return boolean|string TRUE on success, a string with error messages on failure.
+	 * @deprecated
 	 */
 	private static function validateCAExec($certificate, $caFile) {
 		assert('is_string($certificate)');
@@ -1885,6 +1832,7 @@ class SimpleSAML_Utilities {
 	 *
 	 * @param string $certificate  The certificate, in PEM format.
 	 * @param string $caFile  File with trusted certificates, in PEM-format.
+	 * @deprecated
 	 */
 	public static function validateCA($certificate, $caFile) {
 		assert('is_string($certificate)');
@@ -1957,6 +1905,17 @@ class SimpleSAML_Utilities {
 		date_default_timezone_set($serverTimezone);
 	}
 
+	/**
+	 * Disable the loading of external entities in XML documents to prevent local and
+	 * remote file inclusion attacks. This is in most cases already disabled by default
+	 * in system libraries, but to be safe we explicitly disable it also.
+	 */
+	public static function disableXMLEntityLoader() {
+		/* Function only present in PHP >= 5.2.11 while we support 5.2+ */
+		if ( function_exists('libxml_disable_entity_loader') ) {
+			libxml_disable_entity_loader();
+		}
+	}
 
 	/**
 	 * Atomically write a file.
@@ -1968,20 +1927,21 @@ class SimpleSAML_Utilities {
 	 * @param string $filename  The name of the file.
 	 * @param string $data  The data we should write to the file.
 	 */
-	public static function writeFile($filename, $data) {
+	public static function writeFile($filename, $data, $mode=0600) {
 		assert('is_string($filename)');
 		assert('is_string($data)');
+		assert('is_numeric($mode)');
 
 		$tmpFile = $filename . '.new.' . getmypid() . '.' . php_uname('n');
 
-		$res = file_put_contents($tmpFile, $data);
+		$res = @file_put_contents($tmpFile, $data);
 		if ($res === FALSE) {
 			throw new SimpleSAML_Error_Exception('Error saving file ' . $tmpFile .
 				': ' . SimpleSAML_Utilities::getLastError());
 		}
 
 		if (!self::isWindowsOS()) {
-			$res = chmod($tmpFile, 0600);
+			$res = chmod($tmpFile, $mode);
 			if ($res === FALSE) {
 				unlink($tmpFile);
 				throw new SimpleSAML_Error_Exception('Error changing file mode ' . $tmpFile .
@@ -2127,7 +2087,7 @@ class SimpleSAML_Utilities {
 	public static function checkCookie($retryURL = NULL) {
 		assert('is_string($retryURL) || is_null($retryURL)');
 
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		if ($session->hasSessionCookie()) {
 			return;
 		}
@@ -2136,9 +2096,9 @@ class SimpleSAML_Utilities {
 
 		$url = SimpleSAML_Module::getModuleURL('core/no_cookie.php');
 		if ($retryURL !== NULL) {
-			$url = SimpleSAML_Utilities::addURLParameter($url, array('retryURL' => $retryURL));
+			$url = self::addURLParameter($url, array('retryURL' => $retryURL));
 		}
-		SimpleSAML_Utilities::redirect($url);
+		self::redirectTrustedURL($url);
 	}
 
 
@@ -2347,6 +2307,66 @@ class SimpleSAML_Utilities {
 	 */
 	public static function isWindowsOS() {
 		return substr(strtoupper(PHP_OS),0,3) == 'WIN';
+	}
+
+
+	/**
+	 * Set a cookie.
+	 *
+	 * @param string $name  The name of the session cookie.
+	 * @param string|NULL $value  The value of the cookie. Set to NULL to delete the cookie.
+	 * @param array|NULL $params  Cookie parameters.
+	 * @param bool $throw  Whether to throw exception if setcookie fails.
+	 */
+	public static function setCookie($name, $value, array $params = NULL, $throw = TRUE) {
+		assert('is_string($name)');
+		assert('is_string($value) || is_null($value)');
+
+		$default_params = array(
+			'lifetime' => 0,
+			'expire' => NULL,
+			'path' => '/',
+			'domain' => NULL,
+			'secure' => FALSE,
+			'httponly' => TRUE,
+			'raw' => FALSE,
+		);
+
+		if ($params !== NULL) {
+			$params = array_merge($default_params, $params);
+		} else {
+			$params = $default_params;
+		}
+
+		// Do not set secure cookie if not on HTTPS
+		if ($params['secure'] && !self::isHTTPS()) {
+			SimpleSAML_Logger::warning('Setting secure cookie on http not allowed.');
+			return;
+		}
+
+		if ($value === NULL) {
+			$expire = time() - 365*24*60*60;
+		} elseif (isset($params['expire'])) {
+			$expire = $params['expire'];
+		} elseif ($params['lifetime'] === 0) {
+			$expire = 0;
+		} else {
+			$expire = time() + $params['lifetime'];
+		}
+
+		if ($params['raw']) {
+			$success = setrawcookie($name, $value, $expire, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+		} else {
+			$success = setcookie($name, $value, $expire, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+		}
+
+		if (!$success) {
+			if ($throw) {
+				throw new SimpleSAML_Error_Exception('Error setting cookie - headers already sent.');
+			} else {
+				SimpleSAML_Logger::warning('Error setting cookie - headers already sent.');
+			}
+		}
 	}
 
 }

@@ -5,7 +5,6 @@
  *
  * @author Andreas Åkre Solberg <andreas@uninett.no>, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id: Registry.php 2730 2011-02-02 11:52:28Z andreassolberg $
  */
 class sspmod_oauth_Registry {
 

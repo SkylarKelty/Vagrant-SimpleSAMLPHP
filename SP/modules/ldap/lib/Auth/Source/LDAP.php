@@ -9,7 +9,6 @@
  * This class is based on www/auth/login.php.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 class sspmod_ldap_Auth_Source_LDAP extends sspmod_core_Auth_UserPassBase {
 
@@ -53,6 +52,3 @@ class sspmod_ldap_Auth_Source_LDAP extends sspmod_core_Auth_UserPassBase {
 	}
 
 }
-
-
-?>

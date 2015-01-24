@@ -2,7 +2,6 @@
 /*
  * @author Andreas Åkre Solberg <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: StatDataset.php 2171 2010-02-11 13:46:00Z olavmrk $
  */
 class sspmod_statistics_StatDataset {
 

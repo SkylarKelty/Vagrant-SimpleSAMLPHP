@@ -1,8 +1,6 @@
 <?php
 /* 
  * Configuration for the Cron module.
- * 
- * $Id: $
  */
 
 $config = array (
@@ -13,5 +11,3 @@ $config = array (
 	'sendemail' => TRUE,
 
 );
-
-?>

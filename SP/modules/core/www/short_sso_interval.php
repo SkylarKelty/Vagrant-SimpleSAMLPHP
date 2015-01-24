@@ -4,7 +4,6 @@
  * doing it previously.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 if (!array_key_exists('StateId', $_REQUEST)) {
@@ -12,7 +11,15 @@ if (!array_key_exists('StateId', $_REQUEST)) {
 }
 
 $id = $_REQUEST['StateId'];
+
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($id);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
+
 $state = SimpleSAML_Auth_State::loadState($id, 'core:short_sso_interval');
+$session = SimpleSAML_Session::getSessionFromRequest();
 
 if (array_key_exists('continue', $_REQUEST)) {
 	/* The user has pressed the continue/retry-button. */
@@ -23,7 +30,5 @@ $globalConfig = SimpleSAML_Configuration::getInstance();
 $t = new SimpleSAML_XHTML_Template($globalConfig, 'core:short_sso_interval.php');
 $t->data['target'] = SimpleSAML_Module::getModuleURL('core/short_sso_interval.php');
 $t->data['params'] = array('StateId' => $id);
+$t->data['trackId'] = $session->getTrackID();
 $t->show();
-
-
-?>

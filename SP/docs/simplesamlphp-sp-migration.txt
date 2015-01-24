@@ -155,7 +155,7 @@ This is a quick overview of the API:
 Generally, if you have:
 
     $config = SimpleSAML_Configuration::getInstance();
-    $session = SimpleSAML_Session::getInstance();
+    $session = SimpleSAML_Session::getSessionFromRequest();
 
 you should replace it with this single line:
 
@@ -208,6 +208,9 @@ should be replaced with a call to `logout()`:
 If you want to return to a specific URL after logging out, you should include that URL as a parameter to the logout function:
 
     $as->logout('https://example.org/');
+
+Please make sure the URL is trusted. If you obtain the URL from the user input, make sure it is trusted before
+calling $as->logout(), by using the SimpleSAML_Utilities::checkURLAllowed() method.
 
 
 #### Login link

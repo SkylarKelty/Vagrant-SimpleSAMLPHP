@@ -19,7 +19,6 @@
  *        ),
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 class sspmod_exampleauth_Auth_Source_External extends SimpleSAML_Auth_Source {
 
@@ -133,7 +132,7 @@ class sspmod_exampleauth_Auth_Source_External extends SimpleSAML_Auth_Source {
 		$stateId = SimpleSAML_Auth_State::saveState($state, 'exampleauth:External');
 
 		/*
-		 * Now we generate an URL the user should return to after authentication.
+		 * Now we generate a URL the user should return to after authentication.
 		 * We assume that whatever authentication page we send the user to has an
 		 * option to return the user to a specific page afterwards.
 		 */
@@ -156,7 +155,7 @@ class sspmod_exampleauth_Auth_Source_External extends SimpleSAML_Auth_Source {
 		 * Note the 'ReturnTo' parameter. This must most likely be replaced with
 		 * the real name of the parameter for the login page.
 		 */
-		SimpleSAML_Utilities::redirect($authPage, array(
+		SimpleSAML_Utilities::redirectTrustedURL($authPage, array(
 			'ReturnTo' => $returnTo,
 		));
 
@@ -185,6 +184,12 @@ class sspmod_exampleauth_Auth_Source_External extends SimpleSAML_Auth_Source {
 			throw new SimpleSAML_Error_BadRequest('Missing "State" parameter.');
 		}
 		$stateId = (string)$_REQUEST['State'];
+
+		// sanitize the input
+		$sid = SimpleSAML_Utilities::parseStateID($stateId);
+		if (!is_null($sid['url'])) {
+			SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+		}
 
 		/*
 		 * Once again, note the second parameter to the loadState function. This must

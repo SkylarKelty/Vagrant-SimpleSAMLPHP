@@ -7,13 +7,18 @@
  *
  * @author Olav Morken, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 if (!array_key_exists('AuthState', $_REQUEST)) {
 	throw new SimpleSAML_Error_BadRequest('Missing AuthState parameter.');
 }
 $authStateId = $_REQUEST['AuthState'];
+
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($authStateId);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
 
 /* Retrieve the authentication state. */
 $state = SimpleSAML_Auth_State::loadState($authStateId, sspmod_core_Auth_UserPassBase::STAGEID);
@@ -56,8 +61,15 @@ if (!empty($_REQUEST['username']) || !empty($password)) {
 		$params = $sessionHandler->getCookieParams();
 		$params['expire'] = time();
 		$params['expire'] += (isset($_REQUEST['remember_username']) && $_REQUEST['remember_username'] == 'Yes' ? 31536000 : -300);
-		setcookie($source->getAuthId() . '-username', $username, $params['expire'], $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+		SimpleSAML_Utilities::setCookie($source->getAuthId() . '-username', $username, $params, FALSE);
 	}
+
+    if ($source->isRememberMeEnabled()) {
+        if (array_key_exists('remember_me', $_REQUEST) && $_REQUEST['remember_me'] === 'Yes') {
+            $state['RememberMe'] = TRUE;
+            $authStateId = SimpleSAML_Auth_State::saveState($state, sspmod_core_Auth_UserPassBase::STAGEID);
+        }
+    }
 
 	try {
 		sspmod_core_Auth_UserPassBase::handleLogin($authStateId, $username, $password);
@@ -76,11 +88,15 @@ if (array_key_exists('forcedUsername', $state)) {
 	$t->data['forceUsername'] = TRUE;
 	$t->data['rememberUsernameEnabled'] = FALSE;
 	$t->data['rememberUsernameChecked'] = FALSE;
+    $t->data['rememberMeEnabled'] = $source->isRememberMeEnabled();
+    $t->data['rememberMeChecked'] = $source->isRememberMeChecked();
 } else {
 	$t->data['username'] = $username;
 	$t->data['forceUsername'] = FALSE;
 	$t->data['rememberUsernameEnabled'] = $source->getRememberUsernameEnabled();
 	$t->data['rememberUsernameChecked'] = $source->getRememberUsernameChecked();
+    $t->data['rememberMeEnabled'] = $source->isRememberMeEnabled();
+    $t->data['rememberMeChecked'] = $source->isRememberMeChecked();
 	if (isset($_COOKIE[$source->getAuthId() . '-username'])) $t->data['rememberUsernameChecked'] = TRUE;
 }
 $t->data['links'] = $source->getLoginLinks();
@@ -96,5 +112,3 @@ if (isset($state['SPMetadata'])) {
 $t->show();
 exit();
 
-
-?>

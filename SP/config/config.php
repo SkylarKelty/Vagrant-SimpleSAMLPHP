@@ -47,7 +47,8 @@ $config = array (
 	'debug' => TRUE,
 
 
-	'showerrors'            =>	TRUE,
+	'showerrors' => true,
+	'errorreporting' => true,
 
 	/**
 	 * Custom error show function called from SimpleSAML_Error_Error::show.
@@ -61,7 +62,7 @@ $config = array (
 	 * This option allows you to enable validation of XML data against its
 	 * schemas. A warning will be written to the log if validation fails.
 	 */
-	'debug.validatexml' => FALSE,
+	'debug.validatexml' => false,
 
 	/**
 	 * This password must be kept secret, and modified from the default value 123.
@@ -98,7 +99,7 @@ $config = array (
 	 *
 	 * See this page for a list of valid timezones: http://php.net/manual/en/timezones.php
 	 */
-	'timezone' => NULL,
+	'timezone' => null,
 
 	/*
 	 * Logging.
@@ -248,7 +249,7 @@ $config = array (
 	 * Example:
 	 *  'session.cookie.domain' => '.example.org',
 	 */
-	'session.cookie.domain' => NULL,
+	'session.cookie.domain' => null,
 
 	/*
 	 * Set the secure flag in the cookie.
@@ -257,13 +258,13 @@ $config = array (
 	 * through https. If the user can access the service through
 	 * both http and https, this must be set to FALSE.
 	 */
-	'session.cookie.secure' => FALSE,
+	'session.cookie.secure' => false,
 
 	/*
 	 * When set to FALSE fallback to transient session on session initialization
 	 * failure, throw exception otherwise.
 	 */
-	'session.disable_fallback' => FALSE,
+	'session.disable_fallback' => false,
 
 	/*
 	 * Enable secure POST from HTTPS to HTTP.
@@ -276,19 +277,44 @@ $config = array (
 	 * https://idp.example.org/ssp/, then
 	 * http://idp.example.org/ssp/module.php/core/postredirect.php must be accessible.
 	 */
-	'enable.http_post' => FALSE,
+	'enable.http_post' => false,
 
 	/*
 	 * Options to override the default settings for php sessions.
 	 */
 	'session.phpsession.cookiename'  => null,
 	'session.phpsession.savepath'    => null,
-	'session.phpsession.httponly'    => FALSE,
+	'session.phpsession.httponly'    => false,
 
 	/*
 	 * Option to override the default settings for the auth token cookie
 	 */
 	'session.authtoken.cookiename' => 'SimpleSAMLAuthToken',
+
+    /*
+     * Options for remember me feature for IdP sessions. Remember me feature
+     * has to be also implemented in authentication source used.
+     *
+     * Option 'session.cookie.lifetime' should be set to zero (0), i.e. cookie
+     * expires on browser session if remember me is not checked.
+     *
+     * Session duration ('session.duration' option) should be set according to
+     * 'session.rememberme.lifetime' option.
+     *
+     * It's advised to use remember me feature with session checking function
+     * defined with 'session.check_function' option.
+     */
+    'session.rememberme.enable' => false,
+    'session.rememberme.checked' => false,
+    'session.rememberme.lifetime' => (14 * 86400),
+
+    /**
+     * Custom function for session checking called on session init and loading.
+     * See docs/simplesamlphp-advancedfeatures.txt for function code example.
+     *
+     * Example:
+     *   'session.check_function' => array('sspmod_example_Util', 'checkSession'),
+     */
 
 	/*
 	 * Languages available, RTL languages, and what language is default

@@ -8,7 +8,6 @@
  *
  * @author Olav Morken, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 class SimpleSAML_Error_BadRequest extends SimpleSAML_Error_Error {
 
@@ -29,6 +28,7 @@ class SimpleSAML_Error_BadRequest extends SimpleSAML_Error_Error {
 
 		$this->reason = $reason;
 		parent::__construct(array('BADREQUEST', '%REASON%' => $this->reason));
+		$this->httpCode = 400;
 	}
 
 
@@ -41,16 +41,4 @@ class SimpleSAML_Error_BadRequest extends SimpleSAML_Error_Error {
 		return $this->reason;
 	}
 
-
-	/**
-	 * Set the HTTP return code for this error.
-	 *
-	 * This should be overridden by subclasses who want a different return code than 500 Internal Server Error.
-	 */
-	protected function setHTTPCode() {
-		header('HTTP/1.0 400 Bad Request');
-	}
-
 }
-
-?>

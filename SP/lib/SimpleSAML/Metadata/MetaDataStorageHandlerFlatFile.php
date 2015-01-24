@@ -7,7 +7,6 @@
  *
  * @author Andreas �kre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: MetaDataStorageHandlerFlatFile.php 2389 2010-07-09 06:54:25Z olavmrk $
  */
 class SimpleSAML_Metadata_MetaDataStorageHandlerFlatFile extends SimpleSAML_Metadata_MetaDataStorageSource {
 
@@ -121,12 +120,8 @@ class SimpleSAML_Metadata_MetaDataStorageHandlerFlatFile extends SimpleSAML_Meta
 
 		if ($set === 'saml20-idp-hosted') {
 			return $baseurl . 'saml2/idp/metadata.php';
-		} elseif($set === 'saml20-sp-hosted') {
-			return $baseurl . 'saml2/sp/metadata.php';			
 		} elseif($set === 'shib13-idp-hosted') {
 			return $baseurl . 'shib13/idp/metadata.php';
-		} elseif($set === 'shib13-sp-hosted') {
-			return $baseurl . 'shib13/sp/metadata.php';
 		} elseif($set === 'wsfed-sp-hosted') {
 			return 'urn:federation:' . SimpleSAML_Utilities::getSelfHost();
 		} elseif($set === 'adfs-idp-hosted') {
@@ -138,5 +133,3 @@ class SimpleSAML_Metadata_MetaDataStorageHandlerFlatFile extends SimpleSAML_Meta
 
 
 }
-
-?>

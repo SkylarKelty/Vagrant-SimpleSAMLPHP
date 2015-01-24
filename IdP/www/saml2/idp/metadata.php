@@ -60,11 +60,40 @@ try {
 	$metaArray = array(
 		'metadata-set' => 'saml20-idp-remote',
 		'entityid' => $idpentityid,
-		'SingleSignOnService' => array(0 => array(
-					'Binding' => SAML2_Const::BINDING_HTTP_REDIRECT,
-					'Location' => $metadata->getGenerated('SingleSignOnService', 'saml20-idp-hosted'))),
-		'SingleLogoutService' => $metadata->getGenerated('SingleLogoutService', 'saml20-idp-hosted'),
 	);
+
+	$ssob = $metadata->getGenerated('SingleSignOnServiceBinding', 'saml20-idp-hosted');
+	$slob = $metadata->getGenerated('SingleLogoutServiceBinding', 'saml20-idp-hosted');
+	$ssol = $metadata->getGenerated('SingleSignOnService', 'saml20-idp-hosted');
+	$slol = $metadata->getGenerated('SingleLogoutService', 'saml20-idp-hosted');
+
+	if (is_array($ssob)) {
+		foreach ($ssob as $binding) {
+			$metaArray['SingleSignOnService'][] = array(
+				'Binding' => $binding,
+				'Location' => $ssol,
+			);
+		}
+	} else {
+		$metaArray['SingleSignOnService'][] = array(
+			'Binding' => $ssob,
+			'Location' => $ssol,
+		);
+	}
+
+	if (is_array($slob)) {
+		foreach ($slob as $binding) {
+			$metaArray['SingleLogoutService'][] = array(
+				'Binding' => $binding,
+				'Location' => $slol,
+			);
+		}
+	} else {
+		$metaArray['SingleLogoutService'][] = array(
+			'Binding' => $slob,
+			'Location' => $slol,
+		);
+	}
 
 	if (count($keys) === 1) {
 		$metaArray['certData'] = $keys[0]['X509Certificate'];
@@ -117,19 +146,40 @@ try {
 		$metaArray['DiscoHints'] = $idpmeta->getArray('DiscoHints');
 	}
 
-	$metaflat = '$metadata[' . var_export($idpentityid, TRUE) . '] = ' . var_export($metaArray, TRUE) . ';';
+	if ($idpmeta->hasValue('RegistrationInfo')) {
+		$metaArray['RegistrationInfo'] = $idpmeta->getArray('RegistrationInfo');
+	}
+
+	if ($idpmeta->hasValue('validate.authnrequest')) {
+		$metaArray['sign.authnrequest'] = $idpmeta->getBoolean('validate.authnrequest');
+	}
+
+	if ($idpmeta->hasValue('redirect.validate')) {
+		$metaArray['redirect.sign'] = $idpmeta->getBoolean('redirect.validate');
+	}
+
+	if ($idpmeta->hasValue('contacts')) {
+		$contacts = $idpmeta->getArray('contacts');
+		foreach ($contacts as $contact) {
+			$metaArray['contacts'][] = SimpleSAML_Utils_Config_Metadata::getContact($contact);
+		}
+	}
+
+	$technicalContactEmail = $config->getString('technicalcontact_email', FALSE);
+	if ($technicalContactEmail && $technicalContactEmail !== 'na@example.org') {
+		$techcontact['emailAddress'] = $technicalContactEmail;
+		$techcontact['name'] = $config->getString('technicalcontact_name', NULL);
+		$techcontact['contactType'] = 'technical';
+		$metaArray['contacts'][] = SimpleSAML_Utils_Config_Metadata::getContact($techcontact);
+	}
 
 	$metaBuilder = new SimpleSAML_Metadata_SAMLBuilder($idpentityid);
 	$metaBuilder->addMetadataIdP20($metaArray);
 	$metaBuilder->addOrganizationInfo($metaArray);
-	$technicalContactEmail = $config->getString('technicalcontact_email', NULL);
-	if ($technicalContactEmail && $technicalContactEmail !== 'na@example.org') {
-		$metaBuilder->addContact('technical', array(
-			'emailAddress' => $technicalContactEmail,
-			'name' => $config->getString('technicalcontact_name', NULL),
-		));
-	}
+
 	$metaxml = $metaBuilder->getEntityDescriptorText();
+
+	$metaflat = '$metadata[' . var_export($idpentityid, TRUE) . '] = ' . var_export($metaArray, TRUE) . ';';
 
 	/* Sign the metadata if enabled. */
 	$metaxml = SimpleSAML_Metadata_Signer::sign($metaxml, $idpmeta->toArray(), 'SAML 2 IdP');
@@ -164,4 +214,3 @@ try {
 
 }
 
-?>

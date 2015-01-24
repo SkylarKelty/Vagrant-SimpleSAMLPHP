@@ -6,7 +6,6 @@
  * This class implements the various functions used by IdP.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 class SimpleSAML_IdP {
 
@@ -103,7 +102,7 @@ class SimpleSAML_IdP {
 		if (SimpleSAML_Auth_Source::getById($auth) !== NULL) {
 			$this->authSource = new SimpleSAML_Auth_Simple($auth);
 		} else {
-			$this->authSource = new SimpleSAML_Auth_BWC($auth, $this->config->getString('authority', NULL));
+			throw new SimpleSAML_Error_Exception('No such "'.$auth.'" auth source found.');
 		}
 	}
 
@@ -211,7 +210,7 @@ class SimpleSAML_IdP {
 
 		$association['core:IdP'] = $this->id;
 		
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		$session->addAssociation($this->associationGroup, $association);
 	}
 
@@ -223,7 +222,7 @@ class SimpleSAML_IdP {
 	 */
 	public function getAssociations() {
 
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		return $session->getAssociations($this->associationGroup);
 	}
 
@@ -236,7 +235,7 @@ class SimpleSAML_IdP {
 	public function terminateAssociation($assocId) {
 		assert('is_string($assocId)');
 
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		$session->terminateAssociation($this->associationGroup, $assocId);
 	}
 
@@ -260,9 +259,9 @@ class SimpleSAML_IdP {
 		assert('is_callable($state["Responder"])');
 
 		if (isset($state['core:SP'])) {
-			$session = SimpleSAML_Session::getInstance();
+			$session = SimpleSAML_Session::getSessionFromRequest();
 			$session->setData('core:idp-ssotime', $state['core:IdP'] . ';' . $state['core:SP'],
-				time(), SimpleSAML_Session::DATA_TIMEOUT_LOGOUT);
+				time(), SimpleSAML_Session::DATA_TIMEOUT_SESSION_END);
 		}
 
 		call_user_func($state['Responder'], $state);
@@ -292,7 +291,7 @@ class SimpleSAML_IdP {
 		}
 
 		if (isset($state['core:SP'])) {
-			$session = SimpleSAML_Session::getInstance();
+			$session = SimpleSAML_Session::getSessionFromRequest();
 			$previousSSOTime = $session->getData('core:idp-ssotime', $state['core:IdP'] . ';' . $state['core:SP']);
 			if ($previousSSOTime !== NULL) {
 				$state['PreviousSSOTimestamp'] = $previousSSOTime;
@@ -379,8 +378,6 @@ class SimpleSAML_IdP {
 		if (isset($state['ForceAuthn']) && (bool)$state['ForceAuthn']) {
 			/* Force authentication is in effect. */
 			$needAuth = TRUE;
-		} elseif (isset($state['saml:IDPList']) && sizeof($state['saml:IDPList']) > 0) {
-			$needAuth = !in_array($this->authSource->getAuthData('saml:sp:IdP'), $state['saml:IDPList'], TRUE);
 		} else {
 			$needAuth = !$this->isAuthenticated();
 		}
@@ -463,6 +460,8 @@ class SimpleSAML_IdP {
 
 		if ($assocId !== NULL) {
 			$this->terminateAssociation($assocId);
+			$session = SimpleSAML_Session::getSessionFromRequest();
+			$session->deleteData('core:idp-ssotime', $this->id . ':' . $state['saml:SPEntityId']);
 		}
 
 		/* Terminate the local session. */
@@ -492,6 +491,9 @@ class SimpleSAML_IdP {
 		assert('is_string($assocId)');
 		assert('is_string($relayState) || is_null($relayState)');
 
+		$session = SimpleSAML_Session::getSessionFromRequest();
+		$session->deleteData('core:idp-ssotime', $this->id . ';' . substr($assocId, strpos($assocId, ':') +1));
+
 		$handler = $this->getLogoutHandler();
 		$handler->onResponse($assocId, $relayState, $error);
 
@@ -500,7 +502,7 @@ class SimpleSAML_IdP {
 
 
 	/**
-	 * Log out, then redirect to an URL.
+	 * Log out, then redirect to a URL.
 	 *
 	 * This function never returns.
 	 *
@@ -520,7 +522,7 @@ class SimpleSAML_IdP {
 
 
 	/**
-	 * Redirect to an URL after logout.
+	 * Redirect to a URL after logout.
 	 *
 	 * This function never returns.
 	 *
@@ -529,7 +531,7 @@ class SimpleSAML_IdP {
 	public static function finishLogoutRedirect(SimpleSAML_IdP $idp, array $state) {
 		assert('isset($state["core:Logout:URL"])');
 
-		SimpleSAML_Utilities::redirect($state['core:Logout:URL']);
+		SimpleSAML_Utilities::redirectTrustedURL($state['core:Logout:URL']);
 		assert('FALSE');
 	}
 

@@ -14,7 +14,6 @@
  * - 'sppp': URL to the privacy policy of the destination, or FALSE.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 
@@ -43,4 +42,3 @@ $this->includeAtTemplateBase('includes/header.php');
 <?php
 
 $this->includeAtTemplateBase('includes/footer.php');
-?>

@@ -7,7 +7,6 @@
  *
  * @author Danny Bollaert, UGent.
  * @package simpleSAMLphp
- * @version $Id$
  */
 class sspmod_cas_Auth_Source_CAS  extends SimpleSAML_Auth_Source  {
 
@@ -77,7 +76,7 @@ class sspmod_cas_Auth_Source_CAS  extends SimpleSAML_Auth_Source  {
 		if(isset($this->_casConfig['login'])){
 			$this->_loginMethod =  $this->_casConfig['login'];
 		}else{
-			throw new Exception("cas login url not specified");
+			throw new Exception("cas login URL not specified");
 		}
 	}
 
@@ -206,7 +205,7 @@ class sspmod_cas_Auth_Source_CAS  extends SimpleSAML_Auth_Source  {
 
 		$serviceUrl = SimpleSAML_Module::getModuleURL('cas/linkback.php', array('stateID' => $stateID));
 
-		SimpleSAML_Utilities::redirect($this->_loginMethod, array(
+		SimpleSAML_Utilities::redirectTrustedURL($this->_loginMethod, array(
 			'service' => $serviceUrl));
 	}
 
@@ -230,7 +229,7 @@ class sspmod_cas_Auth_Source_CAS  extends SimpleSAML_Auth_Source  {
 
 		SimpleSAML_Auth_State::deleteState($state);
 		// we want cas to log us out
-		SimpleSAML_Utilities::redirect($logoutUrl, array());
+		SimpleSAML_Utilities::redirectTrustedURL($logoutUrl);
 	}
 
 }

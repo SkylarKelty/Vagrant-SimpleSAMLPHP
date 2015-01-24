@@ -42,6 +42,10 @@ function mtype($set) {
 		case 'shib13-sp-hosted': return '{admin:metadata_shib13-sp}';
 		case 'shib13-idp-remote': return '{admin:metadata_shib13-idp}';
 		case 'shib13-idp-hosted': return '{admin:metadata_shib13-idp}';
+        case 'adfs-sp-remote'; return '{admin:metadata_adfs-sp}';
+        case 'adfs-sp-hosted'; return '{admin:metadata_adfs-sp}';
+        case 'adfs-idp-remote'; return '{admin:metadata_adfs-idp}';
+        case 'adfs-idp-hosted'; return '{admin:metadata_adfs-idp}';
 	}
 }
 
@@ -56,9 +60,9 @@ foreach ($this->data['metaentries']['hosted'] AS $hm) {
 		echo '<br /><b>Deprecated</b>';
 	if ($hm['entityid'] !== $hm['metadata-index']) 
 		echo '<br />Index: ' . $hm['metadata-index'];
-	if (array_key_exists('name', $hm))
+	if (!empty($hm['name']))
 		echo '<br /><strong>' . $this->getTranslation(SimpleSAML_Utilities::arrayize($hm['name'], 'en')) . '</strong>';
-	if (array_key_exists('descr', $hm))
+	if (!empty($hm['descr']))
 		echo '<br /><strong>' . $this->getTranslation(SimpleSAML_Utilities::arrayize($hm['descr'], 'en')) . '</strong>';
 
 	echo '<br  />[ <a href="' . $hm['metadata-url'] . '">' . $this->t('{core:frontpage:show_metadata}') . '</a> ]';
@@ -77,9 +81,9 @@ foreach($this->data['metaentries']['remote'] AS $setkey => $set) {
 		echo ('<a href="' . 
 			htmlspecialchars(SimpleSAML_Module::getModuleURL('core/show_metadata.php', array('entityid' => $entry['entityid'], 'set' => $setkey ))) .
 			'">');
-		if (array_key_exists('name', $entry)) {
+		if (!empty($entry['name'])) {
 			echo htmlspecialchars($this->getTranslation(SimpleSAML_Utilities::arrayize($entry['name'], 'en')));
-		} elseif (array_key_exists('OrganizationDisplayName', $entry)) {
+		} elseif (!empty($entry['OrganizationDisplayName'])) {
 			echo htmlspecialchars($this->getTranslation(SimpleSAML_Utilities::arrayize($entry['OrganizationDisplayName'], 'en')));
 		} else {
 			echo htmlspecialchars($entry['entityid']);
@@ -159,4 +163,4 @@ if ($this->data['isadmin']) {
 	
 
 		
-<?php $this->includeAtTemplateBase('includes/footer.php'); ?>
+<?php $this->includeAtTemplateBase('includes/footer.php');

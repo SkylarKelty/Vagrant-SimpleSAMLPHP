@@ -5,7 +5,6 @@
  *
  * @author Olav Morken, UNINETT AS. 
  * @package simpleSAMLphp
- * @version $Id: Validator.php 1598 2009-08-03 12:44:42Z olavmrk $
  */
 class SimpleSAML_XML_Validator {
 
@@ -294,5 +293,3 @@ class SimpleSAML_XML_Validator {
 	}
 
 }
-
-?>

@@ -4,7 +4,6 @@
  * Endpoint for logging in with an authentication source.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 if (!is_string($_REQUEST['ReturnTo'])) {
@@ -19,7 +18,7 @@ if (!is_string($_REQUEST['AuthId'])) {
  * Setting up the options for the requireAuth() call later..
  */
 $options = array(
-	'ReturnTo' => $_REQUEST['ReturnTo'],
+	'ReturnTo' => SimpleSAML_Utilities::checkURLAllowed($_REQUEST['ReturnTo']),
 );
 
 /*
@@ -30,9 +29,7 @@ if (!empty($_REQUEST['saml:idp'])) {
 	$options['saml:idp'] = $_REQUEST['saml:idp'];
 }
 
-
-
 $as = new SimpleSAML_Auth_Simple($_REQUEST['AuthId']);
 $as->requireAuth($options);
 
-SimpleSAML_Utilities::redirect($_REQUEST['ReturnTo']);
+SimpleSAML_Utilities::redirectTrustedURL($options['ReturnTo']);

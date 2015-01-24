@@ -3,7 +3,6 @@
  * Show a 403 Forbidden page about not authorized to access an application.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 if (!array_key_exists('StateId', $_REQUEST)) {
@@ -11,6 +10,13 @@ if (!array_key_exists('StateId', $_REQUEST)) {
 }
 
 $id = $_REQUEST['StateId'];
+
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($id);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
+
 $state = SimpleSAML_Auth_State::loadState($id, 'authorize:Authorize');
 
 $globalConfig = SimpleSAML_Configuration::getInstance();
@@ -20,6 +26,3 @@ if (isset($state['Source']['auth'])) {
 }
 header('HTTP/1.0 403 Forbidden');
 $t->show();
-
-
-?>

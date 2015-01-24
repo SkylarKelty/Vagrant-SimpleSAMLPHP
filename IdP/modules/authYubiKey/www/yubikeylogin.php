@@ -7,7 +7,6 @@
  *
  * @author Olav Morken, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 if (!array_key_exists('AuthState', $_REQUEST)) {
@@ -34,6 +33,3 @@ $t->data['stateparams'] = array('AuthState' => $authStateId);
 $t->data['errorcode'] = $errorCode;
 $t->show();
 exit();
-
-
-?>

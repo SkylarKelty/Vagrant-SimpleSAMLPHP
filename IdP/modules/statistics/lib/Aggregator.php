@@ -2,7 +2,6 @@
 /*
  * @author Andreas Åkre Solberg <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id$
  */
 class sspmod_statistics_Aggregator {
 
@@ -77,7 +76,9 @@ class sspmod_statistics_Aggregator {
 			throw new Exception('Statistics module: input file do not exists [' . $this->inputfile . ']');
 		
 		$file = fopen($this->inputfile, 'r');
-		#$logfile = file($this->inputfile, FILE_IGNORE_NEW_LINES );
+
+		if ($file === FALSE)
+			throw new Exception('Statistics module: unable to open file [' . $this->inputfile . ']');
 		
 		$logparser = new sspmod_statistics_LogParser(
 			$this->statconfig->getValue('datestart', 0), $this->statconfig->getValue('datelength', 15), $this->statconfig->getValue('offsetspan', 44)

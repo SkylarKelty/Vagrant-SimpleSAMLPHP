@@ -5,7 +5,6 @@
  *
  * @author Gyula Szabo MTA SZTAKI
  * @package simpleSAMLphp
- * @version $Id$
  *
  * You just follow the 'source' => 'destination' schema. In this example user's  * cn will be the user's displayName.
  *
@@ -69,5 +68,3 @@ class sspmod_core_Auth_Process_AttributeCopy extends SimpleSAML_Auth_ProcessingF
 
 	}
 }
-
-?>

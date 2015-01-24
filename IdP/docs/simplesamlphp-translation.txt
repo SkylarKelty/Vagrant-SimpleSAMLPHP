@@ -7,7 +7,6 @@ SimpleSAMLphp Translation Portal
 	http://daringfireball.net/projects/markdown/syntax
 -->
 
-  * Version: `$Id: simplesamlphp-translation.txt 2206 2010-03-08 10:14:12Z andreassolberg $`
 
 <!-- {{TOC}} -->
 

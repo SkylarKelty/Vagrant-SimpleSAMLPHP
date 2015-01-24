@@ -1,8 +1,6 @@
 <?php
 /* 
  * Configuration for the module logpeek.
- * 
- * $Id $
  */
 
 $config = array (
@@ -11,5 +9,3 @@ $config = array (
 	// Read block size. 8192 is max, limited by fread.
 	'blocksz'	=> 8192,
 );
-
-?>

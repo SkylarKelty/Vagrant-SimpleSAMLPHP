@@ -1,8 +1,6 @@
 <?php
 /* 
  * Configuration for the LDAP authentication module.
- * 
- * $Id: $
  */
 
 $config = array (
@@ -42,5 +40,3 @@ $config = array (
 	'auth.ldap.search.password' => NULL,
 
 );
-
-?>

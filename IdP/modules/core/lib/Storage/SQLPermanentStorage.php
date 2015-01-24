@@ -8,7 +8,6 @@
  *
  * @author Andreas Åkre Solberg <andreas@uninett.no>, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id: SQLPermanentStorage.php 2231 2010-03-23 05:17:56Z andreassolberg $
  */
 class sspmod_core_Storage_SQLPermanentStorage {
 	

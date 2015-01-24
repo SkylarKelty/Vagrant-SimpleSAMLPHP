@@ -2,7 +2,6 @@
 /* 
  * Configuration 
  * 
- * $Id: translation.php 2100 2010-01-12 11:33:22Z andreassolberg $
  */
 
 $config = array (
@@ -13,5 +12,3 @@ $config = array (
 	'secret' => '_0e29f782d295bc9782112981f654f1db58174d19d7',
 
 );
-
-?>

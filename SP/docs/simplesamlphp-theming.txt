@@ -7,7 +7,6 @@ Theming the user interface in SimpleSAMLphp
 	http://daringfireball.net/projects/markdown/syntax
 -->
 
-  * Version: `$Id: simplesamlphp-theming.txt 2206 2010-03-08 10:14:12Z andreassolberg $`
 
 <!-- {{TOC}} -->
 

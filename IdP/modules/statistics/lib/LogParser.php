@@ -2,7 +2,6 @@
 /*
  * @author Andreas Åkre Solberg <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id$
  */
 class sspmod_statistics_LogParser {
 
@@ -69,5 +68,3 @@ class sspmod_statistics_LogParser {
 
 
 }
-
-?>

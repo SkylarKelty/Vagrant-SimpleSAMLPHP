@@ -8,13 +8,18 @@
  *
  * @author Lorenzo Gil, Yaco Sistemas S.L.
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 if (!array_key_exists('AuthState', $_REQUEST)) {
 	throw new SimpleSAML_Error_BadRequest('Missing AuthState parameter.');
 }
 $authStateId = $_REQUEST['AuthState'];
+
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($authStateId);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
 
 /* Retrieve the authentication state. */
 $state = SimpleSAML_Auth_State::loadState($authStateId, sspmod_multiauth_Auth_Source_MultiAuth::STAGEID);
@@ -60,5 +65,3 @@ if ($as !== NULL) {
 }
 $t->show();
 exit();
-
-?>

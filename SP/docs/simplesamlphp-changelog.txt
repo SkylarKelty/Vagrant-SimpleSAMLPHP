@@ -6,6 +6,188 @@ simpleSAMLphp changelog
 This document lists the changes between versions of simpleSAMLphp.
 See the upgrade notes for specific information about upgrading.
 
+## Version 1.13.2
+
+Released 2014-11-04
+
+  * Solved performance issues when processing large metadata sets.
+  * Fix an issue in the web interface when only one language is enabled.
+
+## Version 1.13.1
+
+Released 2014-10-27
+
+  * Solved an issue with empty fields in metadata to cause SimpleSAMLphp to fail with a translation error. Issues #97 and #114.
+  * Added Basque language to the list of known languages. Issue #117.
+  * Optimized the execution of redirections by removing an additional, unnecessary function call.
+  * Solved an issue that caused SimpleSAMLphp to fail when the RelayState parameter was empty or missing on an IdP-initiated authentication. Issues #99 and # 104.
+  * Fixed a certificate check for SubjectConfirmations with Holder of Key methods.
+
+## Version 1.13
+
+Released 2014-09-25.
+
+  * Added the 'remember me' option to the default login page.
+  * Improved error reporting.
+  * Added a new 'logging.format' option to control the formatting of the logs.
+  * Added support for the 'objectguid' binary attribute in LDAP modules.
+  * Added support for custom search and private attributes read credentials in all LDAP modules.
+  * Added support for the WantAuthnRequestsSigned option in generated SAML metadata.
+  * Tracking identifiers are no longer generated based on MD5.
+  * Several functions, classes and interfaces marked as deprecated.
+  * Bug fixes and documentation enhancements.
+  * Updated translations.
+  * New language: Basque.
+
+### `adfs`
+
+  * Honour the 'wreply' parameter when redirecting.
+
+### `aggregator`
+
+  * Fixed an issue when regenerating metadata from certain metadata sources.
+
+### `discopower`
+
+  * Bug fix.
+
+### `expirycheck`
+
+  * Translations are now possible for this module.
+
+### `metarefresh`
+
+  * Use cached metadata if something goes wrong when refreshing feeds.
+
+### `openidProvider`
+
+  * Fix for compatibility with versions of PHP greater or equal to 5.4.
+
+### `saml`
+
+  * Make it possible to add friendly names to attributes in SP metadata.
+  * The RSA_1.5 (RSA with PKCS#1 v1.5 padding) encryption algorithm is now blacklisted by default for security reasons.
+  * Stop checking the 'IDPList' parameter in IdPs.
+  * Solved an issue that allowed bypassing authentication status checks when presenting an 'IDPList' parameter.
+  * The 'Destination' attribute is now always sent in logout responses issued by an SP.
+
+### `sqlauth`
+
+  * Updated documentation to remove bad practice with regard to password storage.
+
+## Version 1.12
+
+Released 2014-03-24.
+
+  * Removed example authproc filters from configuration template.
+  * Stopped using the 'target-densitydpi' option removed from WebKit.
+  * The SimpleSAML_Utilities::generateRandomBytesMTrand() function is now deprecated.
+  * Removed code for compatibility with PHP versions older than 5.3.
+  * Removed the old interface of SimpleSAML_Session.
+  * Fixed a memory leak in SimpleSAML_Session regarding serialization and unserialization.
+  * Support for RegistrationInfo (MDRPI) elements in the metadata of identity and service providers.
+  * Renamed SimpleSAML_Utilities::parseSAML2Time() function to xsDateTimeToTimestamp().
+  * New SimpleSAML_Utilities::redirectTrustedURL() and redirectUntrustedURL() functions.
+  * Deprecated the SimpleSAML_Utilities::redirect() function.
+  * Improved Russian translation.
+  * Added Czech translation.
+  * New 'errorreporting' option to enable or disable error reporting feature.
+  * Example certificate removed.
+  * New SimpleSAML_Configuration::getEndpointPrioritizedByBinding() function.
+  * PHP 5.3 or newer required.
+  * Started using Composer as dependency manager.
+  * Detached the basic SAML2 library and moved to a standalone library in github.
+  * Added support for exporting shibmd:Scope metadata with regular expressions.
+  * Remember me option in the IdP.
+  * New SimpleSAML_Utilities::setCookie wrapper.
+  * Custom HTTP codes on error.
+  * Added Romanian translation.
+  * Bug fixes and documentation enhancements.
+
+### `adfs`
+
+  * Support for exporting metadata.
+
+### `aggregator`
+
+  * Support for RegistrationInfo (MDRPI) elements in the metadata.
+  * Fix for HTTP header injection vulnerability.
+  * Fix for directory traversal vulnerability.
+
+### `aggregator2`
+
+  * Support for RegistrationInfo (MDRPI) elements in the metadata.
+
+### `aselect`
+
+  * License changed to LGPL 2.1.
+
+### `authfacebook`
+
+  * Updated extlibinc to 3.2.2.
+
+### `authtwitter`
+
+  * Added 'force_login' configuration option.
+
+### `cdc`
+
+  * Bugfix related to request validation.
+
+### `core`
+
+  * The AttributeAlter filter no longer throws an exception if the attribute was not found.
+  * Support for removal of values in the AttributeAlter filter, with '%remove' flag.
+  * Support for empty strings and NULL values as a replacement in the AttributeAlter filter.
+  * Bugfixes in the AttributeAlter filter.
+  * Support for NULL attribute values.
+  * Support for limiting values and not only attributes in the AttributeLimit filter.
+  * Log a message when a user authenticates successfully.
+  * Added %duplicate flag to AttributeMap, to leave original names in place when using map file.
+  * Fix infinite loop when overwriting attributes with AttributeMap.
+
+### `discopower`
+
+  * Bugfix for incorrect handling of the 'idpdisco.extDiscoveryStorage' option.
+
+### `ldap`
+
+  * Support for configuring the duplicate attribute handling policy in AttributeAddFromLDAP, 'attribute.policy' option.
+  * Support for binary attributes in the AttributeAddFromLDAP filter.
+  * Support for multiple attributes in the AttributeAddFromLDAP filter.
+
+### `metarefresh`
+
+  * Support for specifying permissions of the resulting files.
+
+### `negotiate`
+
+  * Added support for "attributes"-parameter.
+
+### `oauth`
+
+  * Bugfix related to authorize URL building.
+
+### `openidProvider`
+
+  * Support for SReg and AX requests.
+
+### `saml`
+
+  * Send 'isPassive' in passive discovery requests.
+  * Support for generating NameIDFormat in service providers with NameIDPolicy set.
+  * Support for AttributeConsumingService and AssertionConsumingServiceIndex.
+  * Support for the HTTP-POST binding in WebSSO profile.
+  * Fix for entity ID validation problems when using the IDPList configuration option.
+
+### `smartattributes`
+
+  * New 'add_candidate' option to allow the user to decide whether to prepend or not the candidate attribute name to the resulting value.
+
+### `statistics`
+
+  * Bugfix in statistics aggregator.
+
 ## Version 1.11
 
 Released 2013-06-05.
@@ -82,7 +264,8 @@ Released 2013-06-05.
   * Bugfix for SAML SP metadata signing.
   * Ignore default technical contact.
   * Support for MDUI elements in SP metadata.
-  * Support for more contact types in SP metadata. 
+  * Support for more contact types in SP metadata.
+  * New information in statistics with the time it took for a login to happen.
 
 ### `sanitycheck`
 
@@ -153,7 +336,7 @@ Released 2012-06-13.
   * Warnings about URL length limits from Suhosin PHP extension.
   * New base class for errors from authentication sources.
   * Support for overriding URL generation when behind a reverse proxy.
-  * New lanugages: Russian, Estonian, Hebrew, Chinese, Indonesian
+  * New languages: Russian, Estonian, Hebrew, Chinese, Indonesian
   * Add getAuthSource()-function to SimpleSAML_Auth_Simple.
   * Add reauthenticate()-function to SimpleSAML_Auth_Source. (Is called when the IdP receives a new authentication request.)
   * iframe logout: Make it possible to skip the "question-page" for code on the IdP.

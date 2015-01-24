@@ -5,7 +5,6 @@
  *
  * @author Andreas Åkre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: AuthnResponse.php 2514 2010-08-10 11:27:15Z olavmrk $
  */
 class SimpleSAML_XML_Shib13_AuthnResponse {
 
@@ -430,4 +429,3 @@ class SimpleSAML_XML_Shib13_AuthnResponse {
 
 }
 
-?>

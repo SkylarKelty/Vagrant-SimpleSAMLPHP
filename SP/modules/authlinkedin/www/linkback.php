@@ -10,6 +10,12 @@ if (array_key_exists('stateid', $_REQUEST)) {
         throw new Exception('Lost OAuth Client State');
 }
 
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($stateId);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
+
 $state = SimpleSAML_Auth_State::loadState($stateId, sspmod_authlinkedin_Auth_Source_LinkedIn::STAGE_INIT);
 
 // http://developer.linkedin.com/docs/DOC-1008#2_Redirect_the_User_to_our_Authorization_Server

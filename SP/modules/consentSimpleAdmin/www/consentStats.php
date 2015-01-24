@@ -6,7 +6,6 @@
  *
  * @author Andreas Åkre Solberg <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 
@@ -30,4 +29,3 @@ $t->data['stats'] = $stats;
 
 
 $t->show();
-?>

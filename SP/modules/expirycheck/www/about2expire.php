@@ -4,7 +4,6 @@
  * about2expire.php
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 SimpleSAML_Logger::info('expirycheck - User has been warned that NetID is near to expirational date.');
@@ -14,6 +13,13 @@ if (!array_key_exists('StateId', $_REQUEST)) {
 }
 
 $id = $_REQUEST['StateId'];
+
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($id);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
+
 $state = SimpleSAML_Auth_State::loadState($id, 'expirywarning:about2expire');
 
 
@@ -31,6 +37,3 @@ $t->data['daysleft'] = $state['daysleft'];
 $t->data['expireOnDate'] = $state['expireOnDate'];
 $t->data['netId'] = $state['netId'];
 $t->show();
-
-
-?>

@@ -7,7 +7,6 @@ require_once(dirname(dirname(dirname(dirname(dirname(__FILE__))))) . '/oauth/lib
  *
  * @author Andreas Åkre Solberg, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id: Twitter.php 3232 2013-04-05 17:18:19Z comel.ah $
  */
 class sspmod_authtwitter_Auth_Source_Twitter extends SimpleSAML_Auth_Source {
 
@@ -23,6 +22,7 @@ class sspmod_authtwitter_Auth_Source_Twitter extends SimpleSAML_Auth_Source {
 
 	private $key;
 	private $secret;
+	private $force_login;
 
 
 	/**
@@ -38,18 +38,11 @@ class sspmod_authtwitter_Auth_Source_Twitter extends SimpleSAML_Auth_Source {
 		/* Call the parent constructor first, as required by the interface. */
 		parent::__construct($info, $config);
 
-		if (!array_key_exists('key', $config))
-			throw new Exception('Twitter authentication source is not properly configured: missing [key]');
-		
-		$this->key = $config['key'];
-		
-		if (!array_key_exists('secret', $config))
-			throw new Exception('Twitter authentication source is not properly configured: missing [secret]');
+		$configObject = SimpleSAML_Configuration::loadFromArray($config, 'authsources[' . var_export($this->authId, TRUE) . ']');
 
-		$this->secret = $config['secret'];
-
-		// require_once(dirname(dirname(dirname(dirname(__FILE__)))) . '/extlibinc/facebook.php');
-
+		$this->key = $configObject->getString('key');
+		$this->secret = $configObject->getString('secret');
+		$this->force_login = $configObject->getBoolean('force_login', FALSE);
 	}
 
 
@@ -77,7 +70,11 @@ class sspmod_authtwitter_Auth_Source_Twitter extends SimpleSAML_Auth_Source {
 		SimpleSAML_Auth_State::saveState($state, self::STAGE_INIT);
 
 		// Authorize the request token
-		$consumer->getAuthorizeRequest('https://api.twitter.com/oauth/authenticate', $requestToken);
+		$url = 'https://api.twitter.com/oauth/authenticate';
+		if ($this->force_login) {
+			$url = SimpleSAML_Utilities::addURLparameter($url, array('force_login' => 'true'));
+		}
+		$consumer->getAuthorizeRequest($url, $requestToken);
 	}
 	
 	
@@ -127,5 +124,3 @@ class sspmod_authtwitter_Auth_Source_Twitter extends SimpleSAML_Auth_Source {
 	}
 
 }
-
-?>

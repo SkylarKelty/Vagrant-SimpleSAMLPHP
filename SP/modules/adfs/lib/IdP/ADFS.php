@@ -171,10 +171,17 @@ class sspmod_adfs_IdP_ADFS {
 		// NB:: we don't know from which SP the logout request came from
 		$metadata = SimpleSAML_Metadata_MetaDataStorageHandler::getMetadataHandler();
 		$idpMetadata = $idp->getConfig();
-		SimpleSAML_Utilities::redirect($idpMetadata->getValue('redirect-after-logout', SimpleSAML_Utilities::getBaseURL()));
+		SimpleSAML_Utilities::redirectTrustedURL($idpMetadata->getValue('redirect-after-logout', SimpleSAML_Utilities::getBaseURL()));
 	}
 	
 	public static function receiveLogoutMessage(SimpleSAML_IdP $idp) {
+		// if a redirect is to occur based on wreply, we will redirect to url as
+		// this implies an override to normal sp notification.
+		if(isset($_GET['wreply']) && !empty($_GET['wreply'])) {
+			$idp->doLogoutRedirect(SimpleSAML_Utilities::checkURLAllowed($_GET['wreply']));
+			assert(FALSE);
+		}
+
 		$state = array(
 			'Responder' => array('sspmod_adfs_IdP_ADFS', 'sendLogoutResponse'),
 		);
@@ -187,7 +194,7 @@ class sspmod_adfs_IdP_ADFS {
 		$idp->handleLogoutRequest($state, $assocId);
 	}
 
-	// accepts an association array, and returns an URL that can be accessed to terminate the association.
+	// accepts an association array, and returns a URL that can be accessed to terminate the association.
 	public static function getLogoutURL(SimpleSAML_IdP $idp, array $association, $relayState) {
 		$metadata = SimpleSAML_Metadata_MetaDataStorageHandler::getMetadataHandler();
 		$idpMetadata = $idp->getConfig();

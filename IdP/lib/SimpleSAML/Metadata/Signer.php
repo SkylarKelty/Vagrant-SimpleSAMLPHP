@@ -5,7 +5,6 @@
  *
  * @author Olav Morken, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 class SimpleSAML_Metadata_Signer {
 
@@ -173,7 +172,12 @@ class SimpleSAML_Metadata_Signer {
 		$rootNode = $xml->firstChild;
 
 		/* Sign the metadata with our private key. */
-		$objXMLSecDSig = new XMLSecurityDSig();
+		if ($type == 'ADFS IdP') {
+			$objXMLSecDSig = new sspmod_adfs_XMLSecurityDSig($metadataString);
+        } else {
+			$objXMLSecDSig = new XMLSecurityDSig();
+        }
+
 		$objXMLSecDSig->setCanonicalMethod(XMLSecurityDSig::EXC_C14N);
 
 		$objXMLSecDSig->addReferenceList(array($rootNode), XMLSecurityDSig::SHA1,
@@ -193,5 +197,3 @@ class SimpleSAML_Metadata_Signer {
 	}
 
 }
-
-?>

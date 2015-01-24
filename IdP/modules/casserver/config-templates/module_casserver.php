@@ -1,8 +1,6 @@
 <?php
 /* 
  * Configuration for the module casserver.
- * 
- * $Id: $
  */
 
 $config = array (
@@ -21,5 +19,3 @@ $config = array (
 	#'attributes' => TRUE, // enable transfer of attributes
 	
 );
-
-?>

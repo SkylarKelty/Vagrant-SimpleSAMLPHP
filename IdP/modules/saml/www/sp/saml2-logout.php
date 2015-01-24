@@ -7,7 +7,7 @@
  */
 
 if (!array_key_exists('PATH_INFO', $_SERVER)) {
-	throw new SimpleSAML_Error_BadRequest('Missing authentication source id in logout URL');
+	throw new SimpleSAML_Error_BadRequest('Missing authentication source ID in logout URL');
 }
 
 $sourceId = substr($_SERVER['PATH_INFO'], 1);
@@ -52,6 +52,12 @@ if ($message instanceof SAML2_LogoutResponse) {
 
 	if (!$message->isSuccess()) {
 		SimpleSAML_Logger::warning('Unsuccessful logout. Status was: ' . sspmod_saml_Message::getResponseError($message));
+	}
+
+	// sanitize the input
+	$sid = SimpleSAML_Utilities::parseStateID($relayState);
+	if (!is_null($sid['url'])) {
+		SimpleSAML_Utilities::checkURLAllowed($sid['url']);
 	}
 
 	$state = SimpleSAML_Auth_State::loadState($relayState, 'saml:slosent');
@@ -107,6 +113,22 @@ if ($message instanceof SAML2_LogoutResponse) {
 	if ($numLoggedOut < count($sessionIndexes)) {
 		SimpleSAML_Logger::warning('Logged out of ' . $numLoggedOut  . ' of ' . count($sessionIndexes) . ' sessions.');
 	}
+
+	$dst = $idpMetadata->getEndpointPrioritizedByBinding('SingleLogoutService', array(
+		SAML2_Const::BINDING_HTTP_REDIRECT,
+		SAML2_Const::BINDING_HTTP_POST)
+	);
+
+	if (!$binding instanceof SAML2_SOAP) {
+		$binding = SAML2_Binding::getBinding($dst['Binding']);
+		if (isset($dst['ResponseLocation'])) {
+			$dst = $dst['ResponseLocation'];
+		} else {
+			$dst = $dst['Location'];
+		}
+		$binding->setDestination($dst);
+	}
+	$lr->setDestination($dst);
 
 	$binding->send($lr);
 } else {

@@ -9,6 +9,13 @@ if (!array_key_exists('AuthState', $_REQUEST) || empty($_REQUEST['AuthState'])) 
 }
 
 $stateID = $_REQUEST['AuthState'];
+
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($stateID);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
+
 $state = SimpleSAML_Auth_State::loadState($stateID, sspmod_authfacebook_Auth_Source_Facebook::STAGE_INIT);
 
 /* Find authentication source. */
@@ -35,5 +42,3 @@ try {
 }
 
 SimpleSAML_Auth_Source::completeAuth($state);
-
-?>

@@ -5,7 +5,6 @@
  *
  * @author Andreas Åkre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: Parser.php 222 2008-01-30 11:10:10Z andreassolberg $
  */
 class SimpleSAML_XML_Parser  {
 
@@ -66,5 +65,3 @@ class SimpleSAML_XML_Parser  {
 	}
 	
 }
-
-?>

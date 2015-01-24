@@ -1,8 +1,6 @@
 <?php
 /* 
  * Configuration for the DiscoPower module.
- * 
- * $Id: $
  */
 
 $config = array (
@@ -46,5 +44,3 @@ $config = array (
 	'cdc.lifetime' => NULL,
 
 );
-
-?>

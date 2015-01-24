@@ -5,7 +5,6 @@
  *
  * @author Andreas Åkre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: Template.php 3217 2013-01-08 11:56:19Z comel.ah $
  */
 class SimpleSAML_XHTML_Template {
 
@@ -706,19 +705,14 @@ class SimpleSAML_XHTML_Template {
 		}
 
 		$name = $config->getString('language.cookie.name', 'language');
-		$domain = $config->getString('language.cookie.domain', NULL);
-		$path = $config->getString('language.cookie.path', '/');
-		$lifetime = $config->getInteger('language.cookie.lifetime', 60*60*24*900);
+		$params = array(
+			'lifetime' => ($config->getInteger('language.cookie.lifetime', 60*60*24*900)),
+			'domain' => ($config->getString('language.cookie.domain', NULL)),
+			'path' => ($config->getString('language.cookie.path', '/')),
+			'httponly' => FALSE,
+		);
 
-		if ($lifetime === 0) {
-			$expire = 0;
-		} else {
-			$expire = time() + $lifetime;
-		}
-
-		setcookie($name, $language, $expire, $path, $domain);
+		SimpleSAML_Utilities::setCookie($name, $language, $params, FALSE);
 	}
 
 }
-
-?>

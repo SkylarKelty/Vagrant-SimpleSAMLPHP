@@ -9,7 +9,6 @@
  *
  * @author Andreas Åkre Solberg <andreas@uninett.no>, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 class sspmod_discopower_PowerIdPDisco extends SimpleSAML_XHTML_IdPDisco {
 
@@ -189,11 +188,11 @@ class sspmod_discopower_PowerIdPDisco extends SimpleSAML_XHTML_IdPDisco {
 
 		$idp = $this->getTargetIdp();
 		if($idp !== NULL) {
-		
-			if ($this->config->getBoolean('idpdisco.extDiscoveryStorage', NULL) != NULL) {
-				$extDiscoveryStorage = $this->config->getBoolean('idpdisco.extDiscoveryStorage');
+
+			$extDiscoveryStorage = $this->config->getString('idpdisco.extDiscoveryStorage',NULL);
+			if ($extDiscoveryStorage !== NULL) {
 				$this->log('Choice made [' . $idp . '] (Forwarding to external discovery storage)');
-				SimpleSAML_Utilities::redirect($extDiscoveryStorage, array(
+				SimpleSAML_Utilities::redirectTrustedURL($extDiscoveryStorage, array(
 					'entityID' => $this->spEntityId,
 					'IdPentityID' => $idp,
 					'returnIDParam' => $this->returnIdParam,
@@ -203,7 +202,7 @@ class sspmod_discopower_PowerIdPDisco extends SimpleSAML_XHTML_IdPDisco {
 				
 			} else {
 				$this->log('Choice made [' . $idp . '] (Redirecting the user back. returnIDParam=' . $this->returnIdParam . ')');
-				SimpleSAML_Utilities::redirect($this->returnURL, array($this->returnIdParam => $idp));
+				SimpleSAML_Utilities::redirectTrustedURL($this->returnURL, array($this->returnIdParam => $idp));
 			}
 			
 			return;
@@ -211,7 +210,7 @@ class sspmod_discopower_PowerIdPDisco extends SimpleSAML_XHTML_IdPDisco {
 		
 		if ($this->isPassive) {
 			$this->log('Choice not made. (Redirecting the user back without answer)');
-			SimpleSAML_Utilities::redirect($this->returnURL);
+			SimpleSAML_Utilities::redirectTrustedURL($this->returnURL);
 			return;
 		}
 
@@ -302,13 +301,13 @@ class sspmod_discopower_PowerIdPDisco extends SimpleSAML_XHTML_IdPDisco {
 			$newCookie = $tmp[1];
 		}
 
-		if ($this->cdcLifetime === NULL) {
-			$expire = 0;
-		} else {
-			$expire = time() + $this->cdcLifetime;
-		}
-
-		setcookie('_saml_idp', $newCookie, $expire, '/', $this->cdcDomain, TRUE);
+		$params = array(
+			'lifetime' => $this->cdcLifetime,
+			'domain' => $this->cdcDomain,
+			'secure' => TRUE,
+			'httponly' => FALSE,
+		);
+		SimpleSAML_Utilities::setCookie('_saml_idp', $newCookie, $params, FALSE);
 	}
 
 
@@ -339,5 +338,3 @@ class sspmod_discopower_PowerIdPDisco extends SimpleSAML_XHTML_IdPDisco {
 	}
 
 }
-
-?>

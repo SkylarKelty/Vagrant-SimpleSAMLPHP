@@ -1,13 +1,10 @@
 <?php
 
-$this->data['head']  = '<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery.js"></script>';
-$this->data['head'] .= '<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery-ui.js"></script>';
-$this->data['head'] .= '<link rel="stylesheet" media="screen" type="text/css" href="/' . $this->data['baseurlpath'] . 'resources/uitheme/jquery-ui-themeroller.css" />';
-
-$this->data['head'] .= '<script type="text/javascript">
+$this->data['jquery'] = array('version' => '1.6', 'core' => TRUE, 'ui' => TRUE, 'css' => TRUE);
+$this->data['head'] = '<script type="text/javascript">
 
 $(document).ready(function() {
-	$("#tabdiv > ul").tabs({ selected: ' . $this->data['activeTab'] . ' });
+	$("#tabdiv").tabs({ selected: ' . $this->data['activeTab'] . ' });
 });
 </script>';
 
@@ -26,7 +23,11 @@ $this->includeAtTemplateBase('includes/header.php');
 
 <div id="decode">
 
-	<p>Paste in a SAML message encoded with the HTTP-POST or HTTP-REDIRECT encoding. You can both use the full URL that you copied from LiveHTTPHeaders, or you can paste in only the SAMLRequest or SAMLResponse parameter. It will be automatically detected whether you post an URL or the value it self and whether you post a HTTP-REDIRECT or HTTP-POST encoded value. enjoy!</p>
+	<p>Paste in a SAML message encoded with the HTTP-POST or HTTP-REDIRECT encoding. You
+	 can both use the full URL that you copied from LiveHTTPHeaders, or you can paste in
+	 only the SAMLRequest or SAMLResponse parameter. It will be automatically detected
+	 whether you post a URL or the value it self and whether you post a HTTP-REDIRECT or
+	 HTTP-POST encoded value. enjoy!</p>
 	
 	<form method="post" action="debug.php">
 		<textarea style="width: 95%; border: 1px solid #999; font-family: monospace" cols="50" rows="10" name="encoded"><?php echo $this->data['encoded']; ?></textarea>
@@ -64,4 +65,4 @@ $this->includeAtTemplateBase('includes/header.php');
 
 
 
-<?php $this->includeAtTemplateBase('includes/footer.php'); ?>
+<?php $this->includeAtTemplateBase('includes/footer.php');

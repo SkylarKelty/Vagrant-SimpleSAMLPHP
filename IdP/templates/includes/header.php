@@ -43,7 +43,7 @@ header('X-Frame-Options: SAMEORIGIN');
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, height=device-height, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
 <script type="text/javascript" src="/<?php echo $this->data['baseurlpath']; ?>resources/script.js"></script>
 <title><?php
 if(array_key_exists('header', $this->data)) {
@@ -59,22 +59,11 @@ if(array_key_exists('header', $this->data)) {
 <?php
 
 if(!empty($jquery)) {
-	$version = '1.5';
+	$version = '1.6';
 	if (array_key_exists('version', $jquery))
 		$version = $jquery['version'];
 		
-	if ($version == '1.5') {
-		if (isset($jquery['core']) && $jquery['core'])
-			echo('<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery.js"></script>' . "\n");
-	
-		if (isset($jquery['ui']) && $jquery['ui'])
-			echo('<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery-ui.js"></script>' . "\n");
-	
-		if (isset($jquery['css']) && $jquery['css'])
-			echo('<link rel="stylesheet" media="screen" type="text/css" href="/' . $this->data['baseurlpath'] . 
-				'resources/uitheme/jquery-ui-themeroller.css" />' . "\n");	
-			
-	} else if ($version == '1.6') {
+	if ($version == '1.6') {
 		if (isset($jquery['core']) && $jquery['core'])
 			echo('<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery-16.js"></script>' . "\n");
 	
@@ -83,7 +72,7 @@ if(!empty($jquery)) {
 	
 		if (isset($jquery['css']) && $jquery['css'])
 			echo('<link rel="stylesheet" media="screen" type="text/css" href="/' . $this->data['baseurlpath'] . 
-				'resources/uitheme16/ui.all.css" />' . "\n");	
+				'resources/uitheme16/ui.all.css" />' . "\n");
 	}
 }
 
@@ -147,60 +136,63 @@ if($onLoad !== '') {
 	
 	if ($includeLanguageBar) {
 		
-		
-		echo '<div id="languagebar">';
 		$languages = $this->getLanguageList();
-		$langnames = array(
-					'no' => 'Bokmål',
-					'nn' => 'Nynorsk',
-					'se' => 'Sámegiella',
-					'sam' => 'Åarjelh-saemien giele',
-					'da' => 'Dansk',
-					'en' => 'English',
-					'de' => 'Deutsch',
-					'sv' => 'Svenska',
-					'fi' => 'Suomeksi',
-					'es' => 'Español',
-					'fr' => 'Français',
-					'it' => 'Italiano',
-					'nl' => 'Nederlands',
-					'lb' => 'Luxembourgish', 
-					'cs' => 'Czech',
-					'sl' => 'Slovenščina', // Slovensk
-					'lt' => 'Lietuvių kalba', // Lithuanian
-					'hr' => 'Hrvatski', // Croatian
-					'hu' => 'Magyar', // Hungarian
-					'pl' => 'Język polski', // Polish
-					'pt' => 'Português', // Portuguese
-					'pt-br' => 'Português brasileiro', // Portuguese
-					'ru' => 'русский язык', // Russian
-					'et' => 'eesti keel',
-					'tr' => 'Türkçe',
-					'el' => 'ελληνικά',
-					'ja' => '日本語',
-					'zh' => '简体中文', // Chinese (simplified)
-					'zh-tw' => '繁體中文', // Chinese (traditional)
-					'ar' => 'العربية', // Arabic
-					'fa' => 'پارسی', // Persian
-					'ur' => 'اردو', // Urdu
-					'he' => 'עִבְרִית', // Hebrew
-					'id' => 'Bahasa Indonesia', // Indonesian
-					'sr' => 'Srpski',
-					'lv' => 'Latviešu',
-		);
-		
-		$textarray = array();
-		foreach ($languages AS $lang => $current) {
-			$lang = strtolower($lang);
-			if ($current) {
-				$textarray[] = $langnames[$lang];
-			} else {
-				$textarray[] = '<a href="' . htmlspecialchars(SimpleSAML_Utilities::addURLparameter(SimpleSAML_Utilities::selfURL(), array($this->languageParameterName => $lang))) . '">' .
-					$langnames[$lang] . '</a>';
+		if ( count($languages) > 1 ) {
+			echo '<div id="languagebar">';
+			$langnames = array(
+						'no' => 'Bokmål', // Norwegian Bokmål
+						'nn' => 'Nynorsk', // Norwegian Nynorsk
+						'se' => 'Sámegiella', // Northern Sami
+						'sam' => 'Åarjelh-saemien giele', // Southern Sami
+						'da' => 'Dansk', // Danish
+						'en' => 'English',
+						'de' => 'Deutsch', // German
+						'sv' => 'Svenska', // Swedish
+						'fi' => 'Suomeksi', // Finnish
+						'es' => 'Español', // Spanish
+						'fr' => 'Français', // French
+						'it' => 'Italiano', // Italian
+						'nl' => 'Nederlands', // Dutch
+						'lb' => 'Lëtzebuergesch', // Luxembourgish
+						'cs' => 'Čeština', // Czech
+						'sl' => 'Slovenščina', // Slovensk
+						'lt' => 'Lietuvių kalba', // Lithuanian
+						'hr' => 'Hrvatski', // Croatian
+						'hu' => 'Magyar', // Hungarian
+						'pl' => 'Język polski', // Polish
+						'pt' => 'Português', // Portuguese
+						'pt-br' => 'Português brasileiro', // Portuguese
+						'ru' => 'русский язык', // Russian
+						'et' => 'eesti keel', // Estonian
+						'tr' => 'Türkçe', // Turkish
+						'el' => 'ελληνικά', // Greek
+						'ja' => '日本語', // Japanese
+						'zh' => '简体中文', // Chinese (simplified)
+						'zh-tw' => '繁體中文', // Chinese (traditional)
+						'ar' => 'العربية', // Arabic
+						'fa' => 'پارسی', // Persian
+						'ur' => 'اردو', // Urdu
+						'he' => 'עִבְרִית', // Hebrew
+						'id' => 'Bahasa Indonesia', // Indonesian
+						'sr' => 'Srpski', // Serbian
+						'lv' => 'Latviešu', // Latvian
+						'ro' => 'Românește', // Romanian
+						'eu' => 'Euskara', // Basque
+			);
+			
+			$textarray = array();
+			foreach ($languages AS $lang => $current) {
+				$lang = strtolower($lang);
+				if ($current) {
+					$textarray[] = $langnames[$lang];
+				} else {
+					$textarray[] = '<a href="' . htmlspecialchars(SimpleSAML_Utilities::addURLparameter(SimpleSAML_Utilities::selfURL(), array($this->languageParameterName => $lang))) . '">' .
+						$langnames[$lang] . '</a>';
+				}
 			}
+			echo join(' | ', $textarray);
+			echo '</div>';
 		}
-		echo join(' | ', $textarray);
-		echo '</div>';
 
 	}
 

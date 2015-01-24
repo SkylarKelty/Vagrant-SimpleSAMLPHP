@@ -7,7 +7,6 @@ SimpleSAMLphp Identity Provider QuickStart
 	http://daringfireball.net/projects/markdown/syntax
 -->
 
-  * Version: `$Id: simplesamlphp-idp.txt 3172 2012-09-25 09:19:15Z jaimepc@gmail.com $`
 
 <!-- {{TOC}} -->
 
@@ -56,7 +55,7 @@ The next step is to configure the way users authenticate on your IdP. Various mo
 [`radius:Radius`](./radius:radius)
 : Authenticates an user to a Radius server.
 
-[`InfoCard:ICAuth`](./InfoCard:usage)
+[`InfoCard:ICAuth`](https://github.com/simplesamlphp/simplesamlphp-module-infocard/blob/master/README.md)
 : Authenticate with an InfoCard.
 
 [`multiauth:MultiAuth`](./multiauth:multiauth)
@@ -77,7 +76,7 @@ The next step is to configure the way users authenticate on your IdP. Various mo
 [`authtwitter:Twitter`](./authtwitter:oauthtwitter)
 : Authenticate with your Twitter account using the Twitter OAuth API.
 
-[`papi:PAPI`](./papi:papi)
+[`papi:PAPI`](https://github.com/rediris-es/simplesamlphp-module-papi/blog/master/README.md)
 : Authenticate by means of the PAPI protocol.
 
 In this guide, we will use the `exampleauth:UserPass` authentication module. This module does not have any dependencies, and is therefore simple to set up.
@@ -122,6 +121,23 @@ This configuration creates two users - `student` and `employee`, with the passwo
 The attributes will be returned by the IdP when the user logs on.
 
 
+Creating a SSL self signed certificate
+--------------------------------------
+
+Here is an example of an `openssl`-command which can be used to generate a new private key key and the corresponding self-signed certificate.
+
+This key and certificate can be used to sign SAML messages:
+
+    openssl req -newkey rsa:2048 -new -x509 -days 3652 -nodes -out example.org.crt -keyout example.org.pem
+
+The certificate above will be valid for 10 years.
+
+
+### Note ###
+
+simpleSAMLphp will only work with RSA certificates. DSA certificates are not supported.
+
+
 Configuring the IdP
 -------------------
 
@@ -142,8 +158,8 @@ This is a minimal configuration of a SAML 2.0 IdP:
          * The private key and certificate to use when signing responses.
          * These are stored in the cert-directory.
          */
-        'privatekey' => 'server.pem',
-        'certificate' => 'server.crt',
+        'privatekey' => 'example.org.pem',
+        'certificate' => 'example.org.crt',
 
         /*
          * The authentication source which should be used to authenticate the
@@ -189,30 +205,6 @@ If you have the metadata of the remote SP as an XML file, you can use the built-
 For more information about available options in the sp-remote metadata files, see the [SP remote reference](simplesamlphp-reference-sp-remote).
 
 
-Creating a SSL self signed certificate
---------------------------------------
-
-For test purposes, you can skip this section, and use the certificate included in the simpleSAMLphp distribution.
-
-Here is an example of an `openssl`-command which can be used to generate a new private key key and the corresponding self-signed certificate.
-
-This key and certificate can be used to sign SAML messages:
-
-    openssl req -newkey rsa:2048 -new -x509 -days 3652 -nodes -out example.org.crt -keyout example.org.pem
-
-The certificate above will be valid for 10 years.
-
-
-### Note ###
-
-simpleSAMLphp will only work with RSA certificates. DSA certificates are not supported.
-
-
-### Warning ###
-
-The certificate that is included in the simpleSAMLphp distribution must **NEVER** be used in production, as the private key is also included in the package and can be downloaded by anyone.
-
-
 Adding this IdP to other SPs
 ----------------------------
 
@@ -237,7 +229,7 @@ Support
 
 If you need help to make this work, or want to discuss simpleSAMLphp with other users of the software, you are fortunate: Around simpleSAMLphp there is a great Open source community, and you are welcome to join! The forums are open for you to ask questions, contribute answers other further questions, request improvements or contribute with code or plugins of your own.
 
-- [simpleSAMLphp homepage (at Feide RnD)](http://rnd.feide.no/simplesamlphp)
+- [simpleSAMLphp homepage](https://simplesamlphp.org)
 - [List of all available simpleSAMLphp documentation](http://simplesamlphp.org/docs/)
 - [Join the simpleSAMLphp user's mailing list](http://rnd.feide.no/content/simplesamlphp-users-mailinglist)
 - [Visit and contribute to the simpleSAMLphp wiki](https://ow.feide.no/simplesamlphp:start)
@@ -249,12 +241,12 @@ A. IdP-first setup
 
 If you do not want to start the SSO flow at the SP, you may use the IdP-first setup. To do this, redirect the user to the SSOService endpoint on the IdP with one parameter `spentityid` that match the SP EntityId that the user should be logged into.
 
-Here is an example of such an url:
+Here is an example of such a URL:
 
 	https://idp.example.org/simplesaml/saml2/idp/SSOService.php?spentityid=sp.example.org
 
 If the SP is a simpleSAMLphp SP, you must also specify a `RelayState` parameter for the SP.
-This must be set to an URL the user should be redirected to after authentication.
+This must be set to a URL the user should be redirected to after authentication.
 The `RelayState` parameter can be specified in the [SP configuration](saml:sp), or it can be sent from the IdP.
 To send the RelayState parameter from a simpleSAMLphp IdP, specify it in the query string to SSOService.php:
 

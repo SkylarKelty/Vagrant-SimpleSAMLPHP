@@ -7,7 +7,6 @@ SAML V2.0 Metadata Extensions for Login and Discovery User Interface
 	http://daringfireball.net/projects/markdown/syntax
 -->
 
-  * Version: `$Id:$`
   * Author: Timothy Ace [tace@synacor.com](mailto:tace@synacor.com)
 
 <!-- {{TOC}} -->
@@ -79,8 +78,8 @@ If given the following configuration...
 
     $metadata['https://www.example.com/saml/saml2/idp/metadata.php'] = array(
         'host' => 'www.example.com',
-        'certificate' => 'server.crt',
-        'privatekey' => 'server.pem',
+        'certificate' => 'example.com.crt',
+        'privatekey' => 'example.com.pem',
         'auth' => 'example-userpass',
 
 		'EntityAttributes' => array(

@@ -19,7 +19,7 @@ function logFilter($objFile, $tag, $cut){
 
 
 $config = SimpleSAML_Configuration::getInstance();
-$session = SimpleSAML_Session::getInstance();
+$session = SimpleSAML_Session::getSessionFromRequest();
 
 SimpleSAML_Utilities::requireAdmin();
 
@@ -51,4 +51,3 @@ $t->data['endtime'] = date(DATE_RFC822, $lastTimeEpoch);
 $t->data['filesize'] = $fileSize;
 
 $t->show();
-?>

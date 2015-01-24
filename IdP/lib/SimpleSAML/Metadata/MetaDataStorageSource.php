@@ -10,7 +10,6 @@
  * @author Olav Morken, UNINETT AS.
  * @author Andreas Aakre Solberg, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 abstract class SimpleSAML_Metadata_MetaDataStorageSource {
 
@@ -65,8 +64,6 @@ abstract class SimpleSAML_Metadata_MetaDataStorageSource {
 				return new SimpleSAML_Metadata_MetaDataStorageHandlerFlatFile($sourceConfig);
 			case 'xml':
 				return new SimpleSAML_Metadata_MetaDataStorageHandlerXML($sourceConfig);
-			case 'dynamicxml':
-				return new SimpleSAML_Metadata_MetaDataStorageHandlerDynamicXML($sourceConfig);
 			case 'serialize':
 				return new SimpleSAML_Metadata_MetaDataStorageHandlerSerialize($sourceConfig);
 			default:
@@ -226,4 +223,3 @@ abstract class SimpleSAML_Metadata_MetaDataStorageSource {
 	}
 
 }
-?>

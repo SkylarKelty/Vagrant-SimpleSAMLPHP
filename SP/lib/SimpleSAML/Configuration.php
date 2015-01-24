@@ -5,7 +5,6 @@
  *
  * @author Andreas Aakre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: Configuration.php 3252 2013-06-05 11:43:45Z jaimepc@gmail.com $
  */
 class SimpleSAML_Configuration {
 
@@ -279,11 +278,6 @@ class SimpleSAML_Configuration {
 
 		$dir = dirname($this->filename);
 
-		if ($instancename === 'simplesaml') {
-			/* For backwards compatibility. */
-			self::setConfigDir($path, 'simplesaml');
-		}
-
 		self::$instance[$instancename] = self::loadFromFile($dir . '/' . $filename, TRUE);
 		return self::$instance[$instancename];
 	}
@@ -295,7 +289,7 @@ class SimpleSAML_Configuration {
 	 * @return string
 	 */
 	public function getVersion() {
-		return '1.11.0';
+		return 'trunk';
 	}
 
 
@@ -984,6 +978,36 @@ class SimpleSAML_Configuration {
 
 
 	/**
+	 * Find an endpoint of the given type, using a list of supported bindings as a way to prioritize.
+	 *
+	 * @param string $endpointType  The endpoint type.
+	 * @param array $bindings  Sorted array of acceptable bindings.
+	 * @param mixed $default  The default value to return if no matching endpoint is found. If no default is provided, an exception will be thrown.
+	 * @return  array|NULL  The default endpoint, or NULL if no acceptable endpoints are used.
+	 */
+	public function getEndpointPrioritizedByBinding($endpointType, array $bindings, $default = self::REQUIRED_OPTION) {
+		assert('is_string($endpointType)');
+
+		$endpoints = $this->getEndpoints($endpointType);
+
+		foreach ($bindings as $binding) {
+			foreach ($endpoints as $ep) {
+				if ($ep['Binding'] === $binding) {
+					return $ep;
+				}
+			}
+		}
+
+		if ($default === self::REQUIRED_OPTION) {
+			$loc = $this->location . '[' . var_export($endpointType, TRUE) . ']:';
+			throw new Exception($loc . 'Could not find a supported ' . $endpointType . ' endpoint.');
+		}
+
+		return $default;
+	}
+
+
+	/**
 	 * Find the default endpoint of the given type.
 	 *
 	 * @param string $endpointType  The endpoint type.
@@ -995,6 +1019,7 @@ class SimpleSAML_Configuration {
 		assert('is_string($endpointType)');
 
 		$endpoints = $this->getEndpoints($endpointType);
+
 		$defaultEndpoint = SimpleSAML_Utilities::getDefaultEndpoint($endpoints, $bindings);
 		if ($defaultEndpoint !== NULL) {
 			return $defaultEndpoint;

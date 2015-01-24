@@ -6,7 +6,6 @@
  * @author Mathias Meisfjordskar, University of Oslo.
  *         <mathias.meisfjordskar@usit.uio.no>
  * @package simpleSAMLphp
- * @version $Id$
  */
 $this->includeAtTemplateBase('includes/header.php');
 ?>
@@ -19,4 +18,4 @@ $url = SimpleSAML_Module::getModuleURL('negotiate/disable.php');
 
 <?php echo $this->t('{negotiate:negotiate:info_post}'); ?>
 
-<?php $this->includeAtTemplateBase('includes/footer.php'); ?>
+<?php $this->includeAtTemplateBase('includes/footer.php');

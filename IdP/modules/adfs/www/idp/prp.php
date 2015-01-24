@@ -4,7 +4,6 @@
  *
  * @author Hans Zandbelt, SURFnet bv, <hans.zandbelt@surfnet.nl>
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 SimpleSAML_Logger::info('ADFS - IdP.prp: Accessing ADFS IdP endpoint prp');
@@ -27,5 +26,3 @@ if (isset($_GET['wa'])) {
 	$logoutError = NULL; /* NULL on success, or an instance of a SimpleSAML_Error_Exception on failure. */
 	$idp->handleLogoutResponse($assocId, $relayState, $logoutError);
 }
-
-?>

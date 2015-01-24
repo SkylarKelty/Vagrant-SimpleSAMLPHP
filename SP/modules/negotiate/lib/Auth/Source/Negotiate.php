@@ -7,7 +7,6 @@
  * @author Mathias Meisfjordskar, University of Oslo.
  * 	   <mathias.meisfjordskar@usit.uio.no>
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 class sspmod_negotiate_Auth_Source_Negotiate extends SimpleSAML_Auth_Source {
@@ -47,6 +46,7 @@ class sspmod_negotiate_Auth_Source_Negotiate extends SimpleSAML_Auth_Source {
 		$this->subnet = $config->getArray('subnet', NULL);
 		$this->admin_user = $config->getString('adminUser', NULL);
 		$this->admin_pw = $config->getString('adminPassword', NULL);
+		$this->attributes = $config->getArray('attributes', NULL);
 
 	}
 
@@ -79,7 +79,7 @@ class sspmod_negotiate_Auth_Source_Negotiate extends SimpleSAML_Auth_Source {
 			$this->fallBack($state);
 		// Go straight to fallback if Negotiate is disabled or if you are
 		// sent back to the IdP directly from the SP after having logged out
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		$disabled = $session->getData('negotiate:disable', 'session');
 
 		if ($disabled or
@@ -268,7 +268,7 @@ click <a href="'.htmlspecialchars($url).'">here</a>.
 		$this->adminBind();
 		try {
 			$dn = $this->ldap->searchfordn($this->base, $this->attr, $uid);
-			return $this->ldap->getAttributes($dn);
+			return $this->ldap->getAttributes($dn, $this->attributes);
 		} catch (SimpleSAML_Error_Exception $e) {
 			SimpleSAML_Logger::debug('Negotiate - ldap lookup failed: '. $e);
 			return NULL;
@@ -308,7 +308,7 @@ click <a href="'.htmlspecialchars($url).'">here</a>.
 		SimpleSAML_Logger::debug('Negotiate - logout has the following authId: "'.$authId.'"');
 
 		if ($authId === NULL) {
-			$session = SimpleSAML_Session::getInstance();
+			$session = SimpleSAML_Session::getSessionFromRequest();
 			$session->setData('negotiate:disable', 'session', TRUE, 24*60*60);
 			parent::logout($state);
 		} else {

@@ -18,7 +18,7 @@ $email = (string)$_REQUEST['email'];
 $text = htmlspecialchars((string)$_REQUEST['text']);
 
 try {
-	$session = SimpleSAML_Session::getInstance();
+	$session = SimpleSAML_Session::getSessionFromRequest();
 	$data = $session->getData('core:errorreport', $reportId);
 } catch (Exception $e) {
 	SimpleSAML_Logger::error('Error loading error report data: ' . var_export($e->getMessage(), TRUE));
@@ -70,10 +70,10 @@ $message = '<h1>SimpleSAMLphp Error Report</h1>
 
 <p>Report ID: <tt>' . $data['reportId'] . '</tt></p>
 
-<p>Referer: <tt>' . htmlspecialchars($data['referer']) . '</tt></p>
+<p>Referer: <tt>' . $data['referer'] . '</tt></p>
 
 <hr />
-<div class="footer">This message was sent using simpleSAMLphp. Visit <a href="http://rnd.feide.no/simplesamlphp">simpleSAMLphp homepage</a>.</div>
+<div class="footer">This message was sent using simpleSAMLphp. Visit the <a href="http://simplesamlphp.org/">simpleSAMLphp homepage</a>.</div>
 
 ';
 
@@ -91,7 +91,7 @@ if (!preg_match('/\s/', $email) && strpos($email, '@') !== FALSE) {
 
 /* Send the email. */
 $toAddress = $config->getString('technicalcontact_email', 'na@example.org');
-if ($toAddress !== 'na@example.org') {
+if ($config->getBoolean('errorreporting', TRUE) && $toAddress !== 'na@example.org') {
 	$email = new SimpleSAML_XHTML_EMail($toAddress, 'simpleSAMLphp error report', $from);
 	$email->setBody($message);
 	$email->send();
@@ -99,4 +99,4 @@ if ($toAddress !== 'na@example.org') {
 }
 
 /* Redirect the user back to this page to clear the POST request. */
-SimpleSAML_Utilities::redirect(SimpleSAML_Utilities::selfURLNoQuery());
+SimpleSAML_Utilities::redirectTrustedURL(SimpleSAML_Utilities::selfURLNoQuery());

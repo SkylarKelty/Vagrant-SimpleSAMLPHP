@@ -8,7 +8,6 @@
  * @author Mads Freen - WAYF
  * @author Jacob Christiansen - WAYF
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 
@@ -90,4 +89,3 @@ $t->data['consents'] = count($user_consent_list);
 
 
 $t->show();
-?>

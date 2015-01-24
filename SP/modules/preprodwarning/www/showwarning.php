@@ -5,7 +5,6 @@
  * authorizes the release of attributes.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 
 SimpleSAML_Logger::info('PreProdWarning - Showing warning to user');
@@ -15,6 +14,13 @@ if (!array_key_exists('StateId', $_REQUEST)) {
 }
 
 $id = $_REQUEST['StateId'];
+
+// sanitize the input
+$sid = SimpleSAML_Utilities::parseStateID($id);
+if (!is_null($sid['url'])) {
+	SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+}
+
 $state = SimpleSAML_Auth_State::loadState($id, 'warning:request');
 
 
@@ -32,6 +38,3 @@ $t = new SimpleSAML_XHTML_Template($globalConfig, 'preprodwarning:warning.php');
 $t->data['yesTarget'] = SimpleSAML_Module::getModuleURL('preprodwarning/showwarning.php');
 $t->data['yesData'] = array('StateId' => $id);
 $t->show();
-
-
-?>

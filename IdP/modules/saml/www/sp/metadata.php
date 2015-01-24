@@ -5,6 +5,9 @@ if (!array_key_exists('PATH_INFO', $_SERVER)) {
 }
 
 $config = SimpleSAML_Configuration::getInstance();
+if ($config->getBoolean('admin.protectmetadata', false)) {
+	SimpleSAML_Utilities::requireAdmin();
+}
 $sourceId = substr($_SERVER['PATH_INFO'], 1);
 $source = SimpleSAML_Auth_Source::getById($sourceId);
 if ($source === NULL) {
@@ -17,23 +20,26 @@ if (!($source instanceof sspmod_saml_Auth_Source_SP)) {
 
 $entityId = $source->getEntityId();
 $spconfig = $source->getMetadata();
+$store = SimpleSAML_Store::getInstance();
 
-$metaArray20 = array(
-	'SingleLogoutService' => SimpleSAML_Module::getModuleURL('saml/sp/saml2-logout.php/' . $sourceId),
+$metaArray20 = array();
+
+$slosvcdefault = array(
+    SAML2_Const::BINDING_HTTP_REDIRECT,
+	SAML2_Const::BINDING_SOAP,
 );
 
-$store = SimpleSAML_Store::getInstance();
-if ($store instanceof SimpleSAML_Store_SQL) {
-	/* We can properly support SOAP logout. */
-	$metaArray20['SingleLogoutService'] = array(
-		array(
-			'Binding' => SAML2_Const::BINDING_HTTP_REDIRECT,
-			'Location' => SimpleSAML_Module::getModuleURL('saml/sp/saml2-logout.php/' . $sourceId),
-		),
-		array(
-			'Binding' => SAML2_Const::BINDING_SOAP,
-			'Location' => SimpleSAML_Module::getModuleURL('saml/sp/saml2-logout.php/' . $sourceId),
-		),
+$slob = $spconfig->getArray('SingleLogoutServiceBinding', $slosvcdefault);
+$slol = SimpleSAML_Module::getModuleURL('saml/sp/saml2-logout.php/' . $sourceId);
+
+foreach ($slob as $binding) {
+	if ($binding == SAML2_Const::BINDING_SOAP && !($store instanceof SimpleSAML_Store_SQL)) {
+		/* We cannot properly support SOAP logout. */
+		continue;
+	}
+	$metaArray20['SingleLogoutService'][] = array(
+		'Binding' => $binding,
+		'Location' => $slol,
 	);
 }
 
@@ -115,6 +121,11 @@ if ($certInfo !== NULL && array_key_exists('certData', $certInfo)) {
 	$certData = NULL;
 }
 
+$format = $spconfig->getString('NameIDPolicy', NULL);
+if ($format !== NULL) {
+    $metaArray20['NameIDFormat'] = $format;
+}
+
 $name = $spconfig->getLocalizedString('name', NULL);
 $attributes = $spconfig->getArray('attributes', array());
 
@@ -150,28 +161,21 @@ if ($orgName !== NULL) {
 	}
 }
 
-// add technical contact
-$email = $config->getString('technicalcontact_email', 'na@example.org');
-if ( $email != 'na@example.org') {
-
-	$contact = array('emailAddress' => $email);
-
-	$name = $config->getString('technicalcontact_name', NULL);
-	if ($name === NULL) {
-		/* Nothing to do here... */
-	} elseif (preg_match('@^(.*?)\s*,\s*(.*)$@D', $name, $matches)) {
-		$contact['surName'] = $matches[1];
-		$contact['givenName'] = $matches[2];
-	} elseif (preg_match('@^(.*?)\s+(.*)$@D', $name, $matches)) {
-		$contact['givenName'] = $matches[1];
-		$contact['surName'] = $matches[2];
-	} else {
-		$contact['givenName'] = $name;
+if ($spconfig->hasValue('contacts')) {
+	$contacts = $spconfig->getArray('contacts');
+	foreach ($contacts as $contact) {
+		$metaArray20['contacts'][] = SimpleSAML_Utils_Config_Metadata::getContact($contact);
 	}
 }
 
-// add additional contacts
-$contacts = $spconfig->getArray('contacts', array());
+// add technical contact
+$email = $config->getString('technicalcontact_email', 'na@example.org', FALSE);
+if ($email && $email !== 'na@example.org') {
+	$techcontact['emailAddress'] = $email;
+	$techcontact['name'] = $config->getString('technicalcontact_name', NULL);
+	$techcontact['contactType'] = 'technical';
+	$metaArray20['contacts'][] = SimpleSAML_Utils_Config_Metadata::getContact($techcontact);
+}
 
 // add certificate
 if (count($keys) === 1) {
@@ -185,6 +189,11 @@ if ($spconfig->hasValue('UIInfo')) {
 	$metaArray20['UIInfo'] = $spconfig->getArray('UIInfo');
 }
 
+// add RegistrationInfo extension
+if ($spconfig->hasValue('RegistrationInfo')) {
+	$metaArray20['RegistrationInfo'] = $spconfig->getArray('RegistrationInfo');
+}
+
 $supported_protocols = array('urn:oasis:names:tc:SAML:1.1:protocol', SAML2_Const::NS_SAMLP);
 
 $metaArray20['metadata-set'] = 'saml20-sp-remote';
@@ -193,10 +202,6 @@ $metaArray20['entityid'] = $entityId;
 $metaBuilder = new SimpleSAML_Metadata_SAMLBuilder($entityId);
 $metaBuilder->addMetadataSP20($metaArray20, $supported_protocols);
 $metaBuilder->addOrganizationInfo($metaArray20);
-if ( !empty($contact) ) $metaBuilder->addContact('technical', $contact);
-foreach ($contacts as $c) {
-    $metaBuilder->addContact($c['contactType'], $c);
-}
 
 $xml = $metaBuilder->getEntityDescriptorText();
 
@@ -204,6 +209,9 @@ unset($metaArray20['attributes.required']);
 unset($metaArray20['UIInfo']);
 unset($metaArray20['metadata-set']);
 unset($metaArray20['entityid']);
+
+// sanitize the attributes array to remove friendly names
+$metaArray20['attributes'] = array_values($metaArray20['attributes']);
 
 /* Sign the metadata if enabled. */
 $xml = SimpleSAML_Metadata_Signer::sign($xml, $spconfig->toArray(), 'SAML 2 SP');
@@ -221,4 +229,3 @@ if (array_key_exists('output', $_REQUEST) && $_REQUEST['output'] == 'xhtml') {
 	header('Content-Type: application/samlmetadata+xml');
 	echo($xml);
 }
-?>

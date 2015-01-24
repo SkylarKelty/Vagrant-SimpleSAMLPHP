@@ -13,6 +13,7 @@
 		"pt": "Verifica\u00e7\u00e3o da configura\u00e7\u00e3o",
 		"pl": "Sprawdzenie konfiguracji",
 		"cs": "Verifikace konfigurace",
+		"eu": "Konfigurazioa egiaztatu",
 		"tr": "Konfig\u00fcrasyon kontrol\u00fc",
 		"de": "Konfigurationscheck",
 		"fr": "V\u00e9rification de la configuration",
@@ -27,7 +28,8 @@
 		"ar": "\u0645\u0631\u0627\u062c\u0639\u0629 \u0627\u0644\u062a\u0631\u062a\u064a\u0628",
 		"lv": "Konfigur\u0101cijas p\u0101rbaude",
 		"id": "Pemeriksaan konfigurasi",
-		"sr": "Provera pode\u0161avanja"
+		"sr": "Provera pode\u0161avanja",
+		"ro": "Verificarea configura\u021biei"
 	},
 	"cfg_check_select_file": {
 		"no": "Velg hvilken konfigurasjonfil som skal sjekkes",
@@ -57,7 +59,9 @@
 		"ar": "\u0627\u062e\u062a\u0627\u0631\u0645\u0644\u0641 \u0627\u0644\u062a\u0631\u062a\u064a\u0628 \u0627\u0644\u0630\u064a \u062a\u0631\u063a\u0628  \u0628\u0645\u0631\u0627\u062c\u0639\u062a\u0647",
 		"lv": "Izv\u0113lieties p\u0101rbaud\u0101mos konfigur\u0101cijas failus:",
 		"id": "Pilih file konfigurasi untuk diperiksa",
-		"sr": "Odaberite konfiguracionu fajl koji \u017eelite proveriti:"
+		"sr": "Odaberite konfiguracionu fajl koji \u017eelite proveriti:",
+		"ro": "Alege\u021bi fi\u0219ierul de configurare care dori\u021bi s\u0103-l verifica\u021bi:",
+		"eu": "Hautatu ezazu egiaztatu beharreko konfigurazio fitxategia:"
 	},
 	"cfg_check_missing": {
 		"no": "Mangler element i konfigurasjonsfilen",
@@ -86,7 +90,10 @@
 		"ar": "\u062e\u064a\u0627\u0631\u0627\u062a \u0645\u0641\u0642\u0648\u062f\u0629 \u0645\u0646 \u0645\u0644\u0641 \u0627\u0644\u062a\u0631\u062a\u064a\u0628",
 		"lv": "Konfigur\u0101cijas fail\u0101 tr\u016bkst opciju",
 		"id": "Opsi-opsi uang hilang dari file konfigurasi",
-		"sr": "Paramentri koji nedostaju u konfiguracionom fajlu"
+		"sr": "Paramentri koji nedostaju u konfiguracionom fajlu",
+		"ro": "Op\u021biuni care nu apar \u00een fi\u0219ierul de configurare",
+		"ru": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b, \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u0435 \u0432 \u0444\u0430\u0439\u043b\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438",
+		"eu": "Konfigurazio fitxategian falta diren aukerak"
 	},
 	"cfg_check_superfluous": {
 		"no": "Overf\u00f8ldig element i konfigurasjonsfilen",
@@ -115,7 +122,10 @@
 		"ar": "\u062e\u064a\u0627\u0631\u0627\u062a \u0641\u0627\u0626\u0636\u0629 \u0628\u0645\u0644\u0641 \u0627\u0644\u062a\u0631\u062a\u064a\u0628",
 		"lv": "S\u012bkas (superfluous) opcijas konfigur\u0101cijas fail\u0101",
 		"id": "Pilihan tak beguna di file konfigurasi",
-		"sr": "Suvi\u0161ni parametri u konfiguracionom fajlu"
+		"sr": "Suvi\u0161ni parametri u konfiguracionom fajlu",
+		"ro": "Op\u021biuni inutile \u00een fi\u0219ierul de configurare",
+		"ru": "\u0418\u0437\u0431\u044b\u0442\u043e\u0447\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0432 \u0444\u0430\u0439\u043b\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438",
+		"eu": "Konfigurazio fitxategian soberan dauden aukerak"
 	},
 	"cfg_check_noerrors": {
 		"no": "Ingen feil funnet",
@@ -131,6 +141,7 @@
 		"pt": "N\u00e3o foram encontrados erros.",
 		"pl": "Nie znaleziono b\u0142\u0119d\u00f3w.",
 		"cs": "Nenalezeny \u017e\u00e1dn\u00e9 chyby",
+		"eu": "Ez da errorerik aurkitu",
 		"tr": "Hata bulunmad\u0131.",
 		"de": "Keine Fehler gefunden.",
 		"fr": "Aucune erreur.",
@@ -144,7 +155,9 @@
 		"ar": "\u0644\u0627 \u062a\u0648\u062c\u062f \u0623\u062e\u0637\u0627\u0621 ",
 		"lv": "K\u013c\u016bdas nav atrastas.",
 		"id": "Tidak ada error yang ditemukan",
-		"sr": "Nije prona\u0111ena nijedna gre\u0161ka."
+		"sr": "Nije prona\u0111ena nijedna gre\u0161ka.",
+		"ro": "Nu au fost depistate erori.",
+		"ru": "\u041e\u0448\u0438\u0431\u043e\u043a \u043d\u0435 \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u043e."
 	},
 	"cfg_check_back": {
 		"no": "G\u00e5 tilbake til fil-listen",
@@ -160,6 +173,7 @@
 		"pt": "Voltar \u00e0 lista de ficheiros",
 		"pl": "Powr\u00f3t do listy plik\u00f3w",
 		"cs": "Zp\u00e1tky na seznam soubor\u016f",
+		"eu": "Itzuli fitxategien zerrendara",
 		"tr": "Dosya listesine geri d\u00f6n",
 		"de": "Gehe zur\u00fcck zur Dateiliste",
 		"fr": "Retour \u00e0 la liste des fichiers",
@@ -173,7 +187,9 @@
 		"ar": "\u0639\u062f \u0644\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u0644\u0641\u0627\u062a",
 		"lv": "Iet atpaka\u013c uz sarakstu",
 		"id": "Kembali ke daftar file",
-		"sr": "Vrati se natrag na listu fajlova"
+		"sr": "Vrati se natrag na listu fajlova",
+		"ro": "Merge\u021bi \u00eenapoi la lista de fi\u0219iere",
+		"ru": "\u0412\u0435\u0440\u043d\u0443\u0442\u044c\u0441\u044f \u043a \u0441\u043f\u0438\u0441\u043a\u0443 \u0444\u0430\u0439\u043b\u043e\u0432"
 	},
 	"metaover_header": {
 		"no": "Oversikt over metadata",
@@ -202,7 +218,10 @@
 		"ar": "\u0646\u0638\u0631\u0629 \u0639\u0627\u0645\u0629 \u0644\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629\/ \u0627\u0644\u0645\u064a\u062a\u0627\u062f\u0627\u062a\u0627",
 		"lv": "Metadatu p\u0101rskats",
 		"id": "Ikhtisar Metadata",
-		"sr": "Pregled metapodataka"
+		"sr": "Pregled metapodataka",
+		"ro": "Prezentare general\u0103 a metadatelor",
+		"ru": "\u041a\u0440\u0430\u0442\u043a\u043e\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0445",
+		"eu": "Ikusi metadatuak"
 	},
 	"metaover_intro": {
 		"no": "For \u00e5 se p\u00e5 detaljene i en SAML-entitet, klikk p\u00e5 SAML-entitet overskriften",
@@ -231,7 +250,10 @@
 		"ar": "\u0644\u0625\u0644\u063a\u0627\u0621 \u0646\u0638\u0631\u0629 \u0639\u0644\u064a \u062a\u0641\u0627\u0635\u064a\u0644 \u0627\u062d\u062f\u064a \u0648\u062d\u062f\u0627\u062a SAML, \u0627\u0636\u063a\u0637 \u0639\u0644\u064a \u062a\u0631\u0648\u064a\u0633\u0629  \u0627\u0644\u0648\u062d\u062f\u0629 ",
 		"lv": "Lai apl\u016bkotu SAML vienuma deta\u013cas, klik\u0161\u0137iniet uz vienuma galvenes.",
 		"id": "Untuk melihat detail entiti SAML, klik pada bagian header entiti SAML",
-		"sr": "Da biste videli detalje o SAML entitetu, kliknite na njegovo zaglavlje."
+		"sr": "Da biste videli detalje o SAML entitetu, kliknite na njegovo zaglavlje.",
+		"ro": "Pentru a vizualiza detalii privind o entitate SAML, ap\u0103sa\u021bi pe antetul entit\u0103\u021bii SAML.",
+		"ru": "\u0414\u043b\u044f \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0430 \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0441\u0442\u0435\u0439 \u0437\u0430\u043f\u0438\u0441\u0438 SAML, \u043a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u043d\u0430 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0437\u0430\u043f\u0438\u0441\u0438 SAML.",
+		"eu": "SAML entitate baten xehetasunak ikusteko, klikatu entitatearen goiburua."
 	},
 	"metaover_errorentry": {
 		"no": "Feil i metadataoppf\u00f8ringen",
@@ -260,7 +282,10 @@
 		"ar": "\u062e\u0637\u0627 \u0628\u0647\u0630\u0627 \u0627\u0644\u0628\u064a\u0627\u0646 \u0627\u0644\u0648\u0635\u0641\u064a\/ \u0627\u0644\u0645\u064a\u062a\u0627\u062f\u0627\u062a\u0627",
 		"lv": "K\u013c\u016bda \u0161aj\u0101 metadatu ierakst\u0101",
 		"id": "Error pada entri metadata ini",
-		"sr": "Ovaj zapis metapodataka sadr\u017ei gre\u0161ku"
+		"sr": "Ovaj zapis metapodataka sadr\u017ei gre\u0161ku",
+		"ro": "Eroare \u00een aceast\u0103 metadat\u0103",
+		"ru": "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0432\u0432\u043e\u0434\u0435 \u0434\u0430\u043d\u043d\u043e\u0439 \u0437\u0430\u043f\u0438\u0441\u0438 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0445",
+		"eu": "Metadatu sarrera honetan  errorea"
 	},
 	"metaover_required_found": {
 		"no": "Obligatorisk felt",
@@ -289,7 +314,10 @@
 		"ar": "\u062d\u0642\u0644 \u0625\u062c\u0628\u0627\u0631\u064a",
 		"lv": "Oblig\u0101tie lauki",
 		"id": "Field-field yang wajib diisi",
-		"sr": "Obavezna polja"
+		"sr": "Obavezna polja",
+		"ro": "C\u00e2mpuri obligatorii",
+		"ru": "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043f\u043e\u043b\u044f",
+		"eu": "Derrigorrezko eremuak"
 	},
 	"metaover_required_not_found": {
 		"no": "F\u00f8lgende obligatoriske felter ble ikke funnet",
@@ -318,7 +346,10 @@
 		"ar": "\u0627\u0644\u062d\u0642\u0648\u0644 \u0627\u0644\u0625\u062c\u0628\u0627\u0631\u064a\u0629 \u0623\u062f\u0646\u0627\u0647 \u0645\u0641\u0642\u0648\u062f\u0629",
 		"lv": "Nav atrasti oblig\u0101tie lauki",
 		"id": "Field-field yang diperlukan wajib disisi berikut ini tidak ditemukan",
-		"sr": "Nisu prona\u0111ena slede\u0107a opciona polja"
+		"sr": "Nisu prona\u0111ena slede\u0107a opciona polja",
+		"ro": "Urm\u0103toarele c\u00e2mpuri obligatorii nu au fost g\u0103site",
+		"ru": "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0435 \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043f\u043e\u043b\u044f \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b",
+		"eu": "Derrigorrezko datu hauek ez dira aurkitu"
 	},
 	"metaover_optional_found": {
 		"no": "Valgbart felt",
@@ -347,7 +378,10 @@
 		"ar": "\u062d\u0642\u0644 \u0627\u062e\u062a\u064a\u0627\u0631\u064a",
 		"lv": "Neoblig\u0101tie lauki",
 		"id": "Field-field opsional",
-		"sr": "Opciona polja"
+		"sr": "Opciona polja",
+		"ro": "C\u00e2mpuri op\u021bionale",
+		"ru": "\u041d\u0435\u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043f\u043e\u043b\u044f",
+		"eu": "Hautazko datuak"
 	},
 	"metaover_optional_not_found": {
 		"no": "F\u00f8lgende valgbare felt ble ikke funnet",
@@ -376,7 +410,10 @@
 		"ar": "\u0627\u0644\u062d\u0642\u0648\u0644 \u0627\u0644\u0627\u062e\u062a\u064a\u0627\u0631\u064a\u0629 \u0623\u062f\u0646\u0627\u0647 \u0645\u0641\u0642\u0648\u062f\u0629",
 		"lv": "Nav atrasti neoblig\u0101tie lauki",
 		"id": "Field-field opsional berikut tidak dapat ditemukan",
-		"sr": "Nisu prona\u0111ena slede\u0107a opciona polja"
+		"sr": "Nisu prona\u0111ena slede\u0107a opciona polja",
+		"ro": "Urm\u0103toarele c\u00e2mpuri op\u021bionale nu au fost g\u0103site",
+		"ru": "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0435 \u043d\u0435\u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043f\u043e\u043b\u044f \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b",
+		"eu": "Hautazko datu hauek ez dira aurkitu"
 	},
 	"metaover_unknown_found": {
 		"no": "F\u00f8lgende felt ble ikke gjenkjent",
@@ -405,7 +442,10 @@
 		"ar": "\u0644\u0645 \u064a\u062a\u0645 \u0627\u0644\u062a\u0639\u0631\u0641 \u0639\u0644\u064a \u0627\u0644\u0642\u0644 \u0623\u062f\u0646\u0627\u0647 ",
 		"lv": "Nav atpaz\u012bti \u0161\u0101di ievadlauki",
 		"id": "Field-field berikut ini tidak dapat dikenali",
-		"sr": "Slede\u0107a polja nisu prepoznata"
+		"sr": "Slede\u0107a polja nisu prepoznata",
+		"ro": "Urm\u0103toarele c\u00e2mpuri nu au fost recunoscute",
+		"ru": "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0435 \u043f\u043e\u043b\u044f \u043d\u0435 \u0440\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u043d\u044b",
+		"eu": "Datu hauek ez dira antzeman"
 	},
 	"metadata_metadata": {
 		"no": "Metadata",
@@ -434,7 +474,10 @@
 		"ar": "\u0628\u064a\u0627\u0646\u0627\u062a \u0648\u0635\u0641\u064a\u0629\/ \u0645\u064a\u062a\u0627\u062f\u0627\u062a\u0627",
 		"lv": "Metadati",
 		"id": "Metadata",
-		"sr": "Metapodaci"
+		"sr": "Metapodaci",
+		"ro": "Metadate",
+		"ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435",
+		"eu": "Metadatuak"
 	},
 	"metadata_xmlformat": {
 		"no": "I SAML 2.0 Metadata XML Format:",
@@ -463,7 +506,10 @@
 		"ar": "\u0628\u064a\u0627\u0646\u0627\u062a SAML 2.0 \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0628\u0635\u064a\u063a\u0629 XML",
 		"lv": "SAML 2.0 metadatos XML form\u0101t\u0101:",
 		"id": "Dalam format XML Metadata SAML 2.0",
-		"sr": "Metapodaci u SAML 2.0 XML formatu:"
+		"sr": "Metapodaci u SAML 2.0 XML formatu:",
+		"ro": "\u00cen format metadate XML SAML 2.0:",
+		"ru": "xml \u0444\u043e\u0440\u043c\u0430\u0442 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0445 SAML 2.0:",
+		"eu": "SAML 2.0 metadatuetako xml formatuan:"
 	},
 	"debug_sending_message_text_link": {
 		"no": "Du er i ferd med \u00e5 sende en melding. Trykk p\u00e5 send melding knappen for \u00e5 fortsette.",
@@ -478,6 +524,7 @@
 		"pt-br": "Voc\u00ea est\u00e1 prestes a enviar uma mensagem. Clique no link enviar a mensagem para continuar.",
 		"pt": "Est\u00e1 prestes a enviar uma mensagem. Carregue na liga\u00e7\u00e3o para continuar.",
 		"cs": "M\u016f\u017eete poslat zpr\u00e1vu. Klikn\u011bte na odkaz pro pokra\u010dov\u00e1n\u00ed.",
+		"eu": "Mezu bat bidaltzeari ekingo zaio. Saka ezazu \"Mezua bidali\" lotura jarraitzeko.",
 		"tr": "Mesaj g\u00f6ndermek \u00fczeresiniz. Devam etmek i\u00e7in mesaj g\u00f6nder linkine t\u0131klay\u0131n.",
 		"de": "Sie sind dabei eine Nachricht zu senden. Klicken Sie auf den Nachricht senden Link um fortzufahren.",
 		"fr": "Vous allez envoyer un message. Cliquez sur le lien d'envoi pour continuer.",
@@ -491,7 +538,9 @@
 		"ar": "\u0627\u0646\u062a \u0639\u0644\u064a \u0648\u0634\u0643 \u0625\u0631\u0633\u0627\u0644 \u0631\u0633\u0627\u0644\u0629. \u0627\u0636\u063a\u0637 \u0639\u0644\u064a \u0627\u0644\u0631\u0627\u0628\u0637 \u0644\u0644\u0645\u0648\u0627\u0635\u0644\u0629",
 		"lv": "J\u016bs gatavojaties s\u016bt\u012bt zi\u0146u. Spiediet saiti S\u016bt\u012bt zi\u0146u.",
 		"id": "Anda baru saja akan mengirim sebuah pesan. Tekan link submit pesan untuk melanjutkan.",
-		"sr": "Kliknite na link \"Po\u0161alji poruku\" da biste poslali poruku."
+		"sr": "Kliknite na link \"Po\u0161alji poruku\" da biste poslali poruku.",
+		"ro": "Mesajul este preg\u0103tit pentru a fi trimis. Ap\u0103sa\u021bi link-ul de trimitere pentru a continua.",
+		"ru": "\u0412\u044b \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u0442\u0435\u0441\u044c \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435. \u041a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u0441\u0441\u044b\u043b\u043a\u0443 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0435\u043d\u0438\u044f."
 	},
 	"debug_sending_message_send": {
 		"no": "Send melding",
@@ -507,6 +556,7 @@
 		"pt": "Enviar mensagem",
 		"pl": "Wy\u015blij wiadomo\u015b\u0107",
 		"cs": "Poslat zpr\u00e1vu",
+		"eu": "Mezua bidali",
 		"tr": "Mesaj g\u00f6nder",
 		"de": "Nachricht senden",
 		"fr": "Envoi du message",
@@ -520,7 +570,9 @@
 		"ar": "\u0633\u0644\u0645 \u0627\u0644\u0631\u0633\u0627\u0644\u0629",
 		"lv": "S\u016bt\u012bt zi\u0146u",
 		"id": "Submit pesan",
-		"sr": "Po\u0161alji poruku"
+		"sr": "Po\u0161alji poruku",
+		"ro": "Trimite mesajul",
+		"ru": "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435"
 	},
 	"debug_sending_message_msg_title": {
 		"no": "Melding",
@@ -549,7 +601,10 @@
 		"ar": "\u0631\u0633\u0627\u0644\u0629",
 		"lv": "Zi\u0146a",
 		"id": "Pesan",
-		"sr": "Poruka"
+		"sr": "Poruka",
+		"ro": "Mesaj",
+		"ru": "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435",
+		"eu": "Mezua"
 	},
 	"debug_sending_message_msg_text": {
 		"no": "Siden du er i debug modus kan du se innholdet i meldingene du sender.",
@@ -577,7 +632,10 @@
 		"ar": "\u064a\u0645\u0643\u0646\u0643 \u0631\u0624\u064a\u0629 \u0645\u062d\u062a\u0648\u064a \u0627\u0644\u0631\u0633\u0627\u0644\u0629 \u0637\u0627\u0644\u0645\u0627 \u0643\u0646\u062a \u0641\u064a \u062d\u0627\u0644\u0629 \u062a\u0635\u062d\u064a\u062d",
 		"lv": "T\u0101 k\u0101 \u0161is ir atk\u013c\u016bdo\u0161anas re\u017e\u012bms, J\u016bs varat redz\u0113t s\u016bt\u0101m\u0101s zi\u0146as saturu:",
 		"id": "Karena anda berada pada mode debug, anda dapat melihat isi pesan yang anda kirim:",
-		"sr": "Obzirom da ste u debug modu, imate mogu\u0107nost videti sadr\u017eaj poruke koju \u0161aljete:"
+		"sr": "Obzirom da ste u debug modu, imate mogu\u0107nost videti sadr\u017eaj poruke koju \u0161aljete:",
+		"ro": "\u00centruc\u00e2t sunte\u021bi \u00een modul depanare, ve\u021bi vedea con\u021binutul mesajului care va fi trimis:",
+		"ru": "\u0415\u0441\u043b\u0438 \u0432\u044b \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0435\u0441\u044c \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u043e\u0442\u043b\u0430\u0434\u043a\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f, \u0432\u044b \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u043d\u0430\u0431\u043b\u044e\u0434\u0430\u0442\u044c \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u043c\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f.",
+		"eu": "Arazketa moduan egonez gero, bidaltzera zoazen mezuaren edukia ikusiko duzu:"
 	},
 	"metaover_group_metadata.saml20-sp-remote": {
 		"no": "SAML 2.0 Tjenesteleverand\u00f8r (ekstern)",
@@ -606,7 +664,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u062e\u062f\u0645\u0629 SAML 2.0 \u0627\u0644\u0628\u0639\u064a\u062f",
 		"lv": "SAML 2.0 servisa pieg\u0101d\u0101t\u0101js (att\u0101lin\u0101ts)",
 		"id": "Service Provider SAML 2.0 (Remote)",
-		"sr": "SAML 2.0 Davalac Servisa (udaljeni)"
+		"sr": "SAML 2.0 Davalac Servisa (udaljeni)",
+		"ro": "Furnizor de servicii SAML 2.0 (distant)",
+		"ru": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 SAML 2.0 (\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "SAML 2.0 Zerbitzu hornitzailea (Urrunekoa)"
 	},
 	"metaover_group_metadata.saml20-idp-hosted": {
 		"no": "SAML 2.0 Identitetsleverand\u00f8r (ekstern)",
@@ -635,7 +696,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u0647\u0648\u064a\u0629 SAML 2.0 \u0627\u0644\u0645\u0633\u062a\u0636\u0627\u0641",
 		"lv": "SAML 2.0 identit\u0101tes pieg\u0101d\u0101t\u0101js (host\u0113ts)",
 		"id": "Identity Provider SAML 2.0 (Hosted)",
-		"sr": "SAML 2.0 Davalac Identiteta (lokalni)"
+		"sr": "SAML 2.0 Davalac Identiteta (lokalni)",
+		"ro": "Furnizor de identitate SAML 2.0 (g\u0103zduit)",
+		"ru": "\u041f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438 SAML 2.0 (\u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "SAML 2.0 Identitate hornitzailea (Anfitrioia)"
 	},
 	"metaover_group_metadata.saml20-idp-remote": {
 		"no": "SAML 2.0 Identitetsleverand\u00f8r (ekstern)",
@@ -664,7 +728,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u0647\u0648\u064a\u0629 SAML 2.0 \u0627\u0644\u0628\u0639\u064a\u062f",
 		"lv": "SAML 2.0 identit\u0101tes pieg\u0101d\u0101t\u0101js (att\u0101lin\u0101ts)",
 		"id": "Identity Provider SAML 2.0 (Remote)",
-		"sr": "SAML 2.0 Davalac Identiteta (udaljeni)"
+		"sr": "SAML 2.0 Davalac Identiteta (udaljeni)",
+		"ro": "Furnizor de identitate SAML 2.0 (distant)",
+		"ru": "\u041f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438 SAML 2.0 (\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "SAML 2.0 Identitate hornitzailea (Urrunekoa)"
 	},
 	"metaover_group_metadata.shib13-sp-hosted": {
 		"no": "Shib 1.3 Tjenesteleverand\u00f8r (intern)",
@@ -693,7 +760,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u062e\u062f\u0645\u0629 Shib 1.3 \u0627\u0644\u0645\u0633\u062a\u0636\u0627\u0641",
 		"lv": "Shib 1.3 servisa pieg\u0101d\u0101t\u0101js (host\u0113ts)",
 		"id": "Service Provider Shib 1.3 (Hosted)",
-		"sr": "Shib 1.3 Davalac Servisa (lokalni)"
+		"sr": "Shib 1.3 Davalac Servisa (lokalni)",
+		"ro": "Furnizor de servicii Shib 1.3 (g\u0103zduit)",
+		"ru": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 Shib 1.3 (\u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "Shib 1.3 Zerbitzu hornitzailea (Anfitrioia)"
 	},
 	"metaover_group_metadata.shib13-sp-remote": {
 		"no": "Shib 1.3 Tjenesteleverand\u00f8r (ekstern)",
@@ -722,7 +792,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u062e\u062f\u0645\u0629 Shib 1.3 \u0627\u0644\u0628\u0639\u064a\u062f",
 		"lv": "Shib 1.3 servisa pieg\u0101d\u0101t\u0101js (att\u0101lin\u0101ts)",
 		"id": "Service Provider Shib 1.3 (Remote)",
-		"sr": "Shib 1.3 Davalac Servisa (udaljeni)"
+		"sr": "Shib 1.3 Davalac Servisa (udaljeni)",
+		"ro": "Furnizor de servicii Shib 1.3 (distant)",
+		"ru": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 Shib 1.3 (\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "Shib 1.3 Zerbitzu hornitzailea (Urrunekoa)"
 	},
 	"metaover_group_metadata.shib13-idp-hosted": {
 		"no": "Shib 1.3 Identitetsleverand\u00f8r (ekstern)",
@@ -751,7 +824,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u0647\u0648\u064a\u0629 Shib 1.3 \u0627\u0644\u0645\u0633\u062a\u0636\u0627\u0641",
 		"lv": "Shib 1.3 identit\u0101tes pieg\u0101d\u0101t\u0101js (host\u0113ts)",
 		"id": "Identity Provider Shib 1.3 (Hosted)",
-		"sr": "Shib 1.3 Davalac Identiteta(lokalni)"
+		"sr": "Shib 1.3 Davalac Identiteta(lokalni)",
+		"ro": "Furnizor de identitate Shib 1.3 (g\u0103zduit)",
+		"ru": "\u041f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438 Shib 1.3 (\u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "Shib 1.3 Identitate hornitzailea (Anfitrioia)"
 	},
 	"metaover_group_metadata.shib13-idp-remote": {
 		"no": "Shib 1.3 Identitetsleverand\u00f8r (ekstern) ",
@@ -780,8 +856,73 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u0647\u0648\u064a\u0629 Shib 1.3 \u0627\u0644\u0628\u0639\u064a\u062f",
 		"lv": "Shib 1.3 identit\u0101tes pieg\u0101d\u0101t\u0101js (att\u0101lin\u0101ts)",
 		"id": "Identity Provider Shib 1.3 (Remote)",
-		"sr": "Shib 1.3 Davalac Identiteta (udaljeni)"
+		"sr": "Shib 1.3 Davalac Identiteta (udaljeni)",
+		"ro": "Furnizor de identitate Shib 1.3 (distant)",
+		"ru": "\u041f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438 Shib 1.3 (\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "Shib 1.3 Identitate hornitzailea (Urrunekoa)"
 	},
+    "metaover_group_metadata.adfs-sp-remote": {
+        "no": "ADFS Tjenesteleverand\u00f8r (ekstern)",
+        "nn": "ADFS Service Provider (Remote)",
+        "sv": "ADFS Service Provider (Fj\u00e4rr)",
+        "es": "Proveedor de Servicio ADFS (Remoto)",
+        "nl": "ADFS Service Provider (Remote)",
+        "sl": "ADFS SP (Oddaljeni)",
+        "da": "ADFS tjenesteudbyder (remote)",
+        "hr": "ADFS davatelj usluge (udaljeni)",
+        "hu": "ADFS alkalmaz\u00e1sszolg\u00e1ltat\u00f3 (t\u00e1voli)",
+        "pt-br": "ADFS Service Provider (Remoto)",
+        "pt": "Fornecedor de servi\u00e7o (SP) ADFS (Remoto)",
+        "pl": "ADFS Dostawca Serwisu (Zdalny)",
+        "cs": "SAML 2.O Service Provider (Remote - vzd\u00e1len\u00fd)",
+        "tr": "ADFS Servis Sa\u011flay\u0131c\u0131 (Uzak sistemde sunulan)",
+        "de": "ADFS Service Provider (entfernt)",
+        "fr": "Fournisseur de service ADFS distant",
+        "it": "ADFS Service Provider (Remoto)",
+        "ja": "ADFS\u30b5\u30fc\u30d3\u30b9\u30d7\u30ed\u30d0\u30a4\u30c0(\u30ea\u30e2\u30fc\u30c8)",
+        "lt": "ADFS Paslaugos teik\u0117jas (nutol\u0119s)",
+        "zh-tw": "ADFS \u670d\u52d9\u63d0\u4f9b\u8005(\u9060\u7aef)",
+        "et": "ADFS teenusepakkuja (kaug)",
+        "he": "\u05e1\u05e4\u05e7 \u05e9\u05d9\u05e8\u05d5\u05ea \u05de\u05e8\u05d5\u05d7\u05e7 \u05de\u05e1\u05d5\u05d2 ADFS",
+        "zh": "ADFS \u670d\u52a1\u63d0\u4f9b\u8005 (\u8fdc\u7a0b)",
+        "ar": "\u0645\u0642\u062f\u0645 \u062e\u062f\u0645\u0629 ADFS \u0627\u0644\u0628\u0639\u064a\u062f",
+        "lv": "ADFS servisa pieg\u0101d\u0101t\u0101js (att\u0101lin\u0101ts)",
+        "id": "Service Provider ADFS (Remote)",
+        "sr": "ADFS Davalac Servisa (udaljeni)",
+        "ro": "Furnizor de servicii ADFS (distant)",
+        "ru": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 ADFS (\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)"
+    },
+    "metaover_group_metadata.adfs-idp-hosted": {
+        "no": "ADFS Identitetsleverand\u00f8r (ekstern)",
+        "nn": "ADFS Identity Provider (Hosted)",
+        "sv": "ADFS Identity Provider (V\u00e4rd)",
+        "es": "Proveedor de Identidad ADFS (Anfitri\u00f3n)",
+        "nl": "ADFS Identity Provider (Hosted)",
+        "sl": "ADFS IdP (Lokalni)",
+        "da": "ADFS identitetsudbyder (hosted)",
+        "hr": "ADFS autentifikacijski servis (lokalni)",
+        "hu": "ADFS szem\u00e9lyazonoss\u00e1g-szolg\u00e1ltat\u00f3 (helyi)",
+        "pt-br": "ADFS Identity Provider (Local)",
+        "pt": "Fornecedor de identidade (IdP) ADFS (Local)",
+        "pl": "ADFS Dostawca To\u017csamo\u015bci (Lokalny)",
+        "cs": "ADFS Identity Provider (Hosted - lok\u00e1ln\u00ed)",
+        "tr": "ADFS Kimlik Sa\u011flay\u0131c\u0131 (Bu sistemde sunulan)",
+        "de": "ADFS Identity Provider (gehosted)",
+        "fr": "Fournisseur d'identit\u00e9 ADFS local",
+        "it": "SAML 2.o Identity Provider (Hosted)",
+        "ja": "ADFS\u30a2\u30a4\u30c7\u30f3\u30c6\u30a3\u30c6\u30a3\u30d7\u30ed\u30d0\u30a4\u30c0(\u30db\u30b9\u30c8)",
+        "lt": "ADFS Tapatybi\u0173 teik\u0117jas (vietinis)",
+        "zh-tw": "ADFS \u9a57\u8b49\u63d0\u4f9b\u8005(\u4e3b\u6a5f)",
+        "et": "ADFS identiteedipakkuja (hostitud)",
+        "he": "\u05e1\u05e4\u05e7 \u05d6\u05d4\u05d5\u05ea \u05de\u05e7\u05d5\u05de\u05d9 \u05de\u05e1\u05d5\u05d2 ADFS",
+        "zh": "ADFS \u8eab\u4efd\u63d0\u4f9b\u8005\uff08\u672c\u5730\uff09",
+        "ar": "\u0645\u0642\u062f\u0645 \u0647\u0648\u064a\u0629 ADFS \u0627\u0644\u0645\u0633\u062a\u0636\u0627\u0641",
+        "lv": "ADFS identit\u0101tes pieg\u0101d\u0101t\u0101js (host\u0113ts)",
+        "id": "Identity Provider ADFS (Hosted)",
+        "sr": "ADFS Davalac Identiteta (lokalni)",
+        "ro": "Furnizor de identitate ADFS (g\u0103zduit)",
+        "ru": "\u041f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438 ADFS (\u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)"
+    },
 	"metaover_group_metadata.wsfed-sp-hosted": {
 		"no": "WS-Federation tjenesteleverand\u00f8r (intern)",
 		"nn": "WS-Federation Service Provider (Hosted)",
@@ -809,7 +950,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u062e\u062f\u0645\u0629 WS-\u0627\u0644\u0641\u062f\u0631\u0627\u0644\u064a\u0629 \u0627\u0644\u0645\u0633\u062a\u0636\u0627\u0641 ",
 		"lv": "WS-Federation servisa pieg\u0101d\u0101t\u0101js (host\u0113ts)",
 		"id": "Servide Provider WS-Federation (Hosted)",
-		"sr": "WS-Federation Davalac Servisa (lokalni)"
+		"sr": "WS-Federation Davalac Servisa (lokalni)",
+		"ro": "Furnizor de servicii federa\u021bie WS (g\u0103zduit)",
+		"ru": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 WS-Federation (\u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "WS-Federation Zerbitzu hornitzailea (Anfitrioia)"
 	},
 	"metaover_group_metadata.wsfed-idp-remote": {
 		"no": "WS-Federation identitetsleverand\u00f8r (ekstern)",
@@ -838,7 +982,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u062e\u062f\u0645\u0629 WS-\u0627\u0644\u0641\u062f\u0631\u0627\u0644\u064a\u0629 \u0627\u0644\u0628\u0639\u064a\u062f",
 		"lv": "WS-Federation servisa pieg\u0101d\u0101t\u0101js (att\u0101lin\u0101ts)",
 		"id": "Identity Provider WS-Federation (Remote)",
-		"sr": "WS-Federation Davalac Servisa (udaljeni)"
+		"sr": "WS-Federation Davalac Servisa (udaljeni)",
+		"ro": "Furnizor de servicii federa\u021bie WS (distant)",
+		"ru": "\u041f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438 WS-Federation (\u0443\u0434\u0430\u043b\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "WS-Federation Identitate hornitzailea (Urrunekoa)"
 	},
 	"metaconv_title": {
 		"no": "Metadata parser",
@@ -867,7 +1014,10 @@
 		"ar": "\u0645\u062d\u0644\u0644 \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629\/\u0627\u0644\u0645\u064a\u062a\u0627\u062f\u0627\u062a\u0627",
 		"lv": "Metadatu pars\u0113t\u0101js",
 		"id": "Parser metadata",
-		"sr": "Metadata analizator"
+		"sr": "Metadata analizator",
+		"ro": "Analizor de metadate",
+		"ru": "\u0421\u0440\u0435\u0434\u0441\u0442\u0432\u043e \u0441\u0438\u043d\u0442\u0430\u043a\u0441\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u0430\u043d\u0430\u043b\u0438\u0437\u0430 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0445",
+		"eu": "Metadatuak aztertu"
 	},
 	"metaconv_xmlmetadata": {
 		"no": "XML metadata",
@@ -896,7 +1046,10 @@
 		"ar": "\u0628\u064a\u0627\u0646\u0627\u062a \u0648\u0635\u0641\u064a\u0629 \u0628\u0635\u064a\u063a\u0629 XML",
 		"lv": "XML metadati",
 		"id": "metadata XML",
-		"sr": "Metapodaci u XML formatu"
+		"sr": "Metapodaci u XML formatu",
+		"ro": "Metadate XML",
+		"ru": "XML \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435",
+		"eu": "XML metadatuak"
 	},
 	"metaconv_parse": {
 		"no": "Pars",
@@ -925,7 +1078,10 @@
 		"ar": "\u062d\u0644\u0644",
 		"lv": "Pars\u0113t",
 		"id": "Parse",
-		"sr": "Analiziraj"
+		"sr": "Analiziraj",
+		"ro": "Analizeaz\u0103",
+		"ru": "\u0412\u044b\u043f\u043e\u043b\u043d\u0438\u0442\u044c \u0441\u0438\u043d\u0442\u0430\u043a\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437",
+		"eu": "Aztertu"
 	},
 	"metaconv_converted": {
 		"no": "Konvertert metadata",
@@ -954,7 +1110,10 @@
 		"ar": "\u0628\u064a\u0627\u0646\u0627\u062a \u0648\u0635\u0641\u064a\u0629 \u0645\u062d\u0648\u0644\u0629",
 		"lv": "Konvert\u0113tie metadati",
 		"id": "Metadata yang telah dikonvesi",
-		"sr": "Konvertovani metapodaci"
+		"sr": "Konvertovani metapodaci",
+		"ro": "Metadate convertite",
+		"ru": "\u041f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435",
+		"eu": "Bihurtutako metadatuak"
 	},
 	"metadata_saml20-sp": {
 		"no": "SAML 2.0 SP metadata",
@@ -983,7 +1142,10 @@
 		"ar": "\u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0644 SAML 2.0 SP",
 		"lv": "SAML 2.0 SP metadati",
 		"id": "Metadata SAML 2.0 SP",
-		"sr": "SAML 2.0 SP metapodaci"
+		"sr": "SAML 2.0 SP metapodaci",
+		"ro": "Metadate furnizor de servicii (SP) SAML 2.0",
+		"ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435 SAML 2.0 SP",
+		"eu": "SAML 2.0 SP Metadatuak"
 	},
 	"metadata_saml20-idp": {
 		"no": "SAML 2.0 IdP metadata",
@@ -1012,7 +1174,10 @@
 		"ar": "\u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0644 SAML 2.0 IdP",
 		"lv": "SAML 2.0 IdP metadati",
 		"id": "Metadata SAML 2.0 IdP",
-		"sr": "SAML 2.0 IdP metapodaci"
+		"sr": "SAML 2.0 IdP metapodaci",
+		"ro": "Metadate furnizor de identitate (IdP) SAML 2.0",
+		"ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435 SAML 2.0 IdP",
+		"eu": "SAML 2.0 IdP Metadatuak"
 	},
 	"metadata_shib13-sp": {
 		"no": "Shib 1.3 SP metadata",
@@ -1041,7 +1206,10 @@
 		"ar": "\u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0644Shib 1.3 SP",
 		"lv": "Shib 1.3 SP metadati",
 		"id": "Metadata Shib 1.3 SP",
-		"sr": "Shib 1.3 SP metapodaci"
+		"sr": "Shib 1.3 SP metapodaci",
+		"ro": "Metadate furnizor de servicii (SP) Shib 1.3",
+		"ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435 Shib 1.3 SP",
+		"eu": "Shib 1.3 SP Metadatuak"
 	},
 	"metadata_shib13-idp": {
 		"no": "Shib 1.3 IdP metadata",
@@ -1070,9 +1238,74 @@
 		"ar": "\u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0644Shib 1.3 IdP",
 		"lv": "Shib 1.3 IdP metadati",
 		"id": "Metadata Shib 1.3 IdP",
-		"sr": "Shib 1.3 IdP metapodaci"
+		"sr": "Shib 1.3 IdP metapodaci",
+		"ro": "Metadate furnizor de identitate (IdP) Shib 1.3",
+		"ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435 Shib 1.3 IdP",
+		"eu": "Shib 1.3 IdP Metadatuak"
 	},
-	"metadata_intro": {
+    "metadata_adfs-sp": {
+        "no": "ADFS SP metadata",
+        "nn": "ADFS SP Metadata",
+        "sv": "ADFS SP Metadata",
+        "es": "Metadatos SP ADFS",
+        "nl": "ADFS SP Metadata",
+        "sl": "ADFS SP Metapodatki",
+        "da": "Shibboleth 1.3 tjenesteudbyders metadata",
+        "hr": "ADFS metapodaci o davatelju usluge",
+        "hu": "ADFS SP Metaadatok",
+        "pt-br": "ADFS SP Metadata",
+        "pt": "Metadados ADFS SP",
+        "pl": "ADFS SP - Metadane",
+        "cs": "ADFS SP Metadata",
+        "tr": "ADFS SP \u00dcstveri (Metadata)",
+        "de": "ADFS SP Metadaten",
+        "fr": "M\u00e9tadonn\u00e9es de SP ADFS",
+        "it": "Metadati ADFS SP",
+        "ja": "ADFS SP\u30e1\u30bf\u30c7\u30fc\u30bf",
+        "lt": "ADFS SP Metaduomenys",
+        "zh-tw": "ADFS SP \u8a6e\u91cb\u8cc7\u6599",
+        "et": "ADFS SP metaandmed",
+        "he": "\u05de\u05d8\u05d0-\u05de\u05d9\u05d3\u05e2 \u05e9\u05dc \u05e1\u05e9 \u05de\u05e1\u05d5\u05d2 ADFS",
+        "zh": "ADFS SP \u5143\u4fe1\u606f",
+        "ar": "\u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0644ADFS SP",
+        "lv": "ADFS SP metadati",
+        "id": "Metadata ADFS SP",
+        "sr": "ADFS SP metapodaci",
+        "ro": "Metadate furnizor de servicii (SP) ADFS",
+        "ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435 ADFS SP"
+    },
+    "metadata_adfs-idp": {
+        "no": "ADFS IdP metadata",
+        "nn": "ADFS IdP Metadata",
+        "sv": "ADFS IdP Metadata",
+        "es": "Metadatos IdP ADFS",
+        "nl": "ADFS IdP Metadata",
+        "sl": "ADFS IdP Metapodatki",
+        "da": "ADFS identitetsudbyders metadata",
+        "hr": "ADFS metapodaci o autentifikacijskom servisu",
+        "hu": "ADFS IdP Metaadatok",
+        "pt-br": "ADFS IdP Metadata",
+        "pt": "Metadados ADFS IdP",
+        "pl": "ADFS IdP - Metadane",
+        "cs": "ADFS IdP Metadata",
+        "tr": "ADFS IdP \u00dcstveri (Metadata)",
+        "de": "ADFS IdP Metadaten",
+        "fr": "M\u00e9tadonn\u00e9es d'IdP ADFS",
+        "it": "Metadati ADFS IdP",
+        "ja": "ADFS IdP\u30e1\u30bf\u30c7\u30fc\u30bf",
+        "lt": "ADFS IdP Metaduomenys",
+        "zh-tw": "ADFS IdP \u8a6e\u91cb\u8cc7\u6599",
+        "et": "ADFS IdP metaandmed",
+        "he": "\u05de\u05d8\u05d0-\u05de\u05d9\u05d3\u05e2 \u05e9\u05dc \u05e1\u05d6 \u05de\u05e1\u05d5\u05d2 ADFS ",
+        "zh": "ADFS IdP \u5143\u4fe1\u606f",
+        "ar": "\u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0644 ADFS IdP",
+        "lv": "ADFS IdP metadati",
+        "id": "Metadata ADFS IdP",
+        "sr": "ADFS IdP metapodaci",
+        "ro": "Metadate furnizor de identitate (IdP) ADFS",
+        "ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435 ADFS IdP"
+    },
+    "metadata_intro": {
 		"no": "Her er metadata som simpleSAMLphp har generert for deg. Du m\u00e5 utveksle metadata med de partene du stoler p\u00e5 for \u00e5 sette opp en f\u00f8derasjon.",
 		"nn": "Her er metadata generert av simpleSAMLphp for deg.  Du kan senda dette metadata-dokumentet til dine partnarar, slik at de kan setja opp ein tillitsf\u00f8derasjon.",
 		"sv": "simpleSAMLphp har har genererat f\u00f6ljande metadata. F\u00f6r att s\u00e4tta upp en betrodd federation kan du skicka metadata till de parter du har f\u00f6rtroende f\u00f6r.",
@@ -1099,7 +1332,10 @@
 		"ar": "\u0647\u0630\u0647 \u0647\u064a \u0628\u064a\u0627\u0646\u0627\u062a\u0643 \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0627\u0644\u0645\u062c\u0647\u0632\u0629 \u0628\u0648\u0627\u0633\u0637\u0629 SAMLphp. \u0644\u0644\u062a\u062c\u0647\u064a\u0632 \u0644\u0641\u062f\u0631\u0627\u0644\u064a\u0629 \u0645\u0648\u062b\u0648\u0642 \u0628\u0647\u0627 \u0642\u0645 \u0628\u0625\u0631\u0633\u0627\u0644 \u0647\u0630\u0647 \u0627\u0644\u0648\u062b\u064a\u0642\u0629  \u0644\u0634\u0631\u0643\u0627\u0621 \u0645\u0648\u062b\u0648\u0642 \u0628\u0647\u0645",
 		"lv": "\u0160eit ir simpleSAMLphp \u0123ener\u0113tie metadati. J\u016bs varat tos s\u016bt\u012bt partneriem, lai izveidotu uzticamu feder\u0101ciju.",
 		"id": "Berikut ini adalah simpleSAMLphp metadata yang telah digenerate untuk Anda. Anda dapat mengirim dokumen metadata ini kepada rekan yang dipercayai untuk mensetup federasi terpercaya.",
-		"sr": "Ovo su metapodaci koje je simpleSAMLphp izgenerisao za vas. Te metapodatke mo\u017eete poslati davaocima servisa ili davaocima identiteta u koje imate poverenja i sa kojima \u017eelite uspostaviti federaciju."
+		"sr": "Ovo su metapodaci koje je simpleSAMLphp izgenerisao za vas. Te metapodatke mo\u017eete poslati davaocima servisa ili davaocima identiteta u koje imate poverenja i sa kojima \u017eelite uspostaviti federaciju.",
+		"ro": "Acestea sunt metadate generate de simpleSAMLphp. Metadatele pot fi trimise c\u0103tre parteneri de \u00eencredere pentru a configura o federa\u021bie de \u00eencredere.",
+		"ru": "\u041c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u0435, \u0441\u0433\u0435\u043d\u0435\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0434\u043b\u044f \u0432\u0430\u0441 \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e simpleSAMLphp. \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0439 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442 \u0441 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u043c\u0438 \u0434\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u043c \u043f\u0430\u0440\u0442\u043d\u0435\u0440\u0430\u043c \u0434\u043b\u044f \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u0444\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u0438.",
+		"eu": "Hona hemen simpleSAMLphp-ak zuretzat sortu dituen metadatuak. Metadatuen dokumentu hau konfidantzazko zure kideei bidal diezaiekezu federazio bat konfiguratzeko."
 	},
 	"metadata_xmlurl": {
 		"no": "Du kan n\u00e5 <a href=\"%METAURL%\">metadata i XML-format p\u00e5 en dedikert URL<\/a>:",
@@ -1128,7 +1364,10 @@
 		"ar": "\u064a\u0645\u0643\u0646\u0643 \u0627\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u064a \u0628\u064a\u0627\u0646\u0627\u062a\u0643 \u0627\u0644\u0648\u0635\u0641\u064a\u0629 \u0628\u0645\u0644\u0641 xml \u0628 URL \u0645\u062a\u062e\u0635\u0635 \u0628\u0625\u062f\u062e\u0627\u0644<a href=\"%METAURL%\">",
 		"lv": "J\u016bs varat <a href=\"%METAURL%\">sa\u0146emt metadatu xml \u0161aj\u0101 URL<\/a>:",
 		"id": "Anda dapat <a href=\"%METAURL%\">mendapatkan xml metadata pada URL tersendiri<\/a>:",
-		"sr": "Metapodaci su dostupni na <a href=\"%METAURL%\">ovoj adresi<\/a>:"
+		"sr": "Metapodaci su dostupni na <a href=\"%METAURL%\">ovoj adresi<\/a>:",
+		"ro": "Pute\u021bi accesa <a href=\"%METAURL%\">metadatele xml de la un URL dedicat<\/a>:",
+		"ru": "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435<a href=\"%METAURL%\"> \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c xml \u0444\u0430\u0439\u043b \u0441 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u043c\u0438 \u043f\u043e \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 URL<\/a>:",
+		"eu": "<a href=\"%METAURL%\">xml metadatuekin URL bat<\/a> eskura dezakezu:"
 	},
 	"metadata_simplesamlformat": {
 		"no": "I simpleSAMLphp format - bruk denne dersom du benytter simpleSAMLphp i den andre enden:",
@@ -1156,7 +1395,10 @@
 		"ar": "\u0628\u0635\u064a\u063a\u0629 simpleSAMLphp- \u0627\u0633\u062a\u062e\u062f\u0645 \u0647\u0630\u0647 \u0627\u0644\u0635\u064a\u063a\u0629 \u0627\u0646 \u0643\u0646\u062a \u062a\u0633\u062a\u062e\u062f\u0645 \u0648\u062d\u062f\u0629 simpleSAMLphp \u0628\u0627\u0644\u0627\u062a\u062c\u0627\u0647 \u0627\u0644\u0627\u062e\u0631 \u0627\u064a\u0636\u0627\u064b",
 		"lv": "SimpleSAMLphp parasta faila form\u0101t\u0101 - lietojiet \u0161o, ja izmantojat simpleSAMLphp ent\u012btiju otr\u0101 gal\u0101:",
 		"id": "Dalam format file biasa simpleSAMLphp - gunakan ini jika Anda menggunakan entiti simpleSAMLphp pada sisi lain:",
-		"sr": "U simpleSAMLphp formatu - koristite ovu opciju ako se na drugoj strani tako\u0111e nalazi simpleSAMLphp entitet:"
+		"sr": "U simpleSAMLphp formatu - koristite ovu opciju ako se na drugoj strani tako\u0111e nalazi simpleSAMLphp entitet:",
+		"ro": "\u00cen format fi\u0219ier simplu simpleSAMLphp - utiliza\u021bi aceast\u0103 variant\u0103 dac\u0103 \u00een cap\u0103tul cel\u0103lalt folosi\u021bi o entitate simpleSAMLphp:",
+		"ru": "\u0424\u043e\u0440\u043c\u0430\u0442 \u043f\u0440\u043e\u0441\u0442\u043e\u0433\u043e simpleSAMLphp \u0444\u0430\u0439\u043b\u0430",
+		"eu": "simpleSAMLphp formatuko fitxategi batean - beste muturrean simpleSAMLphp entitate bat erabiltzen ariz gero, erabil ezazu aukera hau:"
 	},
 	"debug_sending_message_title": {
 		"no": "Sender melding",
@@ -1172,6 +1414,7 @@
 		"pt": "A enviar a mensagem",
 		"pl": "Wysy\u0142anie wiadomo\u015bci",
 		"cs": "Pos\u00edl\u00e1m zpr\u00e1vu",
+		"eu": "Mezua bidaltzen",
 		"tr": "Mesaj g\u00f6nderiliyor",
 		"de": "Sende Nachricht",
 		"fr": "Envoi du message",
@@ -1185,7 +1428,9 @@
 		"ar": "\u0627\u0631\u0633\u0644 \u0631\u0633\u0627\u0644\u0629",
 		"lv": "Zi\u0146as s\u016bt\u012b\u0161ana",
 		"id": "Mengirimpan pesan",
-		"sr": "\u0160aljem poruku"
+		"sr": "\u0160aljem poruku",
+		"ro": "Se trimite mesajul",
+		"ru": "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f"
 	},
 	"debug_sending_message_text_button": {
 		"no": "Du er i ferd med \u00e5 sende en melding. Trykk knappen \u00abSend melding\u00bb for \u00e5 fortsette.",
@@ -1200,6 +1445,7 @@
 		"pt-br": "Voc\u00ea est\u00e1 prestes a enviar uma mensagem. Aperte o bot\u00e3o enviar mensagem para continuar.",
 		"pt": "Est\u00e1 prestes a enviar uma mensagem. Carregue no bot\u00e3o para continuar.",
 		"cs": "M\u016f\u017eete poslat zpr\u00e1vu. Po\u017eijte tla\u010d\u00edtko k pokra\u010dov\u00e1n\u00ed.",
+		"eu": "Mezu bat bidaltzeari ekingo zaio. Saka ezazu \"Mezua bidali\" botoia jarraitzeko.",
 		"tr": "Mesaj g\u00f6ndermek \u00fczeresiniz. Devam etmek i\u00e7in mesaj g\u00f6nder butonuna t\u0131klay\u0131n.",
 		"de": "Sie sind dabei eine Nachricht zu senden. Klicken Sie auf den Nachricht senden Knopf um fortzufahren.",
 		"fr": "Vous allez envoyer un message. Cliquez sur le bouton d'envoi pour continuer.",
@@ -1213,7 +1459,9 @@
 		"ar": "\u0627\u0646\u062a \u0639\u0644\u064a \u0648\u0634\u0643 \u0625\u0631\u0633\u0627\u0644 \u0631\u0633\u0627\u0644\u0629. \u0627\u0636\u063a\u0637 \u0639\u0644\u064a \u0627\u0644\u0632\u0631 \u0644\u0644\u0645\u0648\u0627\u0635\u0644\u0629",
 		"lv": "J\u016bs gatavojaties s\u016bt\u012bt zi\u0146u. Spiediet pogu S\u016bt\u012bt zi\u0146u.",
 		"id": "Anda baru saja akan mengirim sebuah pesan. Tekan tombol submit pesan untuk melanjutkan.",
-		"sr": "Kliknite na dugme \"Po\u0161alji poruku\" da biste poslali poruku."
+		"sr": "Kliknite na dugme \"Po\u0161alji poruku\" da biste poslali poruku.",
+		"ro": "Mesajul este preg\u0103tit pentru a fi trimis. Ap\u0103sa\u021bi butonul de trimitere pentru a continua.",
+		"ru": "\u0412\u044b \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u0442\u0435\u0441\u044c \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435. \u041a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u043a\u043b\u0430\u0432\u0438\u0448\u0443 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0435\u043d\u0438\u044f."
 	},
 	"debug_disable_debug_mode": {
 		"no": "Do kan skru av debug modus i den globale simpleSAMLphp konfigurasjonsfila <tt>config\/config.php<\/tt>.",
@@ -1242,7 +1490,10 @@
 		"ar": "\u064a\u0645\u0643\u0646\u0643 \u0625\u063a\u0644\u0627\u0642 \u062d\u0627\u0644\u0629 \u0627\u0644\u062a\u0635\u062d\u064a\u062d \u0628\u0645\u0644\u0641 \u062a\u0631\u062a\u064a\u0628 simpleSAMLphp<tt>config\/config.php<\/tt>",
 		"lv": "J\u016bs varat izsl\u0113gt atk\u013c\u016bdo\u0161anas re\u017e\u012bmu glob\u0101laj\u0101 simpleSAMLphp konfigur\u0101cijas fail\u0101 <tt>config\/config.php<\/tt>.",
 		"id": "Anda dapat menonaktifkan mode debuh pada file konfigurasi global simpleSAMLhphp  <tt>config\/config.php<\/tt>.",
-		"sr": "Debug mod mo\u017eete isklju\u010diti u glavnom simpleSAMLphp konfiguracionom fajlu <tt>config\/config.php<\/tt>. "
+		"sr": "Debug mod mo\u017eete isklju\u010diti u glavnom simpleSAMLphp konfiguracionom fajlu <tt>config\/config.php<\/tt>. ",
+		"ro": "Se poate opri modul de depanare \u00een fi\u0219ierul de configurare simpleSAMLphp <tt>config\/config.php<\/tt>.",
+		"ru": "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0440\u0435\u0436\u0438\u043c \u043e\u0442\u043b\u0430\u0434\u043a\u0438 \u0432 \u0444\u0430\u0439\u043b\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 global simpleSAMLphp -<tt>config\/config.php<\/tt>. ",
+		"eu": "Arazketa modua desaktibatu daiteke simpleSAMLphp <tt>config\/config.php<\/tt> konfigurazio orokorreko fitxategian."
 	},
 	"metaover_group_metadata.saml20-sp-hosted": {
 		"no": "SAML 2.0 tjenesteleverand\u00f8r (intern)",
@@ -1271,7 +1522,10 @@
 		"ar": "\u0645\u0642\u062f\u0645 \u062e\u062f\u0645\u0629 SAML 2.0 (\u0627\u0644\u0645\u0633\u062a\u0636\u0627\u0641)",
 		"lv": "SAML 2.0 servisa pieg\u0101d\u0101t\u0101js (host\u0113ts)",
 		"id": "Service Provider SAML 2.0 (Hosted)",
-		"sr": "SAML 2.0 Davalac Servisa (lokalni)"
+		"sr": "SAML 2.0 Davalac Servisa (lokalni)",
+		"ro": "Furnizor de servicii SAML 2.0 (g\u0103zduit)",
+		"ru": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043f\u0440\u043e\u0432\u0430\u0439\u0434\u0435\u0440 SAML 2.0 (\u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435)",
+		"eu": "SAML 2.0 Zerbitzu hornitzailea (Anfitrioia)"
 	},
 	"cfg_check_notices": {
 		"no": "Notiser",
@@ -1301,7 +1555,9 @@
 		"ar": "\u0645\u0644\u062d\u0648\u0638\u0627\u062a",
 		"lv": "Br\u012bdin\u0101jumi",
 		"id": "Pemberitahuan",
-		"sr": "Napomene"
+		"sr": "Napomene",
+		"ro": "Note\/Observa\u021bii",
+		"eu": "Oharrak"
 	},
 	"metadata_cert": {
 		"nl": "Certificaten",
@@ -1323,7 +1579,11 @@
 		"fr": "Certificats",
 		"cs": "Certifik\u00e1ty",
 		"it": "Certificati",
-		"es": "Certificados"
+		"es": "Certificados",
+		"ro": "Certificate",
+		"ru": "\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b",
+		"no": "Sertifikater",
+		"eu": "Ziurtagiriak"
 	},
 	"metadata_cert_intro": {
 		"nl": "Download de X509-certificaten in PEM-formaat.",
@@ -1345,6 +1605,10 @@
 		"fr": "T\u00e9l\u00e9charger les certificats X509 en tant que fichiers encod\u00e9s PEM.",
 		"cs": "St\u00e1hn\u011bte certifik\u00e1t X509 jako PEM-encoded soubor",
 		"it": "Scarica i certificati X509 come file PEM-encoded",
-		"es": "Descargar los certificados X509 en formato PEM."
+		"es": "Descargar los certificados X509 en formato PEM.",
+		"ro": "Desc\u0103rca\u021bi certificatele X509 ca fi\u0219iere PEM.",
+		"ru": "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b X509 \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 PEM \u0444\u0430\u0439\u043b\u043e\u0432.",
+		"no": "Last ned X509-sertifikatene som PEM-filer.",
+		"eu": "X509 ziurtagiriak PEM formatuan deskargatu."
 	}
 }

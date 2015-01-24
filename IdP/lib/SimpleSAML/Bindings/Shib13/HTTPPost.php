@@ -5,7 +5,6 @@
  *
  * @author Andreas Åkre Solberg, UNINETT AS. <andreas.solberg@uninett.no>
  * @package simpleSAMLphp
- * @version $Id: HTTPPost.php 2542 2010-09-10 13:14:09Z olavmrk $
  */
 class SimpleSAML_Bindings_Shib13_HTTPPost {
 
@@ -120,4 +119,3 @@ class SimpleSAML_Bindings_Shib13_HTTPPost {
 
 }
 
-?>

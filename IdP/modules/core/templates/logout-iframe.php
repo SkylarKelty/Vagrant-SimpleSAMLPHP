@@ -50,8 +50,6 @@ if (!isset($this->data['head'])) {
 	$this->data['head'] = '';
 }
 
-$this->data['head'] .= '<script type="text/javascript" src="/' . $this->data['baseurlpath'] . 'resources/jquery.js"></script>';
-
 $this->data['head'] .= '
 <script type="text/javascript" language="JavaScript">
 window.stateImage = ' . json_encode($stateImage) . ';
@@ -74,7 +72,10 @@ if ($type === 'embed') {
 } else {
 	$this->includeAtTemplateBase('includes/header.php');
 }
-
+?>
+<div id="wrap">
+  <div id="content">
+<?php
 if ($from !== NULL) {
 
 	echo('<div><img style="float: left; margin-right: 12px" src="/' . $this->data['baseurlpath'] . 'resources/icons/checkmark.48x48.png" alt="Successful logout" />');
@@ -167,7 +168,6 @@ echo('<form method="post" action="logout-iframe-done.php" id="failed-form" targe
 echo('<input type="hidden" name="id" value="' . $id . '" />');
 echo('<input type="submit" name="continue" value="' . $this->t('{logout:return}'). '" />');
 echo('</form>');
-
 echo('</div>');
 
 if ($nProgress == 0 && $nFailed == 0) {
@@ -203,7 +203,10 @@ if ($type === 'js') {
 <?php
 }
 ?>
-
+  </div>
+  <!-- #content -->
+</div>
+<!-- #wrap -->
 <?php
 if ($type === 'embed') {
 	$this->includeAtTemplateBase('includes/footer-embed.php');

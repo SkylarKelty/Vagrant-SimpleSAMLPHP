@@ -17,7 +17,6 @@
  *
  * @author Olav Morken, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 abstract class SimpleSAML_Auth_ProcessingFilter {
 
@@ -65,5 +64,3 @@ abstract class SimpleSAML_Auth_ProcessingFilter {
 	abstract public function process(&$request);
 
 }
-
-?>

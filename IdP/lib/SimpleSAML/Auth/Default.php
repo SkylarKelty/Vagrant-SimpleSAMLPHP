@@ -8,7 +8,6 @@
  *
  * @author Olav Morken, UNINETT AS.
  * @package simpleSAMLphp
- * @version $Id$
  */
 class SimpleSAML_Auth_Default {
 
@@ -19,13 +18,21 @@ class SimpleSAML_Auth_Default {
 	 * This function never returns.
 	 *
 	 * @param string $authId  The identifier of the authentication source.
-	 * @param string|array $return  The URL or function we should direct the user to after authentication.
-	 * @param string|NULL $errorURL  The URL we should direct the user to after failed authentication.
-	 *                               Can be NULL, in which case a standard error page will be shown.
-	 * @param array $params  Extra information about the login. Different authentication requestors may
-	 *                       provide different information. Optional, will default to an empty array.
+	 * @param string|array $return The URL or function we should direct the
+	 * user to after authentication. If using a URL obtained from user input,
+	 * please make sure to check it by calling
+	 * SimpleSAML_Utilities::checkURLAllowed().
+	 * @param string|NULL $errorURL The URL we should direct the user to after
+	 * failed authentication. Can be NULL, in which case a standard error page
+	 * will be shown. If using a URL obtained from user input, please make sure
+	 * to check it by calling SimpleSAML_Utilities::checkURLAllowed().
+	 * @param array $params Extra information about the login. Different
+	 * authentication requestors may provide different information. Optional,
+	 * will default to an empty array.
 	 */
-	public static function initLogin($authId, $return, $errorURL = NULL, array $params = array()) {
+	public static function initLogin($authId, $return, $errorURL = NULL,
+		array $params = array()) {
+
 		assert('is_string($authId)');
 		assert('is_string($return) || is_array($return)');
 		assert('is_string($errorURL) || is_null($errorURL)');
@@ -91,7 +98,7 @@ class SimpleSAML_Auth_Default {
 		}
 
 		/* Add those that should always be included. */
-		foreach (array('Attributes', 'Expire', 'LogoutState', 'AuthnInstant') as $a) {
+		foreach (array('Attributes', 'Expire', 'LogoutState', 'AuthnInstant', 'RememberMe') as $a) {
 			if (isset($state[$a])) {
 				$persistentAuthState[$a] = $state[$a];
 			}
@@ -116,12 +123,12 @@ class SimpleSAML_Auth_Default {
 		$return = $state['SimpleSAML_Auth_Default.Return'];
 
 		/* Save session state. */
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		$session->doLogin($state['SimpleSAML_Auth_Default.id'], self::extractPersistentAuthState($state));
 
 		if (is_string($return)) {
 			/* Redirect... */
-			SimpleSAML_Utilities::redirect($return);
+			SimpleSAML_Utilities::redirectTrustedURL($return);
 		} else {
 			call_user_func($return, $state);
 			assert('FALSE');
@@ -132,25 +139,22 @@ class SimpleSAML_Auth_Default {
 	/**
 	 * Start logout.
 	 *
-	 * This function starts a logout operation from the current authentication source. This function
-	 * will return if the logout operation does not require a redirect.
+	 * This function starts a logout operation from the current authentication
+	 * source. This function will return if the logout operation does not
+	 * require a redirect.
 	 *
-	 * @param string $returnURL  The URL we should redirect the user to after logging out.
-	 * @param string|NULL $authority  The authentication source we are logging out from, or NULL to log out of the most recent.
+	 * @param string $returnURL The URL we should redirect the user to after
+	 * logging out. No checking is performed on the URL, so make sure to verify
+	 * it on beforehand if the URL is obtained from user input. Refer to
+	 * SimpleSAML_Utilities::checkURLAllowed() for more information.
+	 * @param string $authority The authentication source we are logging
+	 * out from.
 	 */
-	public static function initLogoutReturn($returnURL, $authority = NULL) {
+	public static function initLogoutReturn($returnURL, $authority) {
 		assert('is_string($returnURL)');
-		assert('is_string($authority) || is_null($authority)');
+		assert('is_string($authority)');
 
-		$session = SimpleSAML_Session::getInstance();
-
-		if ($authority === NULL) {
-			$authority = $session->getAuthority();
-			if ($authority === NULL) {
-				/* Already logged out - nothing to do here. */
-				return;
-			}
-		}
+		$session = SimpleSAML_Session::getSessionFromRequest();
 
 		$state = $session->getAuthData($authority, 'LogoutState');
 		$session->doLogout($authority);
@@ -171,20 +175,25 @@ class SimpleSAML_Auth_Default {
 	/**
 	 * Start logout.
 	 *
-	 * This function starts a logout operation from the current authentication source. This function
-	 * never returns.
+	 * This function starts a logout operation from the current authentication
+	 * source. This function never returns.
 	 *
-	 * @param string $returnURL  The URL we should redirect the user to after logging out.
-	 * @param string|NULL $authority  The authentication source we are logging out from, or NULL to log out of the most recent.
+	 * @param string $returnURL The URL we should redirect the user to after
+	 * logging out. No checking is performed on the URL, so make sure to verify
+	 * it on beforehand if the URL is obtained from user input. Refer to
+	 * SimpleSAML_Utilities::checkURLAllowed() for more information.
+	 * @param string|NULL $authority The authentication source we are logging
+	 * out from.
+	 * @return void This function never returns.
 	 */
-	public static function initLogout($returnURL, $authority = NULL) {
+	public static function initLogout($returnURL, $authority) {
 		assert('is_string($returnURL)');
-		assert('is_string($authority) || is_null($authority)');
+		assert('is_string($authority)');
 
 		self::initLogoutReturn($returnURL, $authority);
 
 		/* Redirect... */
-		SimpleSAML_Utilities::redirect($returnURL);
+		SimpleSAML_Utilities::redirectTrustedURL($returnURL);
 	}
 
 
@@ -202,7 +211,7 @@ class SimpleSAML_Auth_Default {
 		$returnURL = $state['SimpleSAML_Auth_Default.ReturnURL'];
 
 		/* Redirect... */
-		SimpleSAML_Utilities::redirect($returnURL);
+		SimpleSAML_Utilities::redirectTrustedURL($returnURL);
 	}
 
 
@@ -217,17 +226,18 @@ class SimpleSAML_Auth_Default {
 
 		$source = $state['SimpleSAML_Auth_Default.logoutSource'];
 
-		$session = SimpleSAML_Session::getInstance();
-		$authId = $session->getAuthority();
 
-		if ($authId !== $source) {
-			SimpleSAML_Logger::warning('Received logout from different authentication source ' .
-				'than the current. Current is ' . var_export($authId, TRUE) .
-				'. Logout source is ' . var_export($source, TRUE) . '.');
+		$session = SimpleSAML_Session::getSessionFromRequest();
+		if (!$session->isValid($source)) {
+			SimpleSAML_Logger::warning(
+				'Received logout from an invalid authentication source '.
+				var_export($source, TRUE)
+			);
+
 			return;
 		}
 
-		$session->doLogout();
+		$session->doLogout($source);
 	}
 
 
@@ -239,21 +249,23 @@ class SimpleSAML_Auth_Default {
 	 *
 	 * This is used to handle IdP initiated SSO.
 	 *
-	 * @param string $authId  The id of the authentication source that received the request.
-	 * @param array $state  A state array.
-	 * @param string $redirectTo  The URL we should redirect the user to after
-	 *                            updating the session.
+	 * @param string $authId The id of the authentication source that received
+	 * the request.
+	 * @param array $state A state array.
+	 * @param string $redirectTo The URL we should redirect the user to after
+	 * updating the session. The function will check if the URL is allowed, so
+	 * there is no need to manually check the URL on beforehand. Please refer
+	 * to the 'trusted.url.domains' configuration directive for more
+	 * information about allowing (or disallowing) URLs.
 	 */
 	public static function handleUnsolicitedAuth($authId, array $state, $redirectTo) {
 		assert('is_string($authId)');
 		assert('is_string($redirectTo)');
 
-		$session = SimpleSAML_Session::getInstance();
+		$session = SimpleSAML_Session::getSessionFromRequest();
 		$session->doLogin($authId, self::extractPersistentAuthState($state));
 
 		SimpleSAML_Utilities::redirectUntrustedURL($redirectTo);
 	}
 
 }
-
-?>

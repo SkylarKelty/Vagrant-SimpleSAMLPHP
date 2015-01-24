@@ -4,7 +4,6 @@
  * Give a warning to the user if we receive multiple requests in a short time.
  *
  * @package simpleSAMLphp
- * @version $Id$
  */
 class sspmod_core_Auth_Process_WarnShortSSOInterval extends SimpleSAML_Auth_ProcessingFilter {
 
@@ -47,9 +46,7 @@ class sspmod_core_Auth_Process_WarnShortSSOInterval extends SimpleSAML_Auth_Proc
 		/* Save state and redirect. */
 		$id = SimpleSAML_Auth_State::saveState($state, 'core:short_sso_interval');
 		$url = SimpleSAML_Module::getModuleURL('core/short_sso_interval.php');
-		SimpleSAML_Utilities::redirect($url, array('StateId' => $id));
+		SimpleSAML_Utilities::redirectTrustedURL($url, array('StateId' => $id));
 	}
 
 }
-
-?>

@@ -26,7 +26,7 @@ try {
 
 
 	$config = SimpleSAML_Configuration::getInstance();
-	$session = SimpleSAML_Session::getInstance();
+	$session = SimpleSAML_Session::getSessionFromRequest();
 
 	$as = $oauthconfig->getString('auth');
 	if (!$session->isValid($as)) {
@@ -48,7 +48,7 @@ try {
 		exit();	// and be done.
 	}
 
-	$attributes = $session->getAttributes();
+	$attributes = $session->getAuthData($as, 'Attributes');
 
 	// Assume user consent at this point and proceed with authorizing the token
 	list($url, $verifier) = $store->authorize($requestToken, $attributes);
@@ -56,11 +56,11 @@ try {
 
 	if ($url) {
 		// If authorize() returns a URL, take user there (oauth1.0a)
-		SimpleSAML_Utilities::redirect($url);
+		SimpleSAML_Utilities::redirectTrustedURL($url);
 	} 
 	else if (isset($_REQUEST['oauth_callback'])) {
 		// If callback was provided in the request (oauth1.0)
-		SimpleSAML_Utilities::redirect($_REQUEST['oauth_callback']);
+		SimpleSAML_Utilities::redirectUntrustedURL($_REQUEST['oauth_callback']);
 	
 	} else {
 		// No callback provided, display standard template
@@ -68,8 +68,7 @@ try {
 		$t = new SimpleSAML_XHTML_Template($config, 'oauth:authorized.php');
 
 		$t->data['header'] = '{status:header_saml20_sp}';
-		$t->data['remaining'] = $session->remainingTime();
-		$t->data['sessionsize'] = $session->getSize();
+		$t->data['remaining'] = $session->getAuthData($as, "Expire") - time();
 		$t->data['attributes'] = $attributes;
 		$t->data['logouturl'] = SimpleSAML_Utilities::selfURLNoQuery() . '?logout';
 		$t->data['oauth_verifier'] = $verifier;
